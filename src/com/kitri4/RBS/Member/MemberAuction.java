@@ -5,13 +5,11 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 import java.awt.CardLayout;
 import java.awt.GridLayout;
-import java.util.Date;
-import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
@@ -159,7 +157,14 @@ public class MemberAuction extends JFrame {
 		oneMonthBtn = new JButton("1개월");
 		panel_7.add(oneMonthBtn);
 		
-		endBidTable = new JTable();
-		panel_5.add(endBidTable, BorderLayout.CENTER);
+		String colName[] = {"상호명", "예약시간", "가격"};
+		Object rowData[][] = {
+			{ "꼬꼬치킨", "2016.4.15 7:00", 10000},
+			{ "닭이좋아", "2016.4.12 8:00", 20000},
+			{ "달아달아밝은닭아", "2016.4.15 6:00", 30000} };
+
+		endBidTable = new JTable(rowData, colName);
+		JScrollPane jScollPane = new JScrollPane(endBidTable);
+		panel_5.add(jScollPane, BorderLayout.CENTER);
 	}
 }
