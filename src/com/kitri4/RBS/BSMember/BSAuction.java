@@ -18,33 +18,35 @@ import java.awt.FlowLayout;
 
 public class BSAuction extends JFrame {
 	
-	JPanel contentPane;
-	JButton bidListBtn;
-	JButton storeMenuBtn;
-	JButton infoBtn;
+	public JPanel contentPane;
+	public JButton bidListBtn;
+	public JButton storeMenuBtn;
+	public JButton infoBtn;
 
-	JComboBox locationComb;
-	JComboBox dongComb;
-	JTable ingAuctionTable;
-	JLabel label;
-	JTextField ingStartDateTf;
-	JButton ingStartDateBtn;
-	JButton ingViewBtn;
-	JTextField ingEndDateTf;
-	JButton ingEndDateBtn;
+	public JComboBox locationComb;
+	public JComboBox dongComb;
+	public JTable ingAuctionTable;
+	public JLabel label;
+	public JTextField ingStartDateTf;
+	public JButton ingStartDateBtn;
+	public JButton ingViewBtn;
+	public JTextField ingEndDateTf;
+	public JButton ingEndDateBtn;
 	
-	JPanel graphPn;
-	JTextField endStartDateTf;
-	JButton endStartDateBtn;
-	JLabel lblNewLabel;
-	JTextField endEndDateTf;
-	JButton endEndDateBtn;
-	JButton endBidListViewBtn;
-	JTable endBidTable;
-	JButton sixMonthBtn;
-	JButton threeMonthBtn;
-	JButton oneMonthBtn;
-
+	public JPanel graphPn;
+	public JTextField endStartDateTf;
+	public JButton endStartDateBtn;
+	public JLabel lblNewLabel;
+	public JTextField endEndDateTf;
+	public JButton endEndDateBtn;
+	public JButton endBidListViewBtn;
+	public JTable endBidTable;
+	public JButton sixMonthBtn;
+	public JButton threeMonthBtn;
+	public JButton oneMonthBtn;
+	
+	public JTabbedPane tabbedPane;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -52,7 +54,7 @@ public class BSAuction extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BSAuction frame = new BSAuction();
+					BSAuction frame = new BSAuction("BSAuction");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,7 +66,8 @@ public class BSAuction extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BSAuction() {
+	public BSAuction(String string) {
+		super(string);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
@@ -72,7 +75,7 @@ public class BSAuction extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane);
 		
 		JPanel panel = new JPanel();
@@ -220,6 +223,8 @@ public class BSAuction extends JFrame {
 		
 		endBidTable = new JTable();
 		panel_12.add(endBidTable, BorderLayout.CENTER);
+		
+		setResizable(false);
 	}
 
 }

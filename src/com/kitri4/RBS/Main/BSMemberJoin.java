@@ -35,7 +35,7 @@ public class BSMemberJoin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BSMemberJoin frame = new BSMemberJoin();
+					BSMemberJoin frame = new BSMemberJoin("BSMemberJoin");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,8 @@ public class BSMemberJoin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BSMemberJoin() {
+	public BSMemberJoin(String string) {
+		super(string);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
@@ -147,5 +148,4 @@ public class BSMemberJoin extends JFrame {
 		panel_7.add(storeName, BorderLayout.CENTER);
 		storeName.setColumns(10);
 	}
-
 }

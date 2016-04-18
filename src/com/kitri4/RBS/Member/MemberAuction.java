@@ -31,6 +31,7 @@ public class MemberAuction extends JFrame {
 	public JTable endBidTable;
 
 	public JButton bidListViewBtn;
+	public JButton btnListNewButton;
 	public JButton sixMonthBtn;
 	public JButton threeMonthBtn;
 	public JButton oneMonthBtn;
@@ -40,6 +41,7 @@ public class MemberAuction extends JFrame {
 	public JButton endDateCalBtn;
 	public JPanel GraphPn;
 
+	public JTabbedPane tabbedPane;
 	/**
 	 * Launch the application.
 	 */
@@ -47,7 +49,7 @@ public class MemberAuction extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MemberAuction frame = new MemberAuction();
+					MemberAuction frame = new MemberAuction("MemberAuction");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +61,8 @@ public class MemberAuction extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MemberAuction() {
+	public MemberAuction(String string) {
+		super(string);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
@@ -67,7 +70,7 @@ public class MemberAuction extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, "name_186275914895161");
 		
 		JPanel panel_1 = new JPanel();
@@ -168,5 +171,7 @@ public class MemberAuction extends JFrame {
 		endBidTable = new JTable(rowData, colName);
 		JScrollPane jScollPane = new JScrollPane(endBidTable);
 		panel_5.add(jScollPane, BorderLayout.CENTER);
+		
+		setResizable(false);
 	}
 }

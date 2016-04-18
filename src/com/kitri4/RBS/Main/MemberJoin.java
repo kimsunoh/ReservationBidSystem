@@ -30,7 +30,7 @@ public class MemberJoin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MemberJoin frame = new MemberJoin();
+					MemberJoin frame = new MemberJoin("MemberJoin");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +42,8 @@ public class MemberJoin extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MemberJoin() {
+	public MemberJoin(String string) {
+		super(string);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();

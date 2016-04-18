@@ -35,8 +35,12 @@ public class CalendarView extends JFrame implements ActionListener {
 	JTextField txtMonth, txtYear;
 	JTextField txtTime;
 	BorderLayout bLayout = new BorderLayout();
-
-	public CalendarView() {
+	
+	JTextField setTf;
+	
+	public CalendarView(String string, JTextField setTf) {
+		super(string);
+		this.setTf = setTf;
 		panNorth = new JPanel(new GridLayout(2, 1, 10, 10));
 
 		today = Calendar.getInstance(); //�삤�뒛 �궇吏� 媛��졇�삤
@@ -91,7 +95,7 @@ public class CalendarView extends JFrame implements ActionListener {
 		setTitle("Swing");
 		setBounds(200, 200, 400, 250);
 		setResizable(false);
-		setVisible(true);
+		//setVisible(true);
 	}
 
 	public void calSet() {
@@ -170,8 +174,8 @@ public class CalendarView extends JFrame implements ActionListener {
 		} else if (Integer.parseInt(ae.getActionCommand()) >= 1 && Integer.parseInt(ae.getActionCommand()) <= 31) {
 			day = Integer.parseInt(ae.getActionCommand());
 			//�궇吏� 踰꾪듉�씠 �닃由곌굅硫� system.out 泥섎━
-			System.out.println(year + "-" + month + "-" + day);
-			calSet();
+			setTf.setText(year + "/" + month + "/" + day);
+			setVisible(false);
 		}
 	}
 
@@ -201,9 +205,5 @@ public class CalendarView extends JFrame implements ActionListener {
 			month = 1;
 			year = year + 1;
 		}
-	}
-
-	public static void main(String[] args) {
-		new CalendarView();
 	}
 }
