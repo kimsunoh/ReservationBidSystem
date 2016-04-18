@@ -14,13 +14,15 @@ import java.awt.Rectangle;
 
 public class MemberJoin extends JFrame {
 
-	JPanel contentPane;
-	JTextField idTf;
-	JTextField pwTf;
-	JTextField pwCheckTf;
-	JTextField phoneNumTf;
-	JTextField emailTF;
-
+	public JPanel contentPane;
+	public JTextField idTf;
+	public JTextField pwTf;
+	public JTextField pwCheckTf;
+	public JTextField emailTF;
+	public JTextField textField;
+	public JButton checkIdBtn;
+	public JButton memJoinBtn;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -48,12 +50,15 @@ public class MemberJoin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(10, 10));
 		
-		JButton bsJoinBtn = new JButton("일반회원가입");
-		contentPane.add(bsJoinBtn, BorderLayout.SOUTH);
+		memJoinBtn = new JButton("\uAC00\uC785\uD558\uAE30");
+		contentPane.add(memJoinBtn, BorderLayout.SOUTH);
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new GridLayout(6, 1, 10, 10));
+		panel.setLayout(new GridLayout(7, 1, 10, 30));
+		
+		JLabel label_1 = new JLabel("\uC77C\uBC18 \uD68C\uC6D0\uAC00\uC785");
+		panel.add(label_1);
 		
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1);
@@ -61,18 +66,21 @@ public class MemberJoin extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("ID :");
 		lblNewLabel.setBounds(new Rectangle(0, 0, 100, 0));
-		panel_1.add(lblNewLabel, BorderLayout.NORTH);
+		panel_1.add(lblNewLabel, BorderLayout.WEST);
 		
 		idTf = new JTextField();
 		panel_1.add(idTf, BorderLayout.CENTER);
 		idTf.setColumns(10);
+		
+		checkIdBtn = new JButton("\uD655\uC778");
+		panel_1.add(checkIdBtn, BorderLayout.EAST);
 		
 		JPanel panel_2 = new JPanel();
 		panel.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("PASSWORD :");
-		panel_2.add(lblNewLabel_1, BorderLayout.NORTH);
+		panel_2.add(lblNewLabel_1, BorderLayout.WEST);
 		
 		pwTf = new JTextField();
 		panel_2.add(pwTf, BorderLayout.CENTER);
@@ -83,7 +91,7 @@ public class MemberJoin extends JFrame {
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_2 = new JLabel("PASSWORD (check) : ");
-		panel_3.add(lblNewLabel_2, BorderLayout.NORTH);
+		panel_3.add(lblNewLabel_2, BorderLayout.WEST);
 		
 		pwCheckTf = new JTextField();
 		panel_3.add(pwCheckTf, BorderLayout.CENTER);
@@ -93,19 +101,19 @@ public class MemberJoin extends JFrame {
 		panel.add(panel_4);
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_3 = new JLabel("PHONE (123-4567-7890)");
-		panel_4.add(lblNewLabel_3, BorderLayout.NORTH);
+		JLabel lblPhone = new JLabel("PHONE ( - \uC5C6\uC774\uC785\uB825 )");
+		panel_4.add(lblPhone, BorderLayout.WEST);
 		
-		phoneNumTf = new JTextField();
-		panel_4.add(phoneNumTf, BorderLayout.CENTER);
-		phoneNumTf.setColumns(10);
+		textField = new JTextField();
+		textField.setColumns(10);
+		panel_4.add(textField, BorderLayout.CENTER);
 		
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_4 = new JLabel("EMAIL : ");
-		panel_5.add(lblNewLabel_4, BorderLayout.NORTH);
+		panel_5.add(lblNewLabel_4, BorderLayout.WEST);
 		
 		emailTF = new JTextField();
 		panel_5.add(emailTF, BorderLayout.CENTER);

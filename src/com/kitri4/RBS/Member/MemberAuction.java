@@ -20,25 +20,25 @@ import javax.swing.JLabel;
 
 public class MemberAuction extends JFrame {
 
-	JPanel contentPane;
-	JTable ingBidTable;
-	JButton bidListBtn;
-	JButton addBidBtn;
-	JButton memInfoBtn;
+	public JPanel contentPane;
+	public JTable ingBidTable;
+	public JButton bidListBtn;
+	public JButton addBidBtn;
+	public JButton memInfoBtn;
 	
-	JComboBox bidCombox;
-	JButton bidViewBtn;
-	JTable endBidTable;
+	public JComboBox bidCombox;
+	public JButton bidViewBtn;
+	public JTable endBidTable;
 
-	JButton btnListNewButton;
-	JButton sixMonthBtn;
-	JButton threeMonthBtn;
-	JButton oneMonthBtn;
-	JTextField startDateTf;
-	JTextField endDateTf;
-	JButton startDateCalBtn;
-	JButton endDateCalBtn;
-	JPanel GraphPn;
+	public JButton bidListViewBtn;
+	public JButton sixMonthBtn;
+	public JButton threeMonthBtn;
+	public JButton oneMonthBtn;
+	public JTextField startDateTf;
+	public JTextField endDateTf;
+	public JButton startDateCalBtn;
+	public JButton endDateCalBtn;
+	public JPanel GraphPn;
 
 	/**
 	 * Launch the application.
@@ -115,8 +115,8 @@ public class MemberAuction extends JFrame {
 		panel_3.add(panel_8, BorderLayout.SOUTH);
 		panel_8.setLayout(new BorderLayout(0, 0));
 		
-		btnListNewButton = new JButton("보기");
-		panel_8.add(btnListNewButton, BorderLayout.EAST);
+		bidListViewBtn = new JButton("보기");
+		panel_8.add(bidListViewBtn, BorderLayout.EAST);
 		
 		JPanel panel_9 = new JPanel();
 		panel_8.add(panel_9, BorderLayout.CENTER);

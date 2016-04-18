@@ -14,12 +14,12 @@ import javax.swing.border.EmptyBorder;
 
 public class Login extends JFrame {
 
-	JPanel contentPane;
-	JButton loginBtn;
-	JButton joinBtn;
-	JPanel loginImgPn;
-	JTextField idTf;
-	JTextField pwTf;
+	public JPanel contentPane;
+	public JButton loginBtn;
+	public JButton joinBtn;
+	public JPanel loginImgPn;
+	public JTextField idTf;
+	public JTextField pwTf;
 
 	/**
 	 * Launch the application.
