@@ -12,10 +12,10 @@ import javax.swing.border.EmptyBorder;
 
 public class MemberMain extends JFrame {
 
-	private JPanel contentPane;
-	private JButton bidListBtn;
-	private JButton addBidBtn;
-	private JButton memInfoBtn;
+	JPanel contentPane;
+	JButton bidListBtn;
+	JButton addBidBtn;
+	JButton memInfoBtn;
 
 	/**
 	 * Launch the application.
@@ -50,13 +50,13 @@ public class MemberMain extends JFrame {
 		JPanel panel_6 = new JPanel();
 		getContentPane().add(panel_6);
 		
-		bidListBtn = new JButton("ÏûÖÏ∞∞");
+		bidListBtn = new JButton("≥ªø™");
 		getContentPane().add(bidListBtn);
 		
-		addBidBtn = new JButton("Îì±Î°ù");
+		addBidBtn = new JButton("µÓ∑œ");
 		getContentPane().add(addBidBtn);
 		
-		memInfoBtn = new JButton("ÎÇ¥ Ï†ïÎ≥¥");
+		memInfoBtn = new JButton("≥ª ¡§∫∏");
 		getContentPane().add(memInfoBtn);
 		
 	}

@@ -15,24 +15,26 @@ import javax.swing.JTextField;
 
 public class AdminGraph extends JFrame {
 
-	private JPanel contentPane;
-	private JPanel graphPn;
-	private JTextField startDateTf;
-	private JButton startDateBtn;
-	private JTextField endDateTf;
-	private JButton endDateBtn;
-	private JButton bidListViewBtn;
-	private JButton sixMonthBtn;
-	private JButton threeMonthBtn;
-	private JButton oneMonthBtn;
-	private JTextField auctionCountTf;
-	private JTextField bidCountTf;
-	private JTextField finalBidCountTf;
-	private JButton userAdjBtn;
-	private JButton auctionAdjBtn;
-	private JTable newBsListTable;
-	private JTextField newUserCountTf;
-	private JTextField newBSCountTf;
+	JButton userAdjBtn;
+	JButton auctionAdjBtn;
+	JPanel contentPane;
+	
+	JPanel graphPn;
+	JTextField startDateTf;
+	JButton startDateBtn;
+	JTextField endDateTf;
+	JButton endDateBtn;
+	JButton bidListViewBtn;
+	JButton sixMonthBtn;
+	JButton threeMonthBtn;
+	JButton oneMonthBtn;
+	JTextField auctionCountTf;
+	JTextField bidCountTf;
+	JTextField finalBidCountTf;
+
+	JTable newBsListTable;
+	JTextField newUserCountTf;
+	JTextField newBSCountTf;
 
 	/**
 	 * Launch the application.
@@ -72,7 +74,7 @@ public class AdminGraph extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_5.add(panel_1);
 		
-		auctionAdjBtn = new JButton("경매관리");
+		auctionAdjBtn = new JButton("내역통계");
 		panel_5.add(auctionAdjBtn);
 		
 		userAdjBtn = new JButton("회원관리");
@@ -80,7 +82,7 @@ public class AdminGraph extends JFrame {
 		
 		
 		JPanel panel_3 = new JPanel();
-		tabbedPane.addTab("경매관리", null, panel_3, null);
+		tabbedPane.addTab("내역통계", null, panel_3, null);
 		panel_3.setLayout(new GridLayout(2, 1, 10, 10));
 		
 		JPanel panel_11 = new JPanel();
@@ -152,7 +154,7 @@ public class AdminGraph extends JFrame {
 		panel.add(panel_18);
 		panel_18.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_1 = new JLabel("등록횟수 :");
+		JLabel lblNewLabel_1 = new JLabel("�벑濡앺슏�닔 :");
 		panel_18.add(lblNewLabel_1, BorderLayout.WEST);
 		
 		auctionCountTf = new JTextField();
@@ -163,7 +165,7 @@ public class AdminGraph extends JFrame {
 		panel.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_2 = new JLabel("입찰횟수 :");
+		JLabel lblNewLabel_2 = new JLabel("�엯李고슏�닔 :");
 		panel_2.add(lblNewLabel_2, BorderLayout.WEST);
 		
 		bidCountTf = new JTextField();
@@ -174,7 +176,7 @@ public class AdminGraph extends JFrame {
 		panel.add(panel_4);
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_3 = new JLabel("낙찰횟수 :");
+		JLabel lblNewLabel_3 = new JLabel("�굺李고슏�닔 :");
 		panel_4.add(lblNewLabel_3, BorderLayout.WEST);
 		
 		finalBidCountTf = new JTextField();
@@ -182,7 +184,7 @@ public class AdminGraph extends JFrame {
 		finalBidCountTf.setColumns(10);
 		
 		JPanel panel_6 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_6, null);
+		tabbedPane.addTab("회원관리", null, panel_6, null);
 		panel_6.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_7 = new JPanel();
@@ -193,7 +195,7 @@ public class AdminGraph extends JFrame {
 		panel_7.add(panel_8);
 		panel_8.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_4 = new JLabel("신규회원수 : ");
+		JLabel lblNewLabel_4 = new JLabel("신규가입자 : ");
 		panel_8.add(lblNewLabel_4, BorderLayout.WEST);
 		
 		newUserCountTf = new JTextField();
@@ -204,7 +206,7 @@ public class AdminGraph extends JFrame {
 		panel_7.add(panel_9);
 		panel_9.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_5 = new JLabel("업주등록요청수");
+		JLabel lblNewLabel_5 = new JLabel("사업자등록대기자 : ");
 		panel_9.add(lblNewLabel_5, BorderLayout.WEST);
 		
 		newBSCountTf = new JTextField();

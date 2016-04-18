@@ -16,12 +16,12 @@ import java.awt.FlowLayout;
 
 public class MemberInfo extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField pwTf;
-	private JTextField pwCheckTf;
-	private JTextField phoneNumTf;
-	private JTextField emailTF;
-	private JTextField idTf;
+	JPanel contentPane;
+	JTextField pwTf;
+	JTextField pwCheckTf;
+	JTextField phoneNumTf;
+	JTextField emailTF;
+	JTextField idTf;
 
 	/**
 	 * Launch the application.
@@ -56,7 +56,7 @@ public class MemberInfo extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("ID :");
 		lblNewLabel.setBounds(new Rectangle(0, 0, 100, 0));
-		panel_1.add(lblNewLabel, BorderLayout.WEST);
+		panel_1.add(lblNewLabel, BorderLayout.NORTH);
 		
 		idTf = new JTextField();
 		panel_1.add(idTf, BorderLayout.CENTER);
@@ -67,7 +67,7 @@ public class MemberInfo extends JFrame {
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("PASSWORD :");
-		panel_2.add(lblNewLabel_1, BorderLayout.WEST);
+		panel_2.add(lblNewLabel_1, BorderLayout.NORTH);
 		
 		pwTf = new JTextField();
 		panel_2.add(pwTf, BorderLayout.CENTER);
@@ -78,7 +78,7 @@ public class MemberInfo extends JFrame {
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_2 = new JLabel("PASSWORD (check) : ");
-		panel_3.add(lblNewLabel_2, BorderLayout.WEST);
+		panel_3.add(lblNewLabel_2, BorderLayout.NORTH);
 		
 		pwCheckTf = new JTextField();
 		panel_3.add(pwCheckTf, BorderLayout.CENTER);
@@ -89,7 +89,7 @@ public class MemberInfo extends JFrame {
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_3 = new JLabel("PHONE (123-4567-7890)");
-		panel_4.add(lblNewLabel_3, BorderLayout.WEST);
+		panel_4.add(lblNewLabel_3, BorderLayout.NORTH);
 		
 		phoneNumTf = new JTextField();
 		panel_4.add(phoneNumTf, BorderLayout.CENTER);
@@ -100,7 +100,7 @@ public class MemberInfo extends JFrame {
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_4 = new JLabel("EMAIL : ");
-		panel_5.add(lblNewLabel_4, BorderLayout.WEST);
+		panel_5.add(lblNewLabel_4, BorderLayout.NORTH);
 		
 		emailTF = new JTextField();
 		panel_5.add(emailTF, BorderLayout.CENTER);
@@ -111,10 +111,10 @@ public class MemberInfo extends JFrame {
 		panel.setLayout(new GridLayout(1, 2, 10, 10));
 		
 
-		JButton renameBtn = new JButton("ìˆ˜ì •í•˜ê¸°");
+		JButton renameBtn = new JButton("¼öÁ¤");
 		panel.add(renameBtn);
 		
-		JButton sesesionBtn = new JButton("íƒˆí‡´í•˜ê¸°");
+		JButton sesesionBtn = new JButton("Å»Åð");
 		panel.add(sesesionBtn);
 	}
 

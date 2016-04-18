@@ -14,12 +14,12 @@ import java.awt.Rectangle;
 
 public class MemberJoin extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField idTf;
-	private JTextField pwTf;
-	private JTextField pwCheckTf;
-	private JTextField phoneNumTf;
-	private JTextField emailTF;
+	JPanel contentPane;
+	JTextField idTf;
+	JTextField pwTf;
+	JTextField pwCheckTf;
+	JTextField phoneNumTf;
+	JTextField emailTF;
 
 	/**
 	 * Launch the application.
@@ -48,7 +48,7 @@ public class MemberJoin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(10, 10));
 		
-		JButton bsJoinBtn = new JButton("ê°€ìž…í•˜ê¸°");
+		JButton bsJoinBtn = new JButton("ÀÏ¹ÝÈ¸¿ø°¡ÀÔ");
 		contentPane.add(bsJoinBtn, BorderLayout.SOUTH);
 		
 		JPanel panel = new JPanel();
@@ -61,7 +61,7 @@ public class MemberJoin extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("ID :");
 		lblNewLabel.setBounds(new Rectangle(0, 0, 100, 0));
-		panel_1.add(lblNewLabel, BorderLayout.WEST);
+		panel_1.add(lblNewLabel, BorderLayout.NORTH);
 		
 		idTf = new JTextField();
 		panel_1.add(idTf, BorderLayout.CENTER);
@@ -72,7 +72,7 @@ public class MemberJoin extends JFrame {
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("PASSWORD :");
-		panel_2.add(lblNewLabel_1, BorderLayout.WEST);
+		panel_2.add(lblNewLabel_1, BorderLayout.NORTH);
 		
 		pwTf = new JTextField();
 		panel_2.add(pwTf, BorderLayout.CENTER);
@@ -83,7 +83,7 @@ public class MemberJoin extends JFrame {
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_2 = new JLabel("PASSWORD (check) : ");
-		panel_3.add(lblNewLabel_2, BorderLayout.WEST);
+		panel_3.add(lblNewLabel_2, BorderLayout.NORTH);
 		
 		pwCheckTf = new JTextField();
 		panel_3.add(pwCheckTf, BorderLayout.CENTER);
@@ -94,7 +94,7 @@ public class MemberJoin extends JFrame {
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_3 = new JLabel("PHONE (123-4567-7890)");
-		panel_4.add(lblNewLabel_3, BorderLayout.WEST);
+		panel_4.add(lblNewLabel_3, BorderLayout.NORTH);
 		
 		phoneNumTf = new JTextField();
 		panel_4.add(phoneNumTf, BorderLayout.CENTER);
@@ -105,7 +105,7 @@ public class MemberJoin extends JFrame {
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_4 = new JLabel("EMAIL : ");
-		panel_5.add(lblNewLabel_4, BorderLayout.WEST);
+		panel_5.add(lblNewLabel_4, BorderLayout.NORTH);
 		
 		emailTF = new JTextField();
 		panel_5.add(emailTF, BorderLayout.CENTER);

@@ -17,37 +17,33 @@ import javax.swing.JTextField;
 import java.awt.FlowLayout;
 
 public class BSAuction extends JFrame {
-
-	private JPanel contentPane;
-	private JButton bidListBtn;
-	private JButton storeMenuBtn;
-	private JButton infoBtn;
 	
-	private JComboBox locationComb;
-	private JComboBox dongComb;
-	private JTable ingAuctionTable;
-	private JLabel label;
-	private JTextField ingStartDateTf;
-	private JButton ingStartDateBtn;
-	private JButton ingViewBtn;
-	private JTextField ingEndDateTf;
-	private JButton ingEndDateBtn;
-	private JPanel graphPn;
+	JPanel contentPane;
+	JButton bidListBtn;
+	JButton storeMenuBtn;
+	JButton infoBtn;
 
-	private JTextField endStartDateTf;
-	private JButton endStartDateBtn;
-	private JPanel panel_14;
-	private JPanel panel_15;
-	private JLabel lblNewLabel;
-	private JTextField endEndDateTf;
-	private JButton endEndDateBtn;
-	private JPanel panel_16;
-	private JButton endBidListViewBtn;
-	private JPanel panel_17;
-	private JTable endBidTable;
-	private JButton sixMonthBtn;
-	private JButton threeMonthBtn;
-	private JButton oneMonthBtn;
+	JComboBox locationComb;
+	JComboBox dongComb;
+	JTable ingAuctionTable;
+	JLabel label;
+	JTextField ingStartDateTf;
+	JButton ingStartDateBtn;
+	JButton ingViewBtn;
+	JTextField ingEndDateTf;
+	JButton ingEndDateBtn;
+	
+	JPanel graphPn;
+	JTextField endStartDateTf;
+	JButton endStartDateBtn;
+	JLabel lblNewLabel;
+	JTextField endEndDateTf;
+	JButton endEndDateBtn;
+	JButton endBidListViewBtn;
+	JTable endBidTable;
+	JButton sixMonthBtn;
+	JButton threeMonthBtn;
+	JButton oneMonthBtn;
 
 	/**
 	 * Launch the application.
@@ -172,11 +168,11 @@ public class BSAuction extends JFrame {
 		panel_11.add(panel_13, BorderLayout.SOUTH);
 		panel_13.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		panel_14 = new JPanel();
+		JPanel panel_14 = new JPanel();
 		panel_13.add(panel_14);
 		panel_14.setLayout(new BorderLayout(0, 0));
 		
-		panel_16 = new JPanel();
+		JPanel panel_16 = new JPanel();
 		panel_14.add(panel_16);
 		panel_16.setLayout(new GridLayout(0, 2, 0, 0));
 		
@@ -190,7 +186,7 @@ public class BSAuction extends JFrame {
 		lblNewLabel = new JLabel("~");
 		panel_14.add(lblNewLabel, BorderLayout.EAST);
 		
-		panel_15 = new JPanel();
+		JPanel panel_15 = new JPanel();
 		panel_13.add(panel_15);
 		panel_15.setLayout(new GridLayout(1, 0, 0, 0));
 		
@@ -209,7 +205,7 @@ public class BSAuction extends JFrame {
 		panel_3.add(panel_12);
 		panel_12.setLayout(new BorderLayout(0, 0));
 		
-		panel_17 = new JPanel();
+		JPanel panel_17 = new JPanel();
 		panel_12.add(panel_17, BorderLayout.NORTH);
 		panel_17.setLayout(new GridLayout(0, 3, 0, 0));
 		

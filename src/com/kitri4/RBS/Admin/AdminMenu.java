@@ -11,8 +11,9 @@ import javax.swing.JButton;
 
 public class AdminMenu extends JFrame {
 
-	private JPanel contentPane;
-
+	JPanel contentPane;
+	JButton userManagBtn;
+	JButton auctionManagBtn;
 	/**
 	 * Launch the application.
 	 */
@@ -43,10 +44,10 @@ public class AdminMenu extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel);
 		
-		JButton userManagBtn = new JButton("íšŒì›ê´€ë¦¬");
+		userManagBtn = new JButton("³»¿ªÅë°è");
 		contentPane.add(userManagBtn);
 		
-		JButton auctionManagBtn = new JButton("ê²½ë§¤ê´€ë¦¬");
+		auctionManagBtn = new JButton("È¸¿ø°ü¸®");
 		contentPane.add(auctionManagBtn);
 	}
 

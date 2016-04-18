@@ -16,17 +16,18 @@ import java.awt.FlowLayout;
 
 public class BSInfo extends JFrame {
 
-	private JPanel contentPane;
-	private JButton bidListBtn;
-	private JButton storeMenuBtn;
-	private JButton infoBtn;
-	private JTextField pwTf;
-	private JTextField pwCheckTf;
-	private JTextField idTf;
-	private JTextField phoneNumTf;
-	private JTextField emailTF;
-	private JTextField busseNumTf;
-	private JTextField storeName;
+	JPanel contentPane;
+	JButton bidListBtn;
+	JButton storeMenuBtn;
+	JButton infoBtn;
+	
+	JTextField pwTf;
+	JTextField pwCheckTf;
+	JTextField idTf;
+	JTextField phoneNumTf;
+	JTextField emailTF;
+	JTextField busseNumTf;
+	JTextField storeName;
 
 	/**
 	 * Launch the application.
@@ -65,19 +66,19 @@ public class BSInfo extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panelMain.add(panel_1);
 		
-		bidListBtn = new JButton("ÎÇ¥Ïó≠");
+		bidListBtn = new JButton("≥ªø™");
 		panelMain.add(bidListBtn);
 		
-		storeMenuBtn = new JButton("Î©îÎâ¥");
+		storeMenuBtn = new JButton("∏ﬁ¥∫");
 		panelMain.add(storeMenuBtn);
 		
-		infoBtn = new JButton("ÎÇ¥Ï†ïÎ≥¥");
+		infoBtn = new JButton("≥ª ¡§∫∏");
 		panelMain.add(infoBtn);
 		
 
 		JPanel panel = new JPanel();
 		tabbedPane.add(panel, BorderLayout.CENTER);
-		tabbedPane.setTitleAt(1, "ÎÇ¥ Ï†ïÎ≥¥");
+		tabbedPane.setTitleAt(1, "≥ª ¡§∫∏");
 		panel.setLayout(new GridLayout(8, 1, 10, 10));
 		
 		JPanel panel_0 = new JPanel();
@@ -86,7 +87,7 @@ public class BSInfo extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("ID :");
 		lblNewLabel.setBounds(new Rectangle(0, 0, 100, 0));
-		panel_0.add(lblNewLabel, BorderLayout.WEST);
+		panel_0.add(lblNewLabel, BorderLayout.NORTH);
 		
 		idTf = new JTextField();
 		panel_0.add(idTf, BorderLayout.CENTER);
@@ -97,7 +98,7 @@ public class BSInfo extends JFrame {
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("PASSWORD :");
-		panel_2.add(lblNewLabel_1, BorderLayout.WEST);
+		panel_2.add(lblNewLabel_1, BorderLayout.NORTH);
 		
 		pwTf = new JTextField();
 		panel_2.add(pwTf, BorderLayout.CENTER);
@@ -108,7 +109,7 @@ public class BSInfo extends JFrame {
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_2 = new JLabel("PASSWORD (check) : ");
-		panel_3.add(lblNewLabel_2, BorderLayout.WEST);
+		panel_3.add(lblNewLabel_2, BorderLayout.NORTH);
 		
 		pwCheckTf = new JTextField();
 		panel_3.add(pwCheckTf, BorderLayout.CENTER);
@@ -119,7 +120,7 @@ public class BSInfo extends JFrame {
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_3 = new JLabel("PHONE (123-4567-7890)");
-		panel_4.add(lblNewLabel_3, BorderLayout.WEST);
+		panel_4.add(lblNewLabel_3, BorderLayout.NORTH);
 		
 		phoneNumTf = new JTextField();
 		panel_4.add(phoneNumTf, BorderLayout.CENTER);
@@ -130,7 +131,7 @@ public class BSInfo extends JFrame {
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_4 = new JLabel("EMAIL : ");
-		panel_5.add(lblNewLabel_4, BorderLayout.WEST);
+		panel_5.add(lblNewLabel_4, BorderLayout.NORTH);
 		
 		emailTF = new JTextField();
 		panel_5.add(emailTF, BorderLayout.CENTER);
@@ -140,8 +141,8 @@ public class BSInfo extends JFrame {
 		panel.add(panel_6);
 		panel_6.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_5 = new JLabel("ÏÇ¨ÏóÖÏûêÎ≤àÌò∏ :");
-		panel_6.add(lblNewLabel_5, BorderLayout.WEST);
+		JLabel lblNewLabel_5 = new JLabel("ªÁæ˜¿⁄π¯»£ :");
+		panel_6.add(lblNewLabel_5, BorderLayout.NORTH);
 		
 		busseNumTf = new JTextField();
 		panel_6.add(busseNumTf, BorderLayout.CENTER);
@@ -151,8 +152,8 @@ public class BSInfo extends JFrame {
 		panel.add(panel_7);
 		panel_7.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_6 = new JLabel("ÏÉÅÌò∏Î™Ö : ");
-		panel_7.add(lblNewLabel_6, BorderLayout.WEST);
+		JLabel lblNewLabel_6 = new JLabel("ªÛ»£∏Ì : ");
+		panel_7.add(lblNewLabel_6, BorderLayout.NORTH);
 		
 		storeName = new JTextField();
 		panel_7.add(storeName, BorderLayout.CENTER);
@@ -162,10 +163,10 @@ public class BSInfo extends JFrame {
 		panel.add(panel_8);
 		panel_8.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JButton renameBtn = new JButton("ÏàòÏ†ï");
+		JButton renameBtn = new JButton("ºˆ¡§");
 		panel_8.add(renameBtn);
 		
-		JButton secessionBtn = new JButton("ÌÉàÌá¥");
+		JButton secessionBtn = new JButton("≈ª≈");
 		panel_8.add(secessionBtn);
 	}
 

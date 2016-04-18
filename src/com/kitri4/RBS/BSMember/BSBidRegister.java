@@ -15,13 +15,13 @@ import javax.swing.JRadioButton;
 
 public class BSBidRegister extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField storeNameFt;
-	private JTextField storeCateTf;
-	private JComboBox maxPeopleNumComb;
-	private JTextField priceTf;
-	private JRadioButton rdbtnNewRadioButton;
-	private JRadioButton rdbtnNewRadioButton_1;
+	JPanel contentPane;
+	JTextField storeNameFt;
+	JTextField peopleMax;
+	JComboBox categoryComb;
+	JTextField priceTf;
+	JRadioButton agree;
+	JRadioButton notAgree;
 
 	/**
 	 * Launch the application.
@@ -55,7 +55,7 @@ public class BSBidRegister extends JFrame {
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		JLabel label = new JLabel("상호명 :");
-		panel.add(label, BorderLayout.WEST);
+		panel.add(label, BorderLayout.NORTH);
 		
 		storeNameFt = new JTextField();
 		panel.add(storeNameFt, BorderLayout.CENTER);
@@ -65,29 +65,29 @@ public class BSBidRegister extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel = new JLabel("카테고리 ; ");
-		panel_1.add(lblNewLabel, BorderLayout.WEST);
+		JLabel lblNewLabel = new JLabel("최대인원 ; ");
+		panel_1.add(lblNewLabel, BorderLayout.NORTH);
 		
-		storeCateTf = new JTextField();
-		panel_1.add(storeCateTf, BorderLayout.CENTER);
-		storeCateTf.setColumns(10);
+		peopleMax = new JTextField();
+		panel_1.add(peopleMax, BorderLayout.CENTER);
+		peopleMax.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_1 = new JLabel("수용가능인원 : ");
-		panel_2.add(lblNewLabel_1, BorderLayout.WEST);
+		JLabel lblNewLabel_1 = new JLabel("카테고리 : ");
+		panel_2.add(lblNewLabel_1, BorderLayout.NORTH);
 		
-		maxPeopleNumComb = new JComboBox();
-		panel_2.add(maxPeopleNumComb, BorderLayout.CENTER);
+		categoryComb = new JComboBox();
+		panel_2.add(categoryComb, BorderLayout.CENTER);
 		
 		JPanel panel_3 = new JPanel();
 		contentPane.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_2 = new JLabel("가격(1인) :");
-		panel_3.add(lblNewLabel_2, BorderLayout.WEST);
+		panel_3.add(lblNewLabel_2, BorderLayout.NORTH);
 		
 		priceTf = new JTextField();
 		panel_3.add(priceTf, BorderLayout.CENTER);
@@ -97,19 +97,20 @@ public class BSBidRegister extends JFrame {
 		contentPane.add(panel_4);
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_3 = new JLabel("가게정보제공에 동의하겠습니다.");
-		panel_4.add(lblNewLabel_3, BorderLayout.WEST);
+		JLabel lblNewLabel_3 = new JLabel("제3자 정보제공에 동의하십니까?");
+		panel_4.add(lblNewLabel_3, BorderLayout.NORTH);
 		
 		JPanel panel_5 = new JPanel();
+		
+		agree = new JRadioButton("네");
+		panel_5.add(agree);
+		
+		notAgree = new JRadioButton("아니오");
+		panel_5.add(notAgree);
+		
 		panel_4.add(panel_5, BorderLayout.CENTER);
-		
-		rdbtnNewRadioButton = new JRadioButton("네");
-		panel_5.add(rdbtnNewRadioButton, BorderLayout.NORTH);
-		
-		rdbtnNewRadioButton_1 = new JRadioButton("아니오");
-		panel_5.add(rdbtnNewRadioButton_1, BorderLayout.SOUTH);
-		
-		JButton bidRegistBtn = new JButton("입찰하기");
+
+		JButton bidRegistBtn = new JButton("등록");
 		contentPane.add(bidRegistBtn);
 		
 		

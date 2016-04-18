@@ -14,12 +14,12 @@ import javax.swing.border.EmptyBorder;
 
 public class Login extends JFrame {
 
-	private JPanel contentPane;
-	private JButton loginBtn;
-	private JButton joinBtn;
-	private JPanel loginImgPn;
-	private JTextField idTf;
-	private JTextField pwTf;
+	JPanel contentPane;
+	JButton loginBtn;
+	JButton joinBtn;
+	JPanel loginImgPn;
+	JTextField idTf;
+	JTextField pwTf;
 
 	/**
 	 * Launch the application.
@@ -54,10 +54,10 @@ public class Login extends JFrame {
 		flowLayout.setHgap(10);
 		contentPane.add(panel, BorderLayout.SOUTH);
 		
-		loginBtn = new JButton("Î°úÍ∑∏Ïù∏");
+		loginBtn = new JButton("∑Œ±◊¿Œ");
 		panel.add(loginBtn);
 		
-		joinBtn = new JButton("ÌöåÏõêÍ∞ÄÏûÖ");
+		joinBtn = new JButton("»∏ø¯∞°¿‘");
 		panel.add(joinBtn);
 		
 		JPanel panel_1 = new JPanel();
@@ -68,7 +68,7 @@ public class Login extends JFrame {
 		panel_1.add(panel_2);
 		panel_2.setLayout(new BorderLayout(10, 10));
 		
-		JLabel lblNewLabel_2 = new JLabel("Í±∞Í∏∞Ïöî");
+		JLabel lblNewLabel_2 = new JLabel("ø¿¥√ππ∏‘¡ˆ?");
 		panel_2.add(lblNewLabel_2, BorderLayout.NORTH);
 		
 		loginImgPn = new JPanel();
@@ -83,7 +83,7 @@ public class Login extends JFrame {
 		panel_4.setLayout(new BorderLayout(10, 10));
 		
 		JLabel lblNewLabel = new JLabel("ID :");
-		panel_4.add(lblNewLabel, BorderLayout.WEST);
+		panel_4.add(lblNewLabel, BorderLayout.NORTH);
 		
 		idTf = new JTextField();
 		panel_4.add(idTf, BorderLayout.CENTER);
@@ -98,7 +98,7 @@ public class Login extends JFrame {
 		pwTf.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("PW :");
-		panel_5.add(lblNewLabel_1, BorderLayout.WEST);
+		panel_5.add(lblNewLabel_1, BorderLayout.NORTH);
 	}
 
 }

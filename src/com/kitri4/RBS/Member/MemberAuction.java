@@ -20,23 +20,25 @@ import javax.swing.JLabel;
 
 public class MemberAuction extends JFrame {
 
-	private JPanel contentPane;
-	private JTable ingBidTable;
-	private JButton bidListBtn;
-	private JButton addBidBtn;
-	private JButton memInfoBtn;
-	private JComboBox bidCombox;
-	private JButton bidViewBtn;
-	private JTable endBidTable;
-	private JButton btnListNewButton;
-	private JButton sixMonthBtn;
-	private JButton threeMonthBtn;
-	private JButton oneMonthBtn;
-	private JTextField startDateTf;
-	private JTextField endDateTf;
-	private JButton startDateCalBtn;
-	private JButton endDateCalBtn;
-	private JPanel GraphPn;
+	JPanel contentPane;
+	JTable ingBidTable;
+	JButton bidListBtn;
+	JButton addBidBtn;
+	JButton memInfoBtn;
+	
+	JComboBox bidCombox;
+	JButton bidViewBtn;
+	JTable endBidTable;
+
+	JButton btnListNewButton;
+	JButton sixMonthBtn;
+	JButton threeMonthBtn;
+	JButton oneMonthBtn;
+	JTextField startDateTf;
+	JTextField endDateTf;
+	JButton startDateCalBtn;
+	JButton endDateCalBtn;
+	JPanel GraphPn;
 
 	/**
 	 * Launch the application.
@@ -81,7 +83,7 @@ public class MemberAuction extends JFrame {
 		addBidBtn = new JButton("등록");
 		panel_1.add(addBidBtn);
 		
-		memInfoBtn = new JButton("내 정보");
+		memInfoBtn = new JButton("내정보");
 		panel_1.add(memInfoBtn);
 		
 		JPanel panel_4 = new JPanel();
@@ -113,7 +115,7 @@ public class MemberAuction extends JFrame {
 		panel_3.add(panel_8, BorderLayout.SOUTH);
 		panel_8.setLayout(new BorderLayout(0, 0));
 		
-		btnListNewButton = new JButton("조회");
+		btnListNewButton = new JButton("보기");
 		panel_8.add(btnListNewButton, BorderLayout.EAST);
 		
 		JPanel panel_9 = new JPanel();
@@ -160,7 +162,7 @@ public class MemberAuction extends JFrame {
 		String colName[] = {"상호명", "예약시간", "가격"};
 		Object rowData[][] = {
 			{ "꼬꼬치킨", "2016.4.15 7:00", 10000},
-			{ "닭이좋아", "2016.4.12 8:00", 20000},
+			{ "치닭치닭", "2016.4.12 8:00", 20000},
 			{ "달아달아밝은닭아", "2016.4.15 6:00", 30000} };
 
 		endBidTable = new JTable(rowData, colName);

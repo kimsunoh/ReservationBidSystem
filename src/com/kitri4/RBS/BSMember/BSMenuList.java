@@ -21,17 +21,9 @@ public class BSMenuList extends JFrame {
 	private JButton bidListBtn;
 	private JButton storeMenuBtn;
 	private JButton infoBtn;
-	private JPanel panel_2;
+	
 	private JButton menuAddBtn;
 	private JTable menuListTable;
-	private JPanel panel_3;
-	private JPanel panel_4;
-	private JPanel panel_5;
-	private JPanel panel_6;
-	private JPanel panel_7;
-	private JPanel panel_8;
-	private JPanel panel_9;
-	private JPanel panel_10;
 	private JTextField menuNameTf;
 	private JTextField priceTf;
 	private JPanel menuImgPn;
@@ -77,90 +69,88 @@ public class BSMenuList extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1);
 		
-		bidListBtn = new JButton("ÎÇ¥Ïó≠");
+		bidListBtn = new JButton("≥ªø™");
 		panel.add(bidListBtn);
 		
-		storeMenuBtn = new JButton("Î©îÎâ¥");
+		storeMenuBtn = new JButton("∏ﬁ¥∫");
 		panel.add(storeMenuBtn);
-		
-		infoBtn = new JButton("ÎÇ¥Ï†ïÎ≥¥");
+	 	
+		infoBtn = new JButton("≥ª ¡§∫∏");
 		panel.add(infoBtn);
 		
-		panel_2 = new JPanel();
-		tabbedPane.addTab("Î™©Î°ù", null, panel_2, null);
+		JPanel panel_2 = new JPanel();
+		tabbedPane.addTab("∏ﬁ¥∫∏ÆΩ∫∆Æ", null, panel_2, null);
 		panel_2.setLayout(new BorderLayout(10, 10));
 		
-		menuAddBtn = new JButton("Ïã†Í∑úÎ©îÎâ¥Îì±Î°ù");
+		menuAddBtn = new JButton("Ω≈±‘µÓ∑œ");
 		panel_2.add(menuAddBtn, BorderLayout.SOUTH);
 		
 		menuListTable = new JTable();
 		panel_2.add(menuListTable, BorderLayout.CENTER);
 		
-		panel_3 = new JPanel();
-		tabbedPane.addTab("Îì±Î°ù", null, panel_3, null);
+		JPanel panel_3 = new JPanel();
+		tabbedPane.addTab("µÓ∑œ", null, panel_3, null);
 		panel_3.setLayout(new GridLayout(3, 1, 10, 10));
 		
-		panel_4 = new JPanel();
+		JPanel panel_4 = new JPanel();
 		panel_3.add(panel_4);
 		panel_4.setLayout(new GridLayout(2, 0, 10, 10));
 		
-		panel_7 = new JPanel();
+		JPanel panel_7 = new JPanel();
 		panel_4.add(panel_7);
 		panel_7.setLayout(new BorderLayout(10, 10));
 		
-		JLabel lblNewLabel = new JLabel("Î©îÎâ¥Ïù¥Î¶Ñ :");
-		panel_7.add(lblNewLabel, BorderLayout.WEST);
+		JLabel lblNewLabel = new JLabel("∏ﬁ¥∫¿Ã∏ß :");
+		panel_7.add(lblNewLabel, BorderLayout.NORTH);
 		
 		menuNameTf = new JTextField();
 		panel_7.add(menuNameTf, BorderLayout.CENTER);
 		menuNameTf.setColumns(10);
 		
-		panel_8 = new JPanel();
+		JPanel panel_8 = new JPanel();
 		panel_4.add(panel_8);
 		panel_8.setLayout(new BorderLayout(10, 10));
 		
-		JLabel lblNewLabel_1 = new JLabel("Í∞ÄÍ≤© :");
-		panel_8.add(lblNewLabel_1, BorderLayout.WEST);
+		JLabel lblNewLabel_1 = new JLabel("∞°∞› :");
+		panel_8.add(lblNewLabel_1, BorderLayout.NORTH);
 		
 		priceTf = new JTextField();
 		panel_8.add(priceTf, BorderLayout.CENTER);
 		priceTf.setColumns(10);
 		
-		panel_5 = new JPanel();
+		JPanel panel_5 = new JPanel();
 		panel_3.add(panel_5);
 		panel_5.setLayout(new BorderLayout(10, 10));
 		
-		JLabel lblNewLabel_2 = new JLabel("ÏÇ¨ÏßÑ :");
-		panel_5.add(lblNewLabel_2, BorderLayout.NORTH);
-		
+		JLabel lblNewLabel_2 = new JLabel("ªÁ¡¯ :");		
 		menuImgPn = new JPanel();
 		panel_5.add(menuImgPn, BorderLayout.CENTER);
 		
-		panel_6 = new JPanel();
+		JPanel panel_6 = new JPanel();
 		panel_3.add(panel_6);
 		panel_6.setLayout(new GridLayout(2, 0, 10, 10));
 		
-		panel_9 = new JPanel();
+		JPanel panel_9 = new JPanel();
 		panel_6.add(panel_9);
 		panel_9.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_3 = new JLabel("Î©îÎâ¥ÏÑ§Î™Ö :");
+		JLabel lblNewLabel_3 = new JLabel("∏ﬁ¥∫º≥∏Ì :");
 		panel_9.add(lblNewLabel_3, BorderLayout.NORTH);
 		
 		menuInfoTf = new JTextArea();
 		panel_9.add(menuInfoTf, BorderLayout.CENTER);
 		
-		panel_10 = new JPanel();
+		JPanel panel_10 = new JPanel();
 		panel_6.add(panel_10);
 		panel_10.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		addMenuBtn = new JButton("Îì±Î°ù");
+		addMenuBtn = new JButton("µÓ∑œ");
 		panel_10.add(addMenuBtn);
 		
-		renameMenuBtn = new JButton("ÏàòÏ†ï");
+		renameMenuBtn = new JButton("ºˆ¡§");
 		panel_10.add(renameMenuBtn);
 		
-		removeMenuBtn = new JButton("ÏÇ≠Ï†ú");
+		removeMenuBtn = new JButton("ªË¡¶");
 		panel_10.add(removeMenuBtn);
 		
 	}

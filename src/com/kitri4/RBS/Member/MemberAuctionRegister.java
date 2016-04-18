@@ -17,14 +17,14 @@ import javax.swing.JTextField;
 
 public class MemberAuctionRegister extends JFrame {
 
-	private JPanel contentPane;
-	private JTextArea needsomeTA;
-	private JButton bidResitBtn;
-	private JComboBox peoplNumComb;
-	private JComboBox foodCategoComd;
-	private JComboBox locationComb;
-	private JComboBox dongComb;
-	private JTextField priceTf;
+	JPanel contentPane;
+	JTextArea needsomeTA;
+	JButton bidResitBtn;
+	JComboBox peoplNumComb;
+	JComboBox foodCategoComd;
+	JComboBox locationComb;
+	JComboBox dongComb;
+	JTextField priceTf;
 
 	/**
 	 * Launch the application.
@@ -63,13 +63,13 @@ public class MemberAuctionRegister extends JFrame {
 		JPanel panel_6 = new JPanel();
 		panel_1.add(panel_6);
 		
-		JButton bidListBtn = new JButton("입찰");
+		JButton bidListBtn = new JButton("내역");
 		panel_1.add(bidListBtn);
 		
 		JButton addBidBtn = new JButton("등록");
 		panel_1.add(addBidBtn);
 		
-		JButton memInfoBtn = new JButton("내 정보");
+		JButton memInfoBtn = new JButton("내정보");
 		panel_1.add(memInfoBtn);
 		
 		JPanel panel_4 = new JPanel();
@@ -85,7 +85,7 @@ public class MemberAuctionRegister extends JFrame {
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("인원 : ");
-		panel_5.add(lblNewLabel_1, BorderLayout.WEST);
+		panel_5.add(lblNewLabel_1, BorderLayout.NORTH);
 		
 		peoplNumComb = new JComboBox();
 		panel_5.add(peoplNumComb, BorderLayout.CENTER);
@@ -95,7 +95,7 @@ public class MemberAuctionRegister extends JFrame {
 		panel_7.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_2 = new JLabel("카테고리 :");
-		panel_7.add(lblNewLabel_2, BorderLayout.WEST);
+		panel_7.add(lblNewLabel_2, BorderLayout.NORTH);
 		
 		foodCategoComd = new JComboBox();
 		panel_7.add(foodCategoComd, BorderLayout.CENTER);
@@ -105,7 +105,7 @@ public class MemberAuctionRegister extends JFrame {
 		panel_8.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_3 = new JLabel("지역 : ");
-		panel_8.add(lblNewLabel_3, BorderLayout.WEST);
+		panel_8.add(lblNewLabel_3, BorderLayout.NORTH);
 		
 		JPanel panel_9 = new JPanel();
 		panel_8.add(panel_9, BorderLayout.CENTER);
@@ -122,7 +122,7 @@ public class MemberAuctionRegister extends JFrame {
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_4 = new JLabel("최대가격 (단위:만원) :");
-		panel_3.add(lblNewLabel_4, BorderLayout.WEST);
+		panel_3.add(lblNewLabel_4, BorderLayout.NORTH);
 		
 		priceTf = new JTextField();
 		panel_3.add(priceTf, BorderLayout.CENTER);
@@ -135,7 +135,7 @@ public class MemberAuctionRegister extends JFrame {
 		bidResitBtn = new JButton("등록");
 		panel.add(bidResitBtn, BorderLayout.SOUTH);
 		
-		JLabel lblNewLabel = new JLabel("비고 (참고사항) :");
+		JLabel lblNewLabel = new JLabel("비고 (고려사항) :");
 		panel.add(lblNewLabel, BorderLayout.NORTH);
 		
 		needsomeTA = new JTextArea();

@@ -39,17 +39,17 @@ public class CalendarView extends JFrame implements ActionListener {
 	public CalendarView() {
 		panNorth = new JPanel(new GridLayout(2, 1, 10, 10));
 
-		today = Calendar.getInstance(); //오늘 날짜 가져오
+		today = Calendar.getInstance(); //�삤�뒛 �궇吏� 媛��졇�삤
 										
-		/*상단 화면*/ 
+		/*�긽�떒 �솕硫�*/ 
 		cal = new GregorianCalendar();
 		year = today.get(Calendar.YEAR);
-		month = today.get(Calendar.MONTH) + 1;// 달을 0-11까지로 되어있어서 +1
+		month = today.get(Calendar.MONTH) + 1;// �떖�쓣 0-11源뚯�濡� �릺�뼱�엳�뼱�꽌 +1
 		
 		JPanel yearMonth = new JPanel();
 		yearMonth.add(btnBefore = new JButton("Before"));
 		yearMonth.add(txtYear = new JTextField(year + "년"));
-		yearMonth.add(txtMonth = new JTextField(month + "월", 3));
+		yearMonth.add(txtMonth = new JTextField(month + "달", 3));
 		yearMonth.add(btnAfter = new JButton("After"));
 		
 		txtYear.setEnabled(false); 
@@ -76,8 +76,8 @@ public class CalendarView extends JFrame implements ActionListener {
 		
 		add(panNorth, "North");
 
-		/*하단 화*/
-		panWest = new JPanel(new GridLayout(6, 7)); //달의 일 버튼이 들어갈 Pn
+		/*�븯�떒 �솕*/
+		panWest = new JPanel(new GridLayout(6,7)); //�떖�쓽 �씪 踰꾪듉�씠 �뱾�뼱媛� Pn
 
 		f = new Font("Sherif", Font.BOLD, 12);
 		gridInit();
@@ -89,25 +89,26 @@ public class CalendarView extends JFrame implements ActionListener {
 		btnAfter.addActionListener(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Swing");
-		setBounds(200, 200, 345, 250);
+		setBounds(200, 200, 400, 250);
+		setResizable(false);
 		setVisible(true);
 	}
 
 	public void calSet() {
 		int btnNum;
-		cal.set(Calendar.YEAR, year); //달력에 뿌릴 Calendar 객체의 년도 설정
-		cal.set(Calendar.MONTH, (month - 1)); //달력에 뿌릴 Calendar 객체의 월 설정, 연산에 사용해야 하므로 다시 -1
-		cal.set(Calendar.DATE, 1);	//달력에 뿌리기 시작할 것은 1일 이여야 하므로 1일
+		cal.set(Calendar.YEAR, year); //�떖�젰�뿉 肉뚮┫ Calendar 媛앹껜�쓽 �뀈�룄 �꽕�젙
+		cal.set(Calendar.MONTH, (month - 1)); //�떖�젰�뿉 肉뚮┫ Calendar 媛앹껜�쓽 �썡 �꽕�젙, �뿰�궛�뿉 �궗�슜�빐�빞 �븯誘�濡� �떎�떆 -1
+		cal.set(Calendar.DATE, 1);	//�떖�젰�뿉 肉뚮━湲� �떆�옉�븷 寃껋� 1�씪 �씠�뿬�빞 �븯誘�濡� 1�씪
 		/*
 		 * SUNDAY,MONDAY,TUESDAY,WEDNESDAY ,THURSDAY,FRIDAY, SATURDAY
 		 */
 		
-		int firstDayOfWeekForMonth = cal.get(Calendar.DAY_OF_WEEK) - 1; //SUNDAY가 1, 달의 첫날 요일을 나타내는 변 
+		int firstDayOfWeekForMonth = cal.get(Calendar.DAY_OF_WEEK) - 1; //SUNDAY媛� 1, �떖�쓽 泥ル궇 �슂�씪�쓣 �굹���궡�뒗 蹂� 
 		
 		/*
-		 * 1.달의 첫주 첫날 전까지의 날 없는 날로 셋팅하기
-		 * 2.년월의 첫날과 끝날알기
-		 * 3.1일부터 마지막 날까지 셋팅
+		 * 1.�떖�쓽 泥レ＜ 泥ル궇 �쟾源뚯��쓽 �궇 �뾾�뒗 �궇濡� �뀑�똿�븯湲�
+		 * 2.�뀈�썡�쓽 泥ル궇怨� �걹�궇�븣湲�
+		 * 3.1�씪遺��꽣 留덉�留� �궇源뚯� �뀑�똿
 		 */
 		
 		for (int i = 0; i < firstDayOfWeekForMonth; i++)
@@ -131,13 +132,13 @@ public class CalendarView extends JFrame implements ActionListener {
 		int day = 1;
 		
 		while(day <= maxDay){
-			//달의 첫날 요일 + cal.1일 = 달의 첫날요일이 되야함
+			//�떖�쓽 泥ル궇 �슂�씪 + cal.1�씪 = �떖�쓽 泥ル궇�슂�씪�씠 �릺�빞�븿
 			btnNum = day-1 + firstDayOfWeekForMonth;
 			calBtn[btnNum].setForeground(new Color(0, 0, 0));
 			
-			if ((btnNum) % 7 == 0) {//일요일일때 처리
+			if ((btnNum) % 7 == 0) {//�씪�슂�씪�씪�븣 泥섎━
 				calBtn[btnNum].setForeground(new Color(255, 0, 0));
-			}else if ((btnNum) % 7 == 6) {//토요일일때 색 처리
+			}else if ((btnNum) % 7 == 6) {//�넗�슂�씪�씪�븣 �깋 泥섎━
 				calBtn[btnNum].setForeground(new Color(0, 0, 255));
 			}
 			
@@ -152,7 +153,7 @@ public class CalendarView extends JFrame implements ActionListener {
 			this.panWest.removeAll();
 			calInput(-1);
 			gridInit();
-			panWest.setLayout(new GridLayout(7, 7));
+			panWest.setLayout(new GridLayout(6,7));
 			calSet();
 			hideInit();
 			this.txtYear.setText(year + "년");
@@ -161,20 +162,20 @@ public class CalendarView extends JFrame implements ActionListener {
 			this.panWest.removeAll();
 			calInput(1);
 			gridInit();
-			panWest.setLayout(new GridLayout(7, 7));
+			panWest.setLayout(new GridLayout(6,7));
 			calSet();
 			hideInit();
 			this.txtYear.setText(year + "년");
 			this.txtMonth.setText(month + "월");
 		} else if (Integer.parseInt(ae.getActionCommand()) >= 1 && Integer.parseInt(ae.getActionCommand()) <= 31) {
 			day = Integer.parseInt(ae.getActionCommand());
-			//날짜 버튼이 눌린거면 system.out 처리
+			//�궇吏� 踰꾪듉�씠 �닃由곌굅硫� system.out 泥섎━
 			System.out.println(year + "-" + month + "-" + day);
 			calSet();
 		}
 	}
 
-	/*btn은 만들어 졌지만, 날짜가 없는 버튼 눌리지 않게 설정하는 메소드*/
+	/*btn�� 留뚮뱾�뼱 議뚯�留�, �궇吏쒓� �뾾�뒗 踰꾪듉 �닃由ъ� �븡寃� �꽕�젙�븯�뒗 硫붿냼�뱶*/
 	public void hideInit() { 
 		for (int i = 0; i < calBtn.length; i++) {
 			if ((calBtn[i].getText()).equals(""))
@@ -182,7 +183,7 @@ public class CalendarView extends JFrame implements ActionListener {
 		}
 	}
 
-	/*GridLayout에 버튼 넣기*/
+	/*GridLayout�뿉 踰꾪듉 �꽔湲�*/
 	public void gridInit() { 
 		for (int i = 0; i < 42; i++) {
 			panWest.add(calBtn[i] = new JButton(""));
@@ -190,7 +191,7 @@ public class CalendarView extends JFrame implements ActionListener {
 		}
 	}
 
-	/*이전,이후 버튼이 눌렸을때 월, 년도 설정해주기*/
+	/*�씠�쟾,�씠�썑 踰꾪듉�씠 �닃�졇�쓣�븣 �썡, �뀈�룄 �꽕�젙�빐二쇨린*/
 	public void calInput(int gap) {
 		month += (gap);
 		if (month <= 0) {

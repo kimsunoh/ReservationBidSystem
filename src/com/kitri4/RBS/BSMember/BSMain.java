@@ -11,10 +11,10 @@ import javax.swing.border.EmptyBorder;
 
 public class BSMain extends JFrame {
 
-	private JPanel contentPane;
-	private JButton bidListBtn;
-	private JButton storeMenuBtn;
-	private JButton InfoBtn;
+	JPanel contentPane;
+	JButton bidListBtn;
+	JButton storeMenuBtn;
+	JButton InfoBtn;
 
 	/**
 	 * Launch the application.
@@ -48,13 +48,13 @@ public class BSMain extends JFrame {
 		JPanel panel_6 = new JPanel();
 		getContentPane().add(panel_6);
 		
-		bidListBtn = new JButton("ë‚´ì—­");
+		bidListBtn = new JButton("³»¿ª");
 		getContentPane().add(bidListBtn);
 		
-		storeMenuBtn = new JButton("ë©”ë‰´");
+		storeMenuBtn = new JButton("¸Þ´º");
 		getContentPane().add(storeMenuBtn);
 		
-		InfoBtn = new JButton("ë‚´ ì •ë³´");
+		InfoBtn = new JButton("³» Á¤º¸");
 		getContentPane().add(InfoBtn);
 		
 	}

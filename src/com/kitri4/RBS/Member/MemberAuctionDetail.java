@@ -13,13 +13,13 @@ import javax.swing.JTable;
 
 public class MemberAuctionDetail extends JFrame {
 
-	private JPanel contentPane;
-	private JTable table;
-	private JTable storeInfoTable;
-	private JPanel panel_1;
-	private JButton cancelBtn;
-	private JButton finalBidBtn;
-	private JTable menuTable;
+	JPanel contentPane;
+	JTable table;
+	JTable storeInfoTable;
+	JPanel panel_1;
+	JButton cancelBtn;
+	JButton finalBidBtn;
+	JTable menuTable;
 
 	/**
 	 * Launch the application.
@@ -61,10 +61,10 @@ public class MemberAuctionDetail extends JFrame {
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		cancelBtn = new JButton("ì·¨ì†Œ");
+		cancelBtn = new JButton("Ãë¼Ò");
 		panel_1.add(cancelBtn);
 		
-		finalBidBtn = new JButton("ë‚™ì°°");
+		finalBidBtn = new JButton("³«Âû");
 		panel_1.add(finalBidBtn);
 		
 		
