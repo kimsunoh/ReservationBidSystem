@@ -15,27 +15,28 @@ import javax.swing.JTextField;
 
 public class AdminGraph extends JFrame {
 
-	JButton userAdjBtn;
-	JButton auctionAdjBtn;
-	JPanel contentPane;
+	public JButton userAdjBtn;
+	public JButton auctionAdjBtn;
+	public JPanel contentPane;
 	
-	JPanel graphPn;
-	JTextField startDateTf;
-	JButton startDateBtn;
-	JTextField endDateTf;
-	JButton endDateBtn;
-	JButton bidListViewBtn;
-	JButton sixMonthBtn;
-	JButton threeMonthBtn;
-	JButton oneMonthBtn;
-	JTextField auctionCountTf;
-	JTextField bidCountTf;
-	JTextField finalBidCountTf;
+	public JPanel graphPn;
+	public JTextField startDateTf;
+	public JButton startDateBtn;
+	public JTextField endDateTf;
+	public JButton endDateBtn;
+	public JButton bidListViewBtn;
+	public JButton sixMonthBtn;
+	public JButton threeMonthBtn;
+	public JButton oneMonthBtn;
+	public JTextField auctionCountTf;
+	public JTextField bidCountTf;
+	public JTextField finalBidCountTf;
 
-	JTable newBsListTable;
-	JTextField newUserCountTf;
-	JTextField newBSCountTf;
+	public JTable newBsListTable;
+	public JTextField newUserCountTf;
+	public JTextField newBSCountTf;
 
+	public JTabbedPane tabbedPane;
 	/**
 	 * Launch the application.
 	 */
@@ -63,7 +64,7 @@ public class AdminGraph extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane);
 		
 		

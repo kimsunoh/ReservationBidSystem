@@ -17,15 +17,16 @@ import javax.swing.JTextField;
 
 public class MemberAuctionRegister extends JFrame {
 
-	JPanel contentPane;
-	JTextArea needsomeTA;
-	JButton bidResitBtn;
-	JComboBox peoplNumComb;
-	JComboBox foodCategoComd;
-	JComboBox locationComb;
-	JComboBox dongComb;
-	JTextField priceTf;
-
+	public JPanel contentPane;
+	public JTextArea needsomeTA;
+	public JButton bidResitBtn;
+	public JComboBox peoplNumComb;
+	public JComboBox foodCategoComd;
+	public JComboBox locationComb;
+	public JComboBox dongComb;
+	public JTextField priceTf;
+	public JTabbedPane tabbedPane;
+	public JPanel selPn;
 	/**
 	 * Launch the application.
 	 */
@@ -53,7 +54,7 @@ public class MemberAuctionRegister extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane);
 		
 		JPanel panel_1 = new JPanel();
@@ -72,12 +73,12 @@ public class MemberAuctionRegister extends JFrame {
 		JButton memInfoBtn = new JButton("내정보");
 		panel_1.add(memInfoBtn);
 		
-		JPanel panel_4 = new JPanel();
-		tabbedPane.addTab("등록", null, panel_4, null);
-		panel_4.setLayout(new GridLayout(2, 1, 10, 10));
+		selPn = new JPanel();
+		tabbedPane.addTab("등록", null, selPn, null);
+		selPn.setLayout(new GridLayout(2, 1, 10, 10));
 		
 		JPanel panel_2 = new JPanel();
-		panel_4.add(panel_2);
+		selPn.add(panel_2);
 		panel_2.setLayout(new GridLayout(4, 1, 10, 10));
 		
 		JPanel panel_5 = new JPanel();
@@ -129,7 +130,7 @@ public class MemberAuctionRegister extends JFrame {
 		priceTf.setColumns(10);
 		
 		JPanel panel = new JPanel();
-		panel_4.add(panel);
+		selPn.add(panel);
 		panel.setLayout(new BorderLayout(10, 10));
 		
 		bidResitBtn = new JButton("등록");

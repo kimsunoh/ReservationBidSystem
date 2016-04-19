@@ -13,9 +13,9 @@ import javax.swing.border.EmptyBorder;
 public class MemberMain extends JFrame {
 
 	JPanel contentPane;
-	JButton bidListBtn;
-	JButton addBidBtn;
-	JButton memInfoBtn;
+	public JButton bidListBtn;
+	public JButton addBidBtn;
+	public JButton memInfoBtn;
 
 	/**
 	 * Launch the application.

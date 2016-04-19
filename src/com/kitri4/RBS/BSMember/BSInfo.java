@@ -16,19 +16,20 @@ import java.awt.FlowLayout;
 
 public class BSInfo extends JFrame {
 
-	JPanel contentPane;
-	JButton bidListBtn;
-	JButton storeMenuBtn;
-	JButton infoBtn;
+	public JPanel contentPane;
+	public JButton bidListBtn;
+	public JButton storeMenuBtn;
+	public JButton infoBtn;
 	
-	JTextField pwTf;
-	JTextField pwCheckTf;
-	JTextField idTf;
-	JTextField phoneNumTf;
-	JTextField emailTF;
-	JTextField busseNumTf;
-	JTextField storeName;
-
+	public JTextField pwTf;
+	public JTextField pwCheckTf;
+	public JTextField idTf;
+	public JTextField phoneNumTf;
+	public JTextField emailTF;
+	public JTextField busseNumTf;
+	public JTextField storeName;
+	public JTabbedPane tabbedPane;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -56,7 +57,7 @@ public class BSInfo extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		
 		JPanel panelMain = new JPanel();

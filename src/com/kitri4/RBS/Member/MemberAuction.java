@@ -40,6 +40,7 @@ public class MemberAuction extends JFrame {
 	public JButton startDateCalBtn;
 	public JButton endDateCalBtn;
 	public JPanel GraphPn;
+	public JPanel ingPn;
 
 	public JTabbedPane tabbedPane;
 	/**
@@ -89,12 +90,12 @@ public class MemberAuction extends JFrame {
 		memInfoBtn = new JButton("내정보");
 		panel_1.add(memInfoBtn);
 		
-		JPanel panel_4 = new JPanel();
-		tabbedPane.addTab("진행중내역", null, panel_4, null);
-		panel_4.setLayout(new BorderLayout(0, 0));
+		ingPn = new JPanel();
+		tabbedPane.addTab("진행중내역", null, ingPn, null);
+		ingPn.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel = new JPanel();
-		panel_4.add(panel, BorderLayout.NORTH);
+		ingPn.add(panel, BorderLayout.NORTH);
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		bidCombox = new JComboBox();
@@ -104,7 +105,7 @@ public class MemberAuction extends JFrame {
 		panel.add(bidViewBtn, BorderLayout.EAST);
 		
 		ingBidTable = new JTable();
-		panel_4.add(ingBidTable, BorderLayout.CENTER);
+		ingPn.add(ingBidTable, BorderLayout.CENTER);
 		
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("지난내역", null, panel_2, null);
@@ -117,9 +118,6 @@ public class MemberAuction extends JFrame {
 		JPanel panel_8 = new JPanel();
 		panel_3.add(panel_8, BorderLayout.SOUTH);
 		panel_8.setLayout(new BorderLayout(0, 0));
-		
-		bidListViewBtn = new JButton("보기");
-		panel_8.add(bidListViewBtn, BorderLayout.EAST);
 		
 		JPanel panel_9 = new JPanel();
 		panel_8.add(panel_9, BorderLayout.CENTER);
@@ -141,6 +139,9 @@ public class MemberAuction extends JFrame {
 		
 		endDateCalBtn = new JButton("cal");
 		panel_9.add(endDateCalBtn);
+		
+		bidListViewBtn = new JButton("보기");
+		panel_8.add(bidListViewBtn, BorderLayout.EAST);
 		
 		GraphPn = new JPanel();
 		panel_3.add(GraphPn, BorderLayout.CENTER);

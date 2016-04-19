@@ -11,10 +11,10 @@ import javax.swing.border.EmptyBorder;
 
 public class BSMain extends JFrame {
 
-	JPanel contentPane;
-	JButton bidListBtn;
-	JButton storeMenuBtn;
-	JButton InfoBtn;
+	public JPanel contentPane;
+	public JButton bidListBtn;
+	public JButton storeMenuBtn;
+	public JButton InfoBtn;
 
 	/**
 	 * Launch the application.

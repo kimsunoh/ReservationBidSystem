@@ -16,12 +16,12 @@ import java.awt.FlowLayout;
 
 public class MemberInfo extends JFrame {
 
-	JPanel contentPane;
-	JTextField pwTf;
-	JTextField pwCheckTf;
-	JTextField phoneNumTf;
-	JTextField emailTF;
-	JTextField idTf;
+	public JPanel contentPane;
+	public JTextField pwTf;
+	public JTextField pwCheckTf;
+	public JTextField phoneNumTf;
+	public JTextField emailTF;
+	public JTextField idTf;
 
 	/**
 	 * Launch the application.
