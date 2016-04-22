@@ -20,12 +20,14 @@ public class BSInfo extends JFrame {
 	public JButton bidListBtn;
 	public JButton storeMenuBtn;
 	public JButton infoBtn;
+	//
+	public JButton renameBtn;
+	public JButton secessionBtn;
 	
 	public JTextField pwTf;
 	public JTextField pwCheckTf;
 	public JTextField idTf;
 	public JTextField phoneNumTf;
-	public JTextField emailTF;
 	public JTextField busseNumTf;
 	public JTextField storeName;
 	public JTabbedPane tabbedPane;
@@ -80,13 +82,13 @@ public class BSInfo extends JFrame {
 		JPanel panel = new JPanel();
 		tabbedPane.add(panel, BorderLayout.CENTER);
 		tabbedPane.setTitleAt(1, "³» Á¤º¸");
-		panel.setLayout(new GridLayout(8, 1, 10, 10));
+		panel.setLayout(new GridLayout(7, 1, 10, 10));
 		
 		JPanel panel_0 = new JPanel();
 		panel.add(panel_0);
 		panel_0.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel = new JLabel("ID :");
+		JLabel lblNewLabel = new JLabel("\uC544\uC774\uB514");
 		lblNewLabel.setBounds(new Rectangle(0, 0, 100, 0));
 		panel_0.add(lblNewLabel, BorderLayout.NORTH);
 		
@@ -98,7 +100,7 @@ public class BSInfo extends JFrame {
 		panel.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_1 = new JLabel("PASSWORD :");
+		JLabel lblNewLabel_1 = new JLabel("\uBE44\uBC00\uBC88\uD638");
 		panel_2.add(lblNewLabel_1, BorderLayout.NORTH);
 		
 		pwTf = new JTextField();
@@ -109,7 +111,7 @@ public class BSInfo extends JFrame {
 		panel.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_2 = new JLabel("PASSWORD (check) : ");
+		JLabel lblNewLabel_2 = new JLabel("\uBE44\uBC00\uBC88\uD638 (\uD655\uC778)");
 		panel_3.add(lblNewLabel_2, BorderLayout.NORTH);
 		
 		pwCheckTf = new JTextField();
@@ -120,29 +122,18 @@ public class BSInfo extends JFrame {
 		panel.add(panel_4);
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_3 = new JLabel("PHONE (123-4567-7890)");
+		JLabel lblNewLabel_3 = new JLabel("\uAC00\uAC8C \uC804\uD654\uBC88\uD638");
 		panel_4.add(lblNewLabel_3, BorderLayout.NORTH);
 		
 		phoneNumTf = new JTextField();
 		panel_4.add(phoneNumTf, BorderLayout.CENTER);
 		phoneNumTf.setColumns(10);
 		
-		JPanel panel_5 = new JPanel();
-		panel.add(panel_5);
-		panel_5.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_4 = new JLabel("EMAIL : ");
-		panel_5.add(lblNewLabel_4, BorderLayout.NORTH);
-		
-		emailTF = new JTextField();
-		panel_5.add(emailTF, BorderLayout.CENTER);
-		emailTF.setColumns(10);
-		
 		JPanel panel_6 = new JPanel();
 		panel.add(panel_6);
 		panel_6.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_5 = new JLabel("»ç¾÷ÀÚ¹øÈ£ :");
+		JLabel lblNewLabel_5 = new JLabel("\uC0AC\uC5C5\uC790\uBC88\uD638");
 		panel_6.add(lblNewLabel_5, BorderLayout.NORTH);
 		
 		busseNumTf = new JTextField();
@@ -153,7 +144,7 @@ public class BSInfo extends JFrame {
 		panel.add(panel_7);
 		panel_7.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_6 = new JLabel("»óÈ£¸í : ");
+		JLabel lblNewLabel_6 = new JLabel("\uC0C1\uD638\uBA85");
 		panel_7.add(lblNewLabel_6, BorderLayout.NORTH);
 		
 		storeName = new JTextField();
@@ -162,12 +153,12 @@ public class BSInfo extends JFrame {
 		
 		JPanel panel_8 = new JPanel();
 		panel.add(panel_8);
-		panel_8.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel_8.setLayout(new GridLayout(0, 2, 5, 5));
 		
-		JButton renameBtn = new JButton("¼öÁ¤");
+		renameBtn = new JButton("¼öÁ¤");
 		panel_8.add(renameBtn);
 		
-		JButton secessionBtn = new JButton("Å»Åð");
+		secessionBtn = new JButton("Å»Åð");
 		panel_8.add(secessionBtn);
 	}
 

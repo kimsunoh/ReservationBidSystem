@@ -13,6 +13,7 @@ import java.awt.Rectangle;
 
 import javax.swing.JButton;
 import java.awt.FlowLayout;
+import javax.swing.JTabbedPane;
 
 public class MemberInfo extends JFrame {
 
@@ -22,6 +23,12 @@ public class MemberInfo extends JFrame {
 	public JTextField phoneNumTf;
 	public JTextField emailTF;
 	public JTextField idTf;
+	
+	public JTabbedPane tabbedPane;
+	public JButton bidListBtn;
+	public JButton addBidBtn;
+	public JButton memInfoBtn;
+	public JPanel myPn;
 
 	/**
 	 * Launch the application.
@@ -48,10 +55,33 @@ public class MemberInfo extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(6, 1, 0, 0));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		contentPane.add(tabbedPane);
+		
+		JPanel panel_6 = new JPanel();
+		tabbedPane.addTab("=", null, panel_6, null);
+		panel_6.setLayout(new GridLayout(5, 1, 10, 10));
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		panel_6.add(lblNewLabel_5);
+		
+		bidListBtn = new JButton("\uB0B4\uC5ED");
+		panel_6.add(bidListBtn);
+		
+		addBidBtn = new JButton("\uB4F1\uB85D");
+		panel_6.add(addBidBtn);
+		
+		memInfoBtn = new JButton("\uB0B4 \uC815\uBCF4");
+		panel_6.add(memInfoBtn);
+		
+		myPn = new JPanel();
+		tabbedPane.addTab("\uB0B4 \uC815\uBCF4", null, myPn, null);
+		myPn.setLayout(new GridLayout(6, 2, 0, 0));
 		
 		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1);
+		myPn.add(panel_1);
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel = new JLabel("ID :");
@@ -59,11 +89,11 @@ public class MemberInfo extends JFrame {
 		panel_1.add(lblNewLabel, BorderLayout.NORTH);
 		
 		idTf = new JTextField();
-		panel_1.add(idTf, BorderLayout.CENTER);
+		panel_1.add(idTf);
 		idTf.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
-		contentPane.add(panel_2);
+		myPn.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("PASSWORD :");
@@ -74,7 +104,7 @@ public class MemberInfo extends JFrame {
 		pwTf.setColumns(10);
 		
 		JPanel panel_3 = new JPanel();
-		contentPane.add(panel_3);
+		myPn.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_2 = new JLabel("PASSWORD (check) : ");
@@ -85,7 +115,7 @@ public class MemberInfo extends JFrame {
 		pwCheckTf.setColumns(10);
 		
 		JPanel panel_4 = new JPanel();
-		contentPane.add(panel_4);
+		myPn.add(panel_4);
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_3 = new JLabel("PHONE (123-4567-7890)");
@@ -96,7 +126,7 @@ public class MemberInfo extends JFrame {
 		phoneNumTf.setColumns(10);
 		
 		JPanel panel_5 = new JPanel();
-		contentPane.add(panel_5);
+		myPn.add(panel_5);
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_4 = new JLabel("EMAIL : ");
@@ -107,7 +137,7 @@ public class MemberInfo extends JFrame {
 		emailTF.setColumns(10);
 		
 		JPanel panel = new JPanel();
-		contentPane.add(panel);
+		myPn.add(panel);
 		panel.setLayout(new GridLayout(1, 2, 10, 10));
 		
 

@@ -3,17 +3,11 @@ package com.kitri4.RBS.BSMember;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import java.awt.FlowLayout;
 
 public class BSAuction extends JFrame {
@@ -39,13 +33,16 @@ public class BSAuction extends JFrame {
 	public JLabel lblNewLabel;
 	public JTextField endEndDateTf;
 	public JButton endEndDateBtn;
-	public JButton endBidListViewBtn;
 	public JTable endBidTable;
 	public JButton sixMonthBtn;
 	public JButton threeMonthBtn;
 	public JButton oneMonthBtn;
 	
 	public JTabbedPane tabbedPane;
+	public JButton BidListViewBtn;
+	public JPanel panel_18;
+	public JPanel tablePn;
+	public DefaultTableModel model;
 	
 	/**
 	 * Launch the application.
@@ -54,20 +51,20 @@ public class BSAuction extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BSAuction frame = new BSAuction("BSAuction");
+					BSAuction frame = new BSAuction();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-		});
+		});		
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public BSAuction(String string) {
-		super(string);
+	public BSAuction() {
+		super("BSAuction");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
@@ -169,10 +166,17 @@ public class BSAuction extends JFrame {
 		
 		JPanel panel_13 = new JPanel();
 		panel_11.add(panel_13, BorderLayout.SOUTH);
-		panel_13.setLayout(new GridLayout(0, 2, 0, 0));
+		panel_13.setLayout(new BorderLayout(0, 0));
+		
+		BidListViewBtn = new JButton("조회");
+		panel_13.add(BidListViewBtn, BorderLayout.EAST);
+		
+		panel_18 = new JPanel();
+		panel_13.add(panel_18, BorderLayout.CENTER);
+		panel_18.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JPanel panel_14 = new JPanel();
-		panel_13.add(panel_14);
+		panel_18.add(panel_14);
 		panel_14.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_16 = new JPanel();
@@ -190,7 +194,7 @@ public class BSAuction extends JFrame {
 		panel_14.add(lblNewLabel, BorderLayout.EAST);
 		
 		JPanel panel_15 = new JPanel();
-		panel_13.add(panel_15);
+		panel_18.add(panel_15);
 		panel_15.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		endEndDateTf = new JTextField();
@@ -200,16 +204,13 @@ public class BSAuction extends JFrame {
 		endEndDateBtn = new JButton("cal");
 		panel_15.add(endEndDateBtn);
 		
-		endBidListViewBtn = new JButton("조회");
-		panel_15.add(endBidListViewBtn);
 		
-		
-		JPanel panel_12 = new JPanel();
-		panel_3.add(panel_12);
-		panel_12.setLayout(new BorderLayout(0, 0));
+		tablePn = new JPanel();
+		panel_3.add(tablePn);
+		tablePn.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_17 = new JPanel();
-		panel_12.add(panel_17, BorderLayout.NORTH);
+		tablePn.add(panel_17, BorderLayout.NORTH);
 		panel_17.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		sixMonthBtn = new JButton("6개월");
@@ -221,8 +222,14 @@ public class BSAuction extends JFrame {
 		oneMonthBtn = new JButton("1개월");
 		panel_17.add(oneMonthBtn);
 		
-		endBidTable = new JTable();
-		panel_12.add(endBidTable, BorderLayout.CENTER);
+		String header[] = {"예약자명", "예약날짜","가격"};
+		String contents[][]={};
+		model = new DefaultTableModel(contents, header);
+		endBidTable = new JTable(model);
+		JScrollPane jScollPane = new JScrollPane(endBidTable);
+		tablePn.add(jScollPane, BorderLayout.CENTER);
+		
+		BSAuctionLogic basl = new BSAuctionLogic(this);
 		
 		setResizable(false);
 	}

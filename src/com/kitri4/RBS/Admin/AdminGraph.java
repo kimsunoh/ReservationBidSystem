@@ -1,42 +1,55 @@
-package com.kitri4.RBS.Admin;
+package com.kitir4.RBS.admin;
+import java.awt.*;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import com.kitri4.RBS.common.CalendarView;
 
 public class AdminGraph extends JFrame {
 
-	public JButton userAdjBtn;
-	public JButton auctionAdjBtn;
 	public JPanel contentPane;
-	
-	public JPanel graphPn;
-	public JTextField startDateTf;
-	public JButton startDateBtn;
-	public JTextField endDateTf;
-	public JButton endDateBtn;
-	public JButton bidListViewBtn;
-	public JButton sixMonthBtn;
-	public JButton threeMonthBtn;
-	public JButton oneMonthBtn;
-	public JTextField auctionCountTf;
-	public JTextField bidCountTf;
-	public JTextField finalBidCountTf;
-
-	public JTable newBsListTable;
-	public JTextField newUserCountTf;
-	public JTextField newBSCountTf;
-
 	public JTabbedPane tabbedPane;
+	public JPanel menuPn;
+	public JPanel adminStasticsPn;
+	public JPanel graphPn;
+	public JPanel panel_3;
+	public JPanel registercountPn;
+	public JPanel calendarPn;
+	public JPanel monthPn;
+	public JPanel bidcountPn;
+	public JPanel adminManagerPn;
+	public JLabel agreeLabel;
+	public JLabel registerLabel;
+	public JButton findBtn;
+	public JTextField calendarTf1;
+	public JTextField calendarTf2;
+	public JTextField bidTf;
+	public JTextField resgisterTf;
+	public JTextField agreeTf;
+	public JLabel lblNewLabel;
+	public JButton sixmonthBtn;
+	public JButton threemonthBtn;
+	public JButton onemonthBtn;
+	public JLabel bidLabel;
+	public JButton calBtn1;
+	public JButton calBtn2;
+	public JPanel panel_1;
+	public JLabel label;
+	public JTextField textField;
+	public JLabel label_1;
+	public JTextField textField_1;
+	public JPanel panel_2;
+	public DefaultTableModel model;
+	public JTable BsRegisterTable;
+	public JScrollPane scroll;
+	public String columnName[] = { "상호명", "업주명", "사업자등록번호", "등록" };
+	public Object row [][]={{"한신포차","정민석","90c8815","등록"},{"삼거리포차","백종현","90e8815","등록"}};
+	public JButton adminManagerBtn;
+	public JButton adminStasticsBtn;
+	AdminGraphLogic agl;
+	CalendarView cv;
+
 	/**
 	 * Launch the application.
 	 */
@@ -45,6 +58,7 @@ public class AdminGraph extends JFrame {
 			public void run() {
 				try {
 					AdminGraph frame = new AdminGraph();
+//					frame.setResizable(false);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,165 +71,185 @@ public class AdminGraph extends JFrame {
 	 * Create the frame.
 	 */
 	public AdminGraph() {
+		setTitle("Admin \uAD00\uB9AC");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(null);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 0, 384, 662);
 		contentPane.add(tabbedPane);
 		
+		menuPn = new JPanel();
+		tabbedPane.addTab("=", null, menuPn, null);
+		menuPn.setLayout(null);
 		
-		JPanel panel_5 = new JPanel();
-		tabbedPane.addTab("=", null, panel_5, null);
-		panel_5.setLayout(new GridLayout(5, 1, 10, 10));
+		adminStasticsBtn = new JButton("\uAD00\uB9AC\uC790 \uD1B5\uACC4");
+		adminStasticsBtn.setBounds(72, 163, 214, 41);
+		menuPn.add(adminStasticsBtn);
 		
-		JPanel panel_1 = new JPanel();
-		panel_5.add(panel_1);
+		adminManagerBtn = new JButton("\uAD00\uB9AC\uC790 \uD68C\uC6D0\uAD00\uB9AC");
+		adminManagerBtn.setBounds(72, 298, 214, 41);
+		menuPn.add(adminManagerBtn);
 		
-		auctionAdjBtn = new JButton("내역통계");
-		panel_5.add(auctionAdjBtn);
-		
-		userAdjBtn = new JButton("회원관리");
-		panel_5.add(userAdjBtn);
-		
-		
-		JPanel panel_3 = new JPanel();
-		tabbedPane.addTab("내역통계", null, panel_3, null);
-		panel_3.setLayout(new GridLayout(2, 1, 10, 10));
-		
-		JPanel panel_11 = new JPanel();
-		panel_3.add(panel_11);
-		panel_11.setLayout(new BorderLayout(0, 0));
+		adminStasticsPn = new JPanel();
+		tabbedPane.addTab("관리자 통계", null, adminStasticsPn, null);
+		adminStasticsPn.setLayout(null);
 		
 		graphPn = new JPanel();
-		panel_11.add(graphPn, BorderLayout.CENTER);
+		graphPn.setBackground(new Color(245, 245, 220));
+		graphPn.setBounds(-1, 0, 380, 262);
+		adminStasticsPn.add(graphPn);
 		
-		JPanel panel_13 = new JPanel();
-		panel_11.add(panel_13, BorderLayout.SOUTH);
-		panel_13.setLayout(new GridLayout(0, 2, 0, 0));
+		panel_3 = new JPanel();
+		panel_3.setBounds(27, 548, 325, 31);
+		adminStasticsPn.add(panel_3);
+		panel_3.setLayout(null);
 		
-		JPanel panel_14 = new JPanel();
-		panel_13.add(panel_14);
-		panel_14.setLayout(new BorderLayout(0, 0));
+		agreeLabel = new JLabel("\uB099\uCC30\uD69F\uC218 :");
+		agreeLabel.setBounds(11, 8, 70, 15);
+		panel_3.add(agreeLabel);
 		
-		JPanel panel_16 = new JPanel();
-		panel_14.add(panel_16);
-		panel_16.setLayout(new GridLayout(0, 2, 0, 0));
+		agreeTf = new JTextField();
+		agreeTf.setColumns(10);
+		agreeTf.setBounds(86, 0, 227, 31);
+		panel_3.add(agreeTf);
 		
-		startDateTf = new JTextField();
-		panel_16.add(startDateTf);
-		startDateTf.setColumns(10);
+		registercountPn = new JPanel();
+		registercountPn.setBounds(27, 401, 325, 31);
+		adminStasticsPn.add(registercountPn);
+		registercountPn.setLayout(null);
 		
-		startDateBtn = new JButton("cal");
-		panel_16.add(startDateBtn);
+		resgisterTf = new JTextField();
+		resgisterTf.setColumns(10);
+		resgisterTf.setBounds(86, 0, 227, 31);
+		registercountPn.add(resgisterTf);
 		
-		JLabel lblNewLabel = new JLabel("~");
-		panel_14.add(lblNewLabel, BorderLayout.EAST);
+		registerLabel = new JLabel("\uB4F1\uB85D\uD69F\uC218 :");
+		registerLabel.setBounds(10, 8, 70, 15);
+		registercountPn.add(registerLabel);
 		
-		JPanel panel_15 = new JPanel();
-		panel_13.add(panel_15);
-		panel_15.setLayout(new GridLayout(1, 0, 0, 0));
+		calendarPn = new JPanel();
+		calendarPn.setBounds(27, 284, 325, 33);
+		adminStasticsPn.add(calendarPn);
+		calendarPn.setLayout(null);
 		
-		endDateTf = new JTextField();
-		panel_15.add(endDateTf);
-		endDateTf.setColumns(10);
+		findBtn = new JButton("\uC870\uD68C");
+		findBtn.setBounds(262, 5, 63, 25);
+		calendarPn.add(findBtn);
 		
-		endDateBtn = new JButton("cal");
-		panel_15.add(endDateBtn);
+		calendarTf2 = new JTextField();
+		calendarTf2.setColumns(10);
+		calendarTf2.setBounds(138, 5, 86, 24);
+		calendarPn.add(calendarTf2);
 		
-		bidListViewBtn = new JButton("조회");
-		panel_15.add(bidListViewBtn);
+		calendarTf1 = new JTextField();
+		calendarTf1.setColumns(10);
+		calendarTf1.setBounds(2, 5, 88, 25);
+		calendarPn.add(calendarTf1);
 		
+		lblNewLabel = new JLabel("~");
+		lblNewLabel.setBounds(125, 9, 17, 19);
+		calendarPn.add(lblNewLabel);
 		
-		JPanel panel_12 = new JPanel();
-		panel_3.add(panel_12);
-		panel_12.setLayout(new BorderLayout(0, 0));
+		calBtn2 = new JButton("New button");
+		calBtn2.setBounds(226, 5, 28, 25);
+		calendarPn.add(calBtn2);
 		
-		JPanel panel_17 = new JPanel();
-		panel_12.add(panel_17, BorderLayout.NORTH);
-		panel_17.setLayout(new GridLayout(0, 3, 0, 0));
+		calBtn1 = new JButton("New button");
+		calBtn1.setBounds(92, 5, 28, 25);
+		calendarPn.add(calBtn1);
 		
-		sixMonthBtn = new JButton("6개월");
-		panel_17.add(sixMonthBtn);
+		monthPn = new JPanel();
+		monthPn.setBounds(27, 336, 325, 31);
+		adminStasticsPn.add(monthPn);
+		monthPn.setLayout(null);
 		
-		threeMonthBtn = new JButton("3개월");
-		panel_17.add(threeMonthBtn);
+		sixmonthBtn = new JButton("6\uAC1C\uC6D4");
+		sixmonthBtn.setBounds(18, 4, 73, 23);
+		monthPn.add(sixmonthBtn);
 		
-		oneMonthBtn = new JButton("1개월");
-		panel_17.add(oneMonthBtn);
+		threemonthBtn = new JButton("3\uAC1C\uC6D4");
+		threemonthBtn.setBounds(131, 4, 73, 23);
+		monthPn.add(threemonthBtn);
 		
-		JPanel panel = new JPanel();
-		panel_12.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new GridLayout(4, 0, 0, 0));
+		onemonthBtn = new JButton("1\uAC1C\uC6D4");
+		onemonthBtn.setBounds(237, 4, 73, 23);
+		monthPn.add(onemonthBtn);
 		
-		JPanel panel_18 = new JPanel();
-		panel.add(panel_18);
-		panel_18.setLayout(new BorderLayout(0, 0));
+		bidcountPn = new JPanel();
+		bidcountPn.setBounds(27, 474, 325, 31);
+		adminStasticsPn.add(bidcountPn);
+		bidcountPn.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("�벑濡앺슏�닔 :");
-		panel_18.add(lblNewLabel_1, BorderLayout.WEST);
+		bidLabel = new JLabel("\uC785\uCC30\uD69F\uC218 :");
+		bidLabel.setBounds(11, 8, 70, 15);
+		bidcountPn.add(bidLabel);
 		
-		auctionCountTf = new JTextField();
-		panel_18.add(auctionCountTf, BorderLayout.CENTER);
-		auctionCountTf.setColumns(10);
+		bidTf = new JTextField();
+		bidTf.setColumns(10);
+		bidTf.setBounds(87, 0, 226, 31);
+		bidcountPn.add(bidTf);
 		
-		JPanel panel_2 = new JPanel();
-		panel.add(panel_2);
+		adminManagerPn = new JPanel();
+		tabbedPane.addTab("관리자회원관리", null, adminManagerPn, null);
+		adminManagerPn.setLayout(null);
+		
+		panel_1 = new JPanel();
+		panel_1.setLayout(null);
+		panel_1.setBounds(0, 0, 379, 118);
+		adminManagerPn.add(panel_1);
+		
+		label = new JLabel("\uC2E0\uADDC \uC77C\uBC18 \uD68C\uC6D0 \uAC00\uC785\uC218");
+		label.setBounds(36, 10, 136, 15);
+		panel_1.add(label);
+		
+		textField = new JTextField();
+		textField.setColumns(10);
+		textField.setBounds(36, 32, 267, 21);
+		panel_1.add(textField);
+		
+		label_1 = new JLabel("\uC2E0\uADDC \uC5C5\uC8FC \uB4F1\uB85D \uC694\uCCAD \uD69F\uC218");
+		label_1.setBounds(36, 62, 148, 15);
+		panel_1.add(label_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(36, 85, 267, 21);
+		panel_1.add(textField_1);
+		
+		panel_2 = new JPanel();
+		panel_2.setBounds(0, 117, 379, 516);
+		adminManagerPn.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_2 = new JLabel("�엯李고슏�닔 :");
-		panel_2.add(lblNewLabel_2, BorderLayout.WEST);
-		
-		bidCountTf = new JTextField();
-		panel_2.add(bidCountTf, BorderLayout.CENTER);
-		bidCountTf.setColumns(10);
-		
-		JPanel panel_4 = new JPanel();
-		panel.add(panel_4);
-		panel_4.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_3 = new JLabel("�굺李고슏�닔 :");
-		panel_4.add(lblNewLabel_3, BorderLayout.WEST);
-		
-		finalBidCountTf = new JTextField();
-		panel_4.add(finalBidCountTf, BorderLayout.CENTER);
-		finalBidCountTf.setColumns(10);
-		
-		JPanel panel_6 = new JPanel();
-		tabbedPane.addTab("회원관리", null, panel_6, null);
-		panel_6.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel_7 = new JPanel();
-		panel_6.add(panel_7, BorderLayout.NORTH);
-		panel_7.setLayout(new GridLayout(2, 0, 0, 0));
-		
-		JPanel panel_8 = new JPanel();
-		panel_7.add(panel_8);
-		panel_8.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_4 = new JLabel("신규가입자 : ");
-		panel_8.add(lblNewLabel_4, BorderLayout.WEST);
-		
-		newUserCountTf = new JTextField();
-		panel_8.add(newUserCountTf, BorderLayout.CENTER);
-		newUserCountTf.setColumns(10);
-		
-		JPanel panel_9 = new JPanel();
-		panel_7.add(panel_9);
-		panel_9.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_5 = new JLabel("사업자등록대기자 : ");
-		panel_9.add(lblNewLabel_5, BorderLayout.WEST);
-		
-		newBSCountTf = new JTextField();
-		panel_9.add(newBSCountTf, BorderLayout.CENTER);
-		newBSCountTf.setColumns(10);
-		
-		newBsListTable = new JTable();
-		panel_6.add(newBsListTable, BorderLayout.CENTER);
-	}
 
+//		model = new DefaultTableModel(columnName, 10);
+		model =new DefaultTableModel(row, columnName);
+		BsRegisterTable = new JTable(model);
+
+		BsRegisterTable.getColumnModel().getColumn(1).setPreferredWidth(20);
+		BsRegisterTable.getColumnModel().getColumn(3).setPreferredWidth(10);
+		BsRegisterTable.getColumnModel().getColumn(3).setCellRenderer(new ButtonRenderer());
+		BsRegisterTable.getColumnModel().getColumn(3).setCellEditor(new ButtonEditor(new JComboBox(),this));
+		scroll = new JScrollPane(BsRegisterTable);
+		for (int j = 0; j < BsRegisterTable.getRowCount(); j++) {
+			BsRegisterTable.setRowHeight(j, 23);
+		}
+		panel_2.add(scroll);
+		
+		agl=new AdminGraphLogic(this);
+		
+	    findBtn.addActionListener(agl);
+	    onemonthBtn.addActionListener(agl);
+	    threemonthBtn.addActionListener(agl);
+	    sixmonthBtn.addActionListener(agl);
+	    calBtn1.addActionListener(agl);
+	    calBtn2.addActionListener(agl);
+	    adminManagerBtn.addActionListener(agl);
+	    adminStasticsBtn.addActionListener(agl);
+	
+	}
 }

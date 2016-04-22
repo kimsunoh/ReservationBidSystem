@@ -27,6 +27,12 @@ public class MemberAuctionRegister extends JFrame {
 	public JTextField priceTf;
 	public JTabbedPane tabbedPane;
 	public JPanel selPn;
+	
+	//
+	public JButton bidListBtn;
+	public JButton addBidBtn;
+	public JButton memInfoBtn;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -64,13 +70,13 @@ public class MemberAuctionRegister extends JFrame {
 		JPanel panel_6 = new JPanel();
 		panel_1.add(panel_6);
 		
-		JButton bidListBtn = new JButton("내역");
+		bidListBtn = new JButton("내역");
 		panel_1.add(bidListBtn);
 		
-		JButton addBidBtn = new JButton("등록");
+		addBidBtn = new JButton("등록");
 		panel_1.add(addBidBtn);
 		
-		JButton memInfoBtn = new JButton("내정보");
+		memInfoBtn = new JButton("내정보");
 		panel_1.add(memInfoBtn);
 		
 		selPn = new JPanel();
@@ -90,6 +96,11 @@ public class MemberAuctionRegister extends JFrame {
 		
 		peoplNumComb = new JComboBox();
 		panel_5.add(peoplNumComb, BorderLayout.CENTER);
+		peoplNumComb.addItem("1~4인");
+		peoplNumComb.addItem("4~8인");
+		peoplNumComb.addItem("8~12인");
+		peoplNumComb.addItem("12~16인");
+		peoplNumComb.addItem("17인 이상");
 		
 		JPanel panel_7 = new JPanel();
 		panel_2.add(panel_7);
@@ -97,9 +108,14 @@ public class MemberAuctionRegister extends JFrame {
 		
 		JLabel lblNewLabel_2 = new JLabel("카테고리 :");
 		panel_7.add(lblNewLabel_2, BorderLayout.NORTH);
-		
+		//
 		foodCategoComd = new JComboBox();
 		panel_7.add(foodCategoComd, BorderLayout.CENTER);
+		foodCategoComd.addItem("한식");
+		foodCategoComd.addItem("중식");
+		foodCategoComd.addItem("양식");
+		foodCategoComd.addItem("일식");
+		foodCategoComd.addItem("아무거나");
 		
 		JPanel panel_8 = new JPanel();
 		panel_2.add(panel_8);
@@ -114,15 +130,25 @@ public class MemberAuctionRegister extends JFrame {
 		
 		locationComb = new JComboBox();
 		panel_9.add(locationComb);
+		locationComb.addItem("서울시");
+		locationComb.addItem("인천시");
+		locationComb.addItem("안양시");
+		locationComb.addItem("수원시");
 		
 		dongComb = new JComboBox();
 		panel_9.add(dongComb);
+		dongComb.addItem("구로구");
+		dongComb.addItem("강남구");
+		dongComb.addItem("중구");
+		dongComb.addItem("서구");
+		dongComb.addItem("동안구");
+		dongComb.addItem("권선구");
 		
 		JPanel panel_3 = new JPanel();
 		panel_2.add(panel_3);
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblNewLabel_4 = new JLabel("최대가격 (단위:만원) :");
+		JLabel lblNewLabel_4 = new JLabel("희망가격 (단위:만원) :");
 		panel_3.add(lblNewLabel_4, BorderLayout.NORTH);
 		
 		priceTf = new JTextField();

@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 public class Login extends JFrame {
 
@@ -70,6 +71,7 @@ public class Login extends JFrame {
 		panel_2.setLayout(new BorderLayout(10, 10));
 		
 		JLabel lblNewLabel_2 = new JLabel("¿À´Ã¹¹¸ÔÁö?");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblNewLabel_2, BorderLayout.NORTH);
 		
 		loginImgPn = new JPanel();

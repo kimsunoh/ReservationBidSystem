@@ -22,6 +22,7 @@ public class MemberJoin extends JFrame {
 	public JTextField textField;
 	public JButton checkIdBtn;
 	public JButton memJoinBtn;
+	public JButton cancleBtn;
 	
 	/**
 	 * Launch the application.
@@ -51,9 +52,6 @@ public class MemberJoin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(10, 10));
 		
-		memJoinBtn = new JButton("\uAC00\uC785\uD558\uAE30");
-		contentPane.add(memJoinBtn, BorderLayout.SOUTH);
-		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new GridLayout(7, 1, 10, 30));
@@ -67,7 +65,7 @@ public class MemberJoin extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("ID :");
 		lblNewLabel.setBounds(new Rectangle(0, 0, 100, 0));
-		panel_1.add(lblNewLabel, BorderLayout.WEST);
+		panel_1.add(lblNewLabel, BorderLayout.NORTH);
 		
 		idTf = new JTextField();
 		panel_1.add(idTf, BorderLayout.CENTER);
@@ -81,7 +79,7 @@ public class MemberJoin extends JFrame {
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("PASSWORD :");
-		panel_2.add(lblNewLabel_1, BorderLayout.WEST);
+		panel_2.add(lblNewLabel_1, BorderLayout.NORTH);
 		
 		pwTf = new JTextField();
 		panel_2.add(pwTf, BorderLayout.CENTER);
@@ -92,7 +90,7 @@ public class MemberJoin extends JFrame {
 		panel_3.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_2 = new JLabel("PASSWORD (check) : ");
-		panel_3.add(lblNewLabel_2, BorderLayout.WEST);
+		panel_3.add(lblNewLabel_2, BorderLayout.NORTH);
 		
 		pwCheckTf = new JTextField();
 		panel_3.add(pwCheckTf, BorderLayout.CENTER);
@@ -103,7 +101,7 @@ public class MemberJoin extends JFrame {
 		panel_4.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblPhone = new JLabel("PHONE ( - \uC5C6\uC774\uC785\uB825 )");
-		panel_4.add(lblPhone, BorderLayout.WEST);
+		panel_4.add(lblPhone, BorderLayout.NORTH);
 		
 		textField = new JTextField();
 		textField.setColumns(10);
@@ -114,11 +112,20 @@ public class MemberJoin extends JFrame {
 		panel_5.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel_4 = new JLabel("EMAIL : ");
-		panel_5.add(lblNewLabel_4, BorderLayout.WEST);
+		panel_5.add(lblNewLabel_4, BorderLayout.NORTH);
 		
 		emailTF = new JTextField();
 		panel_5.add(emailTF, BorderLayout.CENTER);
 		emailTF.setColumns(10);
+		
+		JPanel panel_6 = new JPanel();
+		contentPane.add(panel_6, BorderLayout.SOUTH);
+		
+		memJoinBtn = new JButton("\uAC00\uC785\uD558\uAE30");
+		panel_6.add(memJoinBtn);
+		
+		cancleBtn = new JButton("\uCDE8\uC18C");
+		panel_6.add(cancleBtn);
 	}
 
 }
