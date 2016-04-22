@@ -11,18 +11,21 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MemberJoin extends JFrame {
+public class MemberJoin extends JFrame{
 
 	public JPanel contentPane;
 	public JTextField idTf;
 	public JTextField pwTf;
 	public JTextField pwCheckTf;
-	public JTextField emailTF;
-	public JTextField textField;
+	public JTextField emailTf;
+	public JTextField phoneNumTf;
 	public JButton checkIdBtn;
 	public JButton memJoinBtn;
 	public JButton cancleBtn;
+	public JTextField nameTf;
 	
 	/**
 	 * Launch the application.
@@ -74,6 +77,17 @@ public class MemberJoin extends JFrame {
 		checkIdBtn = new JButton("\uD655\uC778");
 		panel_1.add(checkIdBtn, BorderLayout.EAST);
 		
+		JPanel panel_7 = new JPanel();
+		panel.add(panel_7);
+		panel_7.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblNewLabel_3 = new JLabel("\uC774\uB984 :");
+		panel_7.add(lblNewLabel_3, BorderLayout.NORTH);
+		
+		nameTf = new JTextField();
+		panel_7.add(nameTf, BorderLayout.CENTER);
+		nameTf.setColumns(10);
+		
 		JPanel panel_2 = new JPanel();
 		panel.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
@@ -103,9 +117,9 @@ public class MemberJoin extends JFrame {
 		JLabel lblPhone = new JLabel("PHONE ( - \uC5C6\uC774\uC785\uB825 )");
 		panel_4.add(lblPhone, BorderLayout.NORTH);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		panel_4.add(textField, BorderLayout.CENTER);
+		phoneNumTf = new JTextField();
+		phoneNumTf.setColumns(10);
+		panel_4.add(phoneNumTf, BorderLayout.CENTER);
 		
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
@@ -114,9 +128,9 @@ public class MemberJoin extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("EMAIL : ");
 		panel_5.add(lblNewLabel_4, BorderLayout.NORTH);
 		
-		emailTF = new JTextField();
-		panel_5.add(emailTF, BorderLayout.CENTER);
-		emailTF.setColumns(10);
+		emailTf = new JTextField();
+		panel_5.add(emailTf, BorderLayout.CENTER);
+		emailTf.setColumns(10);
 		
 		JPanel panel_6 = new JPanel();
 		contentPane.add(panel_6, BorderLayout.SOUTH);
@@ -126,6 +140,6 @@ public class MemberJoin extends JFrame {
 		
 		cancleBtn = new JButton("\uCDE8\uC18C");
 		panel_6.add(cancleBtn);
+		
 	}
-
 }

@@ -1,21 +1,13 @@
-package com.kitri4.RBS.common;
+package com.kitri4.RBS.Common;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.MathContext;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class CalendarView extends JFrame implements ActionListener {
@@ -205,5 +197,21 @@ public class CalendarView extends JFrame implements ActionListener {
 			month = 1;
 			year = year + 1;
 		}
+	}
+	
+	public void setDayTf(int gapMonth, JTextField startDateTf, JTextField endDateTf) {
+		Calendar today = Calendar.getInstance();
+		int day = today.get(Calendar.DAY_OF_MONTH);
+		int year = today.get(Calendar.YEAR);
+		int month = today.get(Calendar.MONTH) + 1;
+
+		if (month <= gapMonth) {
+			month = 12 - (gapMonth - month);
+			year--;
+		} else {
+			month -= gapMonth;
+		}
+		startDateTf.setText(year + "/" + month + "/" + day);
+		endDateTf.setText(year + "/" + month + "/" + day);
 	}
 }

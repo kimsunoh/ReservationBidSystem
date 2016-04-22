@@ -1,10 +1,10 @@
-package com.kitir4.RBS.admin;
+package com.kitri4.RBS.Admin;
 import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import com.kitri4.RBS.common.CalendarView;
+import com.kitri4.RBS.Common.CalendarView;
 
 public class AdminGraph extends JFrame {
 

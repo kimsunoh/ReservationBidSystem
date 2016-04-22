@@ -12,6 +12,7 @@ import java.awt.Rectangle;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 public class BSMemberJoin extends JFrame {
 
@@ -29,6 +30,8 @@ public class BSMemberJoin extends JFrame {
 	public JTextField textField;
 	public JButton cancleBtn;
 	private JTextField maxPeopleTf;
+	private JTextField storeTelTf;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -60,7 +63,7 @@ public class BSMemberJoin extends JFrame {
 
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new GridLayout(9, 1, 10, 10));
+		panel.setLayout(new GridLayout(11, 1, 10, 10));
 
 		JLabel lblNewLabel_7 = new JLabel("\uC5C5\uC8FC \uD68C\uC6D0\uAC00\uC785");
 		panel.add(lblNewLabel_7);
@@ -156,6 +159,38 @@ public class BSMemberJoin extends JFrame {
 		maxPeopleTf = new JTextField();
 		panel_9.add(maxPeopleTf, BorderLayout.CENTER);
 		maxPeopleTf.setColumns(10);
+		
+		JPanel panel_10 = new JPanel();
+		panel.add(panel_10);
+		panel_10.setLayout(new BorderLayout(0, 0));
+		
+		JLabel lblNewLabel_8 = new JLabel("가게전화번호");
+		panel_10.add(lblNewLabel_8, BorderLayout.NORTH);
+		
+		storeTelTf = new JTextField();
+		panel_10.add(storeTelTf, BorderLayout.CENTER);
+		storeTelTf.setColumns(10);
+		
+		JPanel panel_11 = new JPanel();
+		panel.add(panel_11);
+		panel_11.setLayout(null);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(-3, 25, 197, 21);
+		panel_11.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblNewLabel_9 = new JLabel("지역명");
+		lblNewLabel_9.setBounds(0, 0, 194, 15);
+		panel_11.add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_10 = new JLabel("카테고리선택");
+		lblNewLabel_10.setBounds(194, 0, 94, 15);
+		panel_11.add(lblNewLabel_10);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(194, 25, 180, 21);
+		panel_11.add(comboBox);
 
 		JPanel panel_8 = new JPanel();
 		contentPane.add(panel_8, BorderLayout.SOUTH);
