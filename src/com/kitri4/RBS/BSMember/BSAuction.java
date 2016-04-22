@@ -1,21 +1,29 @@
 package com.kitri4.RBS.BSMember;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
+import com.kitri4.RBS.BSMember.BSAuctionLogic.ButtonEditor2;
+import com.kitri4.RBS.BSMember.BSAuctionLogic.ButtonRenderer2;
+import com.kitri4.RBS.Common.CalendarView;
 
 public class BSAuction extends JFrame {
-	
+	//
+	ButtonRenderer2 br2;
+	ButtonEditor2 be2;
+	CalendarView cv ;
+	//
 	public JPanel contentPane;
 	public JButton bidListBtn;
 	public JButton storeMenuBtn;
 	public JButton infoBtn;
+	public JButton logoutBtn;
 
 	public JComboBox locationComb;
 	public JComboBox dongComb;
@@ -30,6 +38,12 @@ public class BSAuction extends JFrame {
 	public JPanel graphPn;
 	public JTextField endStartDateTf;
 	public JButton endStartDateBtn;
+	//
+	private JPanel panel_14;
+	private JPanel panel_15;
+	private JPanel panel_16;
+	private JPanel panel_17;
+	//
 	public JLabel lblNewLabel;
 	public JTextField endEndDateTf;
 	public JButton endEndDateBtn;
@@ -43,6 +57,16 @@ public class BSAuction extends JFrame {
 	public JPanel panel_18;
 	public JPanel tablePn;
 	public DefaultTableModel model;
+	
+	
+	//
+	JButton button = new JButton();
+	private JScrollPane scrollPane;
+	private String ColName[] = {"예약자명", "예약시간", "인원", "가격","입찰"};
+	public JPanel IngPn;
+	public  JPanel panel_2 = new JPanel();
+	//
+	
 	
 	/**
 	 * Launch the application.
@@ -65,6 +89,7 @@ public class BSAuction extends JFrame {
 	 */
 	public BSAuction() {
 		super("BSAuction");
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
@@ -77,7 +102,7 @@ public class BSAuction extends JFrame {
 		
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("=", null, panel, null);
-		panel.setLayout(new GridLayout(5, 1, 10, 10));
+		panel.setLayout(new GridLayout(6, 1, 10, 10));
 		
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1);
@@ -91,7 +116,10 @@ public class BSAuction extends JFrame {
 		infoBtn = new JButton("내정보");
 		panel.add(infoBtn);
 		
-		JPanel panel_2 = new JPanel();
+		logoutBtn = new JButton("로그아웃");
+		panel.add(logoutBtn);
+		
+		panel_2 = new JPanel();
 		tabbedPane.addTab("진행중내역", null, panel_2, null);
 		panel_2.setLayout(new BorderLayout(0, 0));
 		
@@ -140,7 +168,6 @@ public class BSAuction extends JFrame {
 		panel_10.setLayout(new BorderLayout(0, 0));
 		
 		ingEndDateTf = new JTextField();
-		ingEndDateTf.setEditable(false);
 		panel_10.add(ingEndDateTf, BorderLayout.CENTER);
 		ingEndDateTf.setColumns(10);
 		
@@ -230,8 +257,21 @@ public class BSAuction extends JFrame {
 		tablePn.add(jScollPane, BorderLayout.CENTER);
 		
 		BSAuctionLogic basl = new BSAuctionLogic(this);
+		//
+		DefaultTableModel model2 = new DefaultTableModel(ColName, 23);
+		ingAuctionTable = new JTable(model2);
 		
+		ingAuctionTable.getColumnModel().getColumn(4).setCellRenderer(new ButtonRenderer2());
+		ingAuctionTable.getColumnModel().getColumn(4).setCellEditor(new ButtonEditor2(new JComboBox()));
+		 for (int i = 0; i <ingAuctionTable.getRowCount() ; i++) {
+			 ingAuctionTable.setRowHeight(i, 20);
+	      }
+		scrollPane = new JScrollPane(ingAuctionTable);
+		panel_2.add(scrollPane, BorderLayout.CENTER);
+		
+		//
 		setResizable(false);
 	}
+	
 
 }

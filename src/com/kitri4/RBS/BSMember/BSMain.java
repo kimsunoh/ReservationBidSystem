@@ -15,6 +15,7 @@ public class BSMain extends JFrame {
 	public JButton bidListBtn;
 	public JButton storeMenuBtn;
 	public JButton InfoBtn;
+	public JButton logoutBtn;
 
 	/**
 	 * Launch the application.
@@ -43,7 +44,7 @@ public class BSMain extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		getContentPane().setLayout(new GridLayout(5, 1, 0, 0));
+		getContentPane().setLayout(new GridLayout(6, 1, 0, 0));
 		
 		JPanel panel_6 = new JPanel();
 		getContentPane().add(panel_6);
@@ -56,6 +57,9 @@ public class BSMain extends JFrame {
 		
 		InfoBtn = new JButton("³» Á¤º¸");
 		getContentPane().add(InfoBtn);
+		
+		logoutBtn = new JButton("\uB85C\uADF8\uC544\uC6C3");
+		contentPane.add(logoutBtn, BorderLayout.NORTH);
 		
 	}
 

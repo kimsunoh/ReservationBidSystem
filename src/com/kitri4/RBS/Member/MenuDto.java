@@ -1,6 +1,9 @@
-package com.kitri4.RBS.Dto;
+package com.kitri4.RBS.Member;
 
-import javax.swing.ImageIcon;
+import java.awt.Graphics;
+import java.awt.Label;
+
+import javax.swing.*;
 
 public class MenuDto {
 	private ImageIcon menuPicturePath;
@@ -8,27 +11,15 @@ public class MenuDto {
 	private int storeId;
 	private String menuName;
 	private String menuprice;
-	private String menucontents;
 
-	public MenuDto(ImageIcon menuPicturePath, int menuId, int storeId, String menuName, String menuprice,
-			String menucontents) {
+	public MenuDto(ImageIcon menuPicturePath, int menuId, int storeId, String menuName, String menuprice) {
 		super();
 		this.menuPicturePath = menuPicturePath;
 		this.menuId = menuId;
 		this.storeId = storeId;
 		this.menuName = menuName;
 		this.menuprice = menuprice;
-		this.menucontents = menucontents;
 	}
-
-	public String getMenucontents() {
-		return menucontents;
-	}
-
-	public void setMenucontents(String menucontents) {
-		this.menucontents = menucontents;
-	}
-
 
 	public ImageIcon getMenuPicturePath() {
 		return menuPicturePath;

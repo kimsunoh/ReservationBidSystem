@@ -1,29 +1,47 @@
 package com.kitri4.RBS.Member;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.GridLayout;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Vector;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
-public class MemberAuctionDetail extends JFrame {
+public class MemberAuctionDetail extends JFrame{
 
-	JPanel contentPane;
-	JTable table;
-	JTable storeInfoTable;
-	JPanel panel_1;
-	JButton cancelBtn;
-	JButton finalBidBtn;
-	JTable menuTable;
+	public JButton checkBidBtn;
+	public JButton cancelBidBtn;
+	public MenuTable menutable;
 
-	/**
-	 * Launch the application.
-	 */
+	public MemberAuctionDetail() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 400, 670);
+		setLayout(null);
+		
+		JLabel imageLabel = new JLabel();
+		imageLabel.setBounds(0, 0, 379, 160);
+		ImageIcon Image1 = new ImageIcon("src\\com\\kitri4\\RBS\\hansin.jpg");
+		Image image2 = Image1.getImage().getScaledInstance(imageLabel.getWidth(), imageLabel.getHeight(), Image.SCALE_SMOOTH);
+		ImageIcon storeImage1 = new ImageIcon(image2);
+		imageLabel.setIcon(storeImage1);
+		add(imageLabel);
+		
+		checkBidBtn = new JButton("³«Âû");
+		checkBidBtn.setBounds(6, 555, 160, 33);
+		add(checkBidBtn);
+		
+		cancelBidBtn = new JButton("Ãë¼Ò");
+		cancelBidBtn.setBounds(201, 555, 160, 33);
+		add(cancelBidBtn);
+		
+		menutable = new MenuTable(); 
+		JScrollPane scrollPane = new JScrollPane(menutable.menuTable);
+		scrollPane.setBounds(6, 170, 357, 370);
+		add(scrollPane);
+	}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -36,38 +54,4 @@ public class MemberAuctionDetail extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
-	public MemberAuctionDetail() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 700);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.NORTH);
-		
-		storeInfoTable = new JTable();
-		panel.add(storeInfoTable);
-		
-		menuTable = new JTable();
-		contentPane.add(menuTable, BorderLayout.CENTER);
-		
-		panel_1 = new JPanel();
-		contentPane.add(panel_1, BorderLayout.SOUTH);
-		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
-		
-		cancelBtn = new JButton("Ãë¼Ò");
-		panel_1.add(cancelBtn);
-		
-		finalBidBtn = new JButton("³«Âû");
-		panel_1.add(finalBidBtn);
-		
-		
-	}
-
 }

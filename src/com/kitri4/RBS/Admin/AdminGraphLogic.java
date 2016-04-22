@@ -93,10 +93,10 @@ public class AdminGraphLogic implements ActionListener{
       }else if(ob==ag.sixmonthBtn){
          
       }else if(ob==ag.calBtn1){
-    	  cv=new CalendarView("AdminGraph",ag.calendarTf1);
+    	  cv=new CalendarView("",ag.calendarTf1);
     	  cv.setVisible(true);
       }else if(ob==ag.calBtn2){
-    	  cv=new CalendarView("AdminGraph",ag.calendarTf2);
+    	  cv=new CalendarView("",ag.calendarTf2);
     	  cv.setVisible(true);
       }else if(ob==ag.adminStasticsBtn){
     	  ag.tabbedPane.setSelectedIndex(1);

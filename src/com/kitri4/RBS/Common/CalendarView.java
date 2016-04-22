@@ -11,7 +11,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class CalendarView extends JFrame implements ActionListener {
-	String[] days = { "일","월", "화", "수", "목", "금", "토"};
+	String[] days = { "?��","?��", "?��", "?��", "�?", "�?", "?��"};
 	int year, month, day, todays, memoday = 0;
 	Font f;
 	Color bc, fc;
@@ -40,12 +40,12 @@ public class CalendarView extends JFrame implements ActionListener {
 		/*�긽�떒 �솕硫�*/ 
 		cal = new GregorianCalendar();
 		year = today.get(Calendar.YEAR);
-		month = today.get(Calendar.MONTH) + 1;// �떖�쓣 0-11源뚯�濡� �릺�뼱�엳�뼱�꽌 +1
+		month = today.get(Calendar.MONTH) + 1;// �떖�쓣 0-11源뚯�濡�? �릺�뼱�엳�뼱�꽌 +1
 		
 		JPanel yearMonth = new JPanel();
 		yearMonth.add(btnBefore = new JButton("Before"));
-		yearMonth.add(txtYear = new JTextField(year + "년"));
-		yearMonth.add(txtMonth = new JTextField(month + "달", 3));
+		yearMonth.add(txtYear = new JTextField(year + "?��"));
+		yearMonth.add(txtMonth = new JTextField(month + "?��", 3));
 		yearMonth.add(btnAfter = new JButton("After"));
 		
 		txtYear.setEnabled(false); 
@@ -73,7 +73,7 @@ public class CalendarView extends JFrame implements ActionListener {
 		add(panNorth, "North");
 
 		/*�븯�떒 �솕*/
-		panWest = new JPanel(new GridLayout(6,7)); //�떖�쓽 �씪 踰꾪듉�씠 �뱾�뼱媛� Pn
+		panWest = new JPanel(new GridLayout(6,7)); //�떖�쓽 �씪 踰꾪?���씠 �뱾�뼱媛� Pn
 
 		f = new Font("Sherif", Font.BOLD, 12);
 		gridInit();
@@ -92,19 +92,19 @@ public class CalendarView extends JFrame implements ActionListener {
 
 	public void calSet() {
 		int btnNum;
-		cal.set(Calendar.YEAR, year); //�떖�젰�뿉 肉뚮┫ Calendar 媛앹껜�쓽 �뀈�룄 �꽕�젙
-		cal.set(Calendar.MONTH, (month - 1)); //�떖�젰�뿉 肉뚮┫ Calendar 媛앹껜�쓽 �썡 �꽕�젙, �뿰�궛�뿉 �궗�슜�빐�빞 �븯誘�濡� �떎�떆 -1
-		cal.set(Calendar.DATE, 1);	//�떖�젰�뿉 肉뚮━湲� �떆�옉�븷 寃껋� 1�씪 �씠�뿬�빞 �븯誘�濡� 1�씪
+		cal.set(Calendar.YEAR, year); //�떖�젰�뿉 ?��?��?�� Calendar 媛앹껜�?�� ��?���? �꽕�젙
+		cal.set(Calendar.MONTH, (month - 1)); //�떖�젰�뿉 ?��?��?�� Calendar 媛앹껜�?�� �썡 �꽕�젙, �뿰�궛�뿉 �궗�슜�빐�빞 �븯誘�濡� �떎�떆 -1
+		cal.set(Calendar.DATE, 1);	//�떖�젰�뿉 ?��?��?��湲� �떆�옉�븷 寃껋�? 1�씪 �씠�뿬�빞 �븯誘�濡� 1�씪
 		/*
 		 * SUNDAY,MONDAY,TUESDAY,WEDNESDAY ,THURSDAY,FRIDAY, SATURDAY
 		 */
 		
-		int firstDayOfWeekForMonth = cal.get(Calendar.DAY_OF_WEEK) - 1; //SUNDAY媛� 1, �떖�쓽 泥ル궇 �슂�씪�쓣 �굹���궡�뒗 蹂� 
+		int firstDayOfWeekForMonth = cal.get(Calendar.DAY_OF_WEEK) - 1; //SUNDAY媛� 1, �떖�쓽 泥ル�? �슂�씪�쓣 �굹���궡�뒗 蹂� 
 		
 		/*
-		 * 1.�떖�쓽 泥レ＜ 泥ル궇 �쟾源뚯��쓽 �궇 �뾾�뒗 �궇濡� �뀑�똿�븯湲�
-		 * 2.�뀈�썡�쓽 泥ル궇怨� �걹�궇�븣湲�
-		 * 3.1�씪遺��꽣 留덉�留� �궇源뚯� �뀑�똿
+		 * 1.�떖�쓽 泥レ�? 泥ル�? �쟾源뚯��?�� �궇 �뾾�뒗 �궇濡� ��?��?���븯湲�
+		 * 2.��?��?���쓽 泥ル궇�?�� �걹�궇�븣湲�
+		 * 3.1�씪?�����? 留덉�留�? �궇源뚯�? ��?��?��
 		 */
 		
 		for (int i = 0; i < firstDayOfWeekForMonth; i++)
@@ -128,13 +128,13 @@ public class CalendarView extends JFrame implements ActionListener {
 		int day = 1;
 		
 		while(day <= maxDay){
-			//�떖�쓽 泥ル궇 �슂�씪 + cal.1�씪 = �떖�쓽 泥ル궇�슂�씪�씠 �릺�빞�븿
+			//�떖�쓽 泥ル�? �슂�씪 + cal.1�씪 = �떖�쓽 泥ル궇�?���씪�씠 �릺�빞�븿
 			btnNum = day-1 + firstDayOfWeekForMonth;
 			calBtn[btnNum].setForeground(new Color(0, 0, 0));
 			
-			if ((btnNum) % 7 == 0) {//�씪�슂�씪�씪�븣 泥섎━
+			if ((btnNum) % 7 == 0) {//�씪�슂�씪�씪�븣 泥섎?��
 				calBtn[btnNum].setForeground(new Color(255, 0, 0));
-			}else if ((btnNum) % 7 == 6) {//�넗�슂�씪�씪�븣 �깋 泥섎━
+			}else if ((btnNum) % 7 == 6) {//�넗�슂�씪�씪�븣 �깋 泥섎?��
 				calBtn[btnNum].setForeground(new Color(0, 0, 255));
 			}
 			
@@ -152,8 +152,8 @@ public class CalendarView extends JFrame implements ActionListener {
 			panWest.setLayout(new GridLayout(6,7));
 			calSet();
 			hideInit();
-			this.txtYear.setText(year + "년");
-			this.txtMonth.setText(month + "월");
+			this.txtYear.setText(year + "?��");
+			this.txtMonth.setText(month + "?��");
 		} else if (ae.getSource() == btnAfter) {
 			this.panWest.removeAll();
 			calInput(1);
@@ -161,17 +161,17 @@ public class CalendarView extends JFrame implements ActionListener {
 			panWest.setLayout(new GridLayout(6,7));
 			calSet();
 			hideInit();
-			this.txtYear.setText(year + "년");
-			this.txtMonth.setText(month + "월");
+			this.txtYear.setText(year + "?��");
+			this.txtMonth.setText(month + "?��");
 		} else if (Integer.parseInt(ae.getActionCommand()) >= 1 && Integer.parseInt(ae.getActionCommand()) <= 31) {
 			day = Integer.parseInt(ae.getActionCommand());
-			//�궇吏� 踰꾪듉�씠 �닃由곌굅硫� system.out 泥섎━
+			//�궇吏� 踰꾪?���씠 �닃?��곌굅硫� system.out 泥섎?��
 			setTf.setText(year + "/" + month + "/" + day);
 			setVisible(false);
 		}
 	}
 
-	/*btn�� 留뚮뱾�뼱 議뚯�留�, �궇吏쒓� �뾾�뒗 踰꾪듉 �닃由ъ� �븡寃� �꽕�젙�븯�뒗 硫붿냼�뱶*/
+	/*btn�� 留뚮뱾��? 議뚯�留�?, �궇吏쒓�? �뾾�뒗 踰꾪?�� �닃?��?�� �븡寃� �꽕�젙�븯�뒗 硫붿?���뱶*/
 	public void hideInit() { 
 		for (int i = 0; i < calBtn.length; i++) {
 			if ((calBtn[i].getText()).equals(""))
@@ -179,7 +179,7 @@ public class CalendarView extends JFrame implements ActionListener {
 		}
 	}
 
-	/*GridLayout�뿉 踰꾪듉 �꽔湲�*/
+	/*GridLayout�뿉 踰꾪?�� �꽔湲�*/
 	public void gridInit() { 
 		for (int i = 0; i < 42; i++) {
 			panWest.add(calBtn[i] = new JButton(""));
@@ -187,7 +187,7 @@ public class CalendarView extends JFrame implements ActionListener {
 		}
 	}
 
-	/*�씠�쟾,�씠�썑 踰꾪듉�씠 �닃�졇�쓣�븣 �썡, �뀈�룄 �꽕�젙�빐二쇨린*/
+	/*�씠�쟾,�씠�썑 踰꾪?���씠 �닃�졇�쓣�븣 �썡, ��?���? �꽕�젙�빐二쇨�?*/
 	public void calInput(int gap) {
 		month += (gap);
 		if (month <= 0) {

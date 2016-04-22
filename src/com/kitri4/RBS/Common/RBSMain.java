@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import com.kitri4.RBS.Admin.*;
 import com.kitri4.RBS.BSMember.*;
 import com.kitri4.RBS.Logic.*;
-import com.kitri4.RBS.Logig.MemberLogic;
 import com.kitri4.RBS.Main.*;
 import com.kitri4.RBS.Member.*;
 
@@ -48,7 +47,7 @@ public class RBSMain{
 		
 		memberJoin = new MemberJoin("MemberJoin");
 		memberMain = new MemberMain();
-		memberAuction = new MemberAuction("MemberAuction");
+		memberAuction = new MemberAuction(memberMain);
 		memberAuctionRegister = new MemberAuctionRegister();
 		memberInfo = new MemberInfo();
 				
@@ -75,34 +74,34 @@ public class RBSMain{
 
 		
 		/*MemberLogic event*/
-		MemberLogic memberLogic = new MemberLogic(this);
+		MemberLogic ml = new MemberLogic(this);
 		
+		//MemberMain
+		memberMain.bidListBtn.addActionListener(ml);
+		memberMain.addBidBtn.addActionListener(ml);
+		memberMain.memInfoBtn.addActionListener(ml);
+
+
 		// MemberAuction
-		memberAuction.bidListViewBtn.addActionListener(memberLogic);
-		memberAuction.startDateCalBtn.addActionListener(memberLogic);
-		memberAuction.endDateCalBtn.addActionListener(memberLogic);
-		memberAuction.sixMonthBtn.addActionListener(memberLogic);
-		memberAuction.threeMonthBtn.addActionListener(memberLogic);
-		memberAuction.oneMonthBtn.addActionListener(memberLogic);
-		memberAuction.bidListBtn.addActionListener(memberLogic);
-		memberAuction.addBidBtn.addActionListener(memberLogic);
-		memberAuction.memInfoBtn.addActionListener(memberLogic);
+		memberMain.memberAuction.memberAuctionList.memberAuctionDetail.cancelBidBtn.addActionListener(ml);
+		memberMain.memberAuction.memberAuctionDetail.checkBidBtn.addActionListener(ml);		
+		memberMain.memberAuction.homebutton.addActionListener(ml);
+		
+		//MemberAuctionHistory
+		memberMain.memberAuction.memberAuctionHistory.bidListViewBtn.addActionListener(ml);
+		memberMain.memberAuction.memberAuctionHistory.startDateCalBtn.addActionListener(ml);
+		memberMain.memberAuction.memberAuctionHistory.endDateCalBtn.addActionListener(ml);
+		memberMain.memberAuction.memberAuctionHistory.sixMonthBtn.addActionListener(ml);
+		memberMain.memberAuction.memberAuctionHistory.threeMonthBtn.addActionListener(ml);
+		memberMain.memberAuction.memberAuctionHistory.oneMonthBtn.addActionListener(ml);
 		
 		//MemberAuctionRegister
-		memberAuctionRegister.bidListBtn.addActionListener(memberLogic);
-		memberAuctionRegister.addBidBtn.addActionListener(memberLogic);
-		memberAuctionRegister.memInfoBtn.addActionListener(memberLogic);
-		memberAuctionRegister.bidResitBtn.addActionListener(memberLogic);
-
-		// MemberMain
-		memberMain.addBidBtn.addActionListener(memberLogic);
-		memberMain.bidListBtn.addActionListener(memberLogic);
-		memberMain.memInfoBtn.addActionListener(memberLogic);
+		memberMain.memberAuctionRegister.homebutton.addActionListener(ml);
+		memberMain.memberAuctionRegister.okb.addActionListener(ml);
+		memberMain.memberAuctionRegister.cancelb.addActionListener(ml);
 		
 		//MemberInfo
-		memberInfo.addBidBtn.addActionListener(memberLogic);
-		memberInfo.bidListBtn.addActionListener(memberLogic);
-		memberInfo.memInfoBtn.addActionListener(memberLogic);
+		memberMain.memberInfo.homebutton.addActionListener(ml);
 
 		
 		/*BSMemberLogic*/
@@ -130,11 +129,14 @@ public class RBSMain{
 		bsMenuList.infoBtn.addActionListener(bsMemberLogic);
 		
 		//BSInfo
-		bsInfo.bidListBtn.addActionListener(bsMemberLogic);
-		bsInfo.storeMenuBtn.addActionListener(bsMemberLogic);
-		bsInfo.infoBtn.addActionListener(bsMemberLogic);
+		bsInfo.homebutton.addActionListener(bsMemberLogic);
 		bsInfo.renameBtn.addActionListener(bsMemberLogic);
 		bsInfo.secessionBtn.addActionListener(bsMemberLogic);
+		
+		//BSBidBidRegister
+		bsBidRegister.homebutton.addActionListener(bsMemberLogic);
+		bsBidRegister.notAgree.addActionListener(bsMemberLogic);
+		bsBidRegister.agree.addActionListener(bsMemberLogic);
 
 		
 		/*AdminLogic*/

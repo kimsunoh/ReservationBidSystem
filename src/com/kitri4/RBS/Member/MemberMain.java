@@ -1,25 +1,31 @@
 package com.kitri4.RBS.Member;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
+
+import com.kitri4.RBS.Logic.MemberLogic;
+
+import java.awt.*;
+
+import javax.swing.JButton;
 
 public class MemberMain extends JFrame {
 
-	JPanel contentPane;
+	public JPanel contentPane;
 	public JButton bidListBtn;
 	public JButton addBidBtn;
 	public JButton memInfoBtn;
+	public JPanel home = new JPanel();
 
-	/**
-	 * Launch the application.
-	 */
+	public CardLayout cd;
+	
+	public MemberAuction memberAuction= new MemberAuction(this);
+	public MemberAuctionDetail memberAuctionDetail = new MemberAuctionDetail();
+	public MemberAuctionRegister memberAuctionRegister = new MemberAuctionRegister();
+	public MemberInfo memberInfo = new MemberInfo();
+	public StoreTable storeTable = new StoreTable(this);
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -33,32 +39,40 @@ public class MemberMain extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public MemberMain() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
-		
-		getContentPane().setLayout(new GridLayout(5, 1, 0, 0));
-		
-		JPanel panel_6 = new JPanel();
-		getContentPane().add(panel_6);
-		
-		bidListBtn = new JButton("내역");
-		getContentPane().add(bidListBtn);
-		
-		addBidBtn = new JButton("등록");
-		getContentPane().add(addBidBtn);
-		
-		memInfoBtn = new JButton("내 정보");
-		getContentPane().add(memInfoBtn);
-		
-	}
 
+		cd = new CardLayout();
+		contentPane.setLayout(cd);
+		
+		home = new JPanel();
+		home.setBounds(100, 100, 400, 700);
+		home.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		contentPane.add("home", home);
+		contentPane.add("AuctionList", memberAuction);
+		contentPane.add("Info", memberInfo.contentPane);
+		contentPane.add("Regi", memberAuctionRegister.contentPane);
+		int cnt = 0;
+		cnt++;
+		System.out.println(cnt);
+		cd.show(getContentPane(), "home");
+		home.setLayout(null);
+
+		bidListBtn = new JButton("경매 보기");
+		bidListBtn.setBounds(60, 175, 256, 65);
+		home.add(bidListBtn);
+
+		addBidBtn = new JButton("경매 등록");
+		addBidBtn.setBounds(60, 269, 256, 65);
+		home.add(addBidBtn);
+
+		memInfoBtn = new JButton("내 정보");
+		memInfoBtn.setBounds(60, 365, 256, 65);
+		home.add(memInfoBtn);
+	}
 }

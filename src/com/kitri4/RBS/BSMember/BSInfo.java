@@ -1,40 +1,36 @@
 package com.kitri4.RBS.BSMember;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.GridLayout;
-import java.awt.Rectangle;
+import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
 
 public class BSInfo extends JFrame {
 
 	public JPanel contentPane;
-	public JButton bidListBtn;
-	public JButton storeMenuBtn;
-	public JButton infoBtn;
-	//
-	public JButton renameBtn;
-	public JButton secessionBtn;
-	
-	public JTextField pwTf;
-	public JTextField pwCheckTf;
-	public JTextField idTf;
-	public JTextField phoneNumTf;
-	public JTextField busseNumTf;
-	public JTextField storeName;
 	public JTabbedPane tabbedPane;
 	
-	/**
-	 * Launch the application.
-	 */
+	public JLabel lblNewLabel;
+	public JLabel idLabel;
+	public JLabel pwLabel;
+	public JLabel pwcLabel;
+	public JLabel phoneLabel;
+	public JLabel busseNumLabel;
+	public JLabel storePhonelabel;
+	public JLabel storeNameLabel;
+	
+	public JTextField idTf;
+	public JTextField pwTf;
+	public JTextField pwCheckTf;
+	public JTextField phoneNumTf;
+	public JTextField busseNumTf;
+	public JTextField storePhoneTf;
+	public JTextField storeNameTf;
+	
+	public JButton homebutton;
+	public JButton renameBtn;
+	public JButton secessionBtn;
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,118 +44,117 @@ public class BSInfo extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public BSInfo() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		getContentPane().add(contentPane);
 		
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		tabbedPane.setBounds(0, 26, 384, 662);
+		contentPane.add(tabbedPane);
 		
-		JPanel panelMain = new JPanel();
-		tabbedPane.addTab("=", null, panelMain, null);
-		panelMain.setLayout(new GridLayout(5, 1, 10, 10));
-		
-		JPanel panel_1 = new JPanel();
-		panelMain.add(panel_1);
-		
-		bidListBtn = new JButton("내역");
-		panelMain.add(bidListBtn);
-		
-		storeMenuBtn = new JButton("메뉴");
-		panelMain.add(storeMenuBtn);
-		
-		infoBtn = new JButton("내 정보");
-		panelMain.add(infoBtn);
-		
-
 		JPanel panel = new JPanel();
-		tabbedPane.add(panel, BorderLayout.CENTER);
-		tabbedPane.setTitleAt(1, "내 정보");
-		panel.setLayout(new GridLayout(7, 1, 10, 10));
+		tabbedPane.addTab("내 정보", null, panel, null);
+		panel.setLayout(null);
 		
-		JPanel panel_0 = new JPanel();
-		panel.add(panel_0);
-		panel_0.setLayout(new BorderLayout(0, 0));
+		lblNewLabel = new JLabel(" 업주 회원 정보");
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setBackground(Color.DARK_GRAY);
+		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel.setBounds(0, 0, 379, 41);
+		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel = new JLabel("\uC544\uC774\uB514");
-		lblNewLabel.setBounds(new Rectangle(0, 0, 100, 0));
-		panel_0.add(lblNewLabel, BorderLayout.NORTH);
+		idLabel = new JLabel("아이디");
+		idLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		idLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		idLabel.setBounds(10, 51, 357, 25);
+		panel.add(idLabel);
 		
 		idTf = new JTextField();
-		panel_0.add(idTf, BorderLayout.CENTER);
+		idTf.setBounds(12, 86, 355, 25);
+		panel.add(idTf);
 		idTf.setColumns(10);
 		
-		JPanel panel_2 = new JPanel();
-		panel.add(panel_2);
-		panel_2.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_1 = new JLabel("\uBE44\uBC00\uBC88\uD638");
-		panel_2.add(lblNewLabel_1, BorderLayout.NORTH);
+		pwLabel = new JLabel("비밀번호");
+		pwLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		pwLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		pwLabel.setBounds(10, 123, 357, 25);
+		panel.add(pwLabel);
 		
 		pwTf = new JTextField();
-		panel_2.add(pwTf, BorderLayout.CENTER);
 		pwTf.setColumns(10);
+		pwTf.setBounds(12, 160, 355, 25);
+		panel.add(pwTf);
 		
-		JPanel panel_3 = new JPanel();
-		panel.add(panel_3);
-		panel_3.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_2 = new JLabel("\uBE44\uBC00\uBC88\uD638 (\uD655\uC778)");
-		panel_3.add(lblNewLabel_2, BorderLayout.NORTH);
+		pwcLabel = new JLabel("비밀번호(확인)");
+		pwcLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		pwcLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		pwcLabel.setBounds(10, 195, 357, 25);
+		panel.add(pwcLabel);
 		
 		pwCheckTf = new JTextField();
-		panel_3.add(pwCheckTf, BorderLayout.CENTER);
 		pwCheckTf.setColumns(10);
+		pwCheckTf.setBounds(10, 232, 357, 25);
+		panel.add(pwCheckTf);
 		
-		JPanel panel_4 = new JPanel();
-		panel.add(panel_4);
-		panel_4.setLayout(new BorderLayout(0, 0));
+		phoneLabel = new JLabel("연락처(000-0000-000)");
+		phoneLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		phoneLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		phoneLabel.setBounds(12, 267, 355, 25);
+		panel.add(phoneLabel);
 		
-		JLabel lblNewLabel_3 = new JLabel("\uAC00\uAC8C \uC804\uD654\uBC88\uD638");
-		panel_4.add(lblNewLabel_3, BorderLayout.NORTH);
+		storePhonelabel = new JLabel("가게 연락처(000-0000-000)");
+		storePhonelabel.setHorizontalAlignment(SwingConstants.LEFT);
+		storePhonelabel.setFont(new Font("굴림", Font.BOLD, 14));
+		storePhonelabel.setBounds(12, 337, 355, 25);
+		panel.add(storePhonelabel);
 		
 		phoneNumTf = new JTextField();
-		panel_4.add(phoneNumTf, BorderLayout.CENTER);
 		phoneNumTf.setColumns(10);
+		phoneNumTf.setBounds(10, 302, 357, 25);
+		panel.add(phoneNumTf);
 		
-		JPanel panel_6 = new JPanel();
-		panel.add(panel_6);
-		panel_6.setLayout(new BorderLayout(0, 0));
+		busseNumLabel = new JLabel("사업자번호");
+		busseNumLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		busseNumLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		busseNumLabel.setBounds(12, 407, 355, 25);
+		panel.add(busseNumLabel);
 		
-		JLabel lblNewLabel_5 = new JLabel("\uC0AC\uC5C5\uC790\uBC88\uD638");
-		panel_6.add(lblNewLabel_5, BorderLayout.NORTH);
+		storeNameLabel = new JLabel("상호명");
+		storeNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		storeNameLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		storeNameLabel.setBounds(12, 477, 355, 25);
+		panel.add(storeNameLabel);
 		
 		busseNumTf = new JTextField();
-		panel_6.add(busseNumTf, BorderLayout.CENTER);
 		busseNumTf.setColumns(10);
-		
-		JPanel panel_7 = new JPanel();
-		panel.add(panel_7);
-		panel_7.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_6 = new JLabel("\uC0C1\uD638\uBA85");
-		panel_7.add(lblNewLabel_6, BorderLayout.NORTH);
-		
-		storeName = new JTextField();
-		panel_7.add(storeName, BorderLayout.CENTER);
-		storeName.setColumns(10);
-		
-		JPanel panel_8 = new JPanel();
-		panel.add(panel_8);
-		panel_8.setLayout(new GridLayout(0, 2, 5, 5));
+		busseNumTf.setBounds(10, 442, 357, 25);
+		panel.add(busseNumTf);
 		
 		renameBtn = new JButton("수정");
-		panel_8.add(renameBtn);
+		renameBtn.setBounds(12, 555, 161, 41);
+		panel.add(renameBtn);
 		
 		secessionBtn = new JButton("탈퇴");
-		panel_8.add(secessionBtn);
+		secessionBtn.setBounds(206, 555, 161, 41);
+		panel.add(secessionBtn);
+
+		
+		storePhoneTf = new JTextField();
+		storePhoneTf.setColumns(10);
+		storePhoneTf.setBounds(10, 372, 357, 25);
+		panel.add(storePhoneTf);
+		
+		storeNameTf = new JTextField();
+		storeNameTf.setColumns(10);
+		storeNameTf.setBounds(10, 512, 357, 25);
+		panel.add(storeNameTf);
+		
+		homebutton = new JButton("=");
+		homebutton.setBounds(0, 0, 97, 23);
+		contentPane.add(homebutton);
 	}
 
 }

@@ -1,6 +1,9 @@
 package com.kitri4.RBS.Main;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,7 +21,7 @@ public class Login extends JFrame {
 	public JPanel loginImgPn;
 	public JTextField idTf;
 	public JTextField pwTf;
-	
+
 	/**
 	 * Launch the application.
 	 */

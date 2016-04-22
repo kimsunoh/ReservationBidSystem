@@ -1,56 +1,112 @@
 package com.kitri4.RBS.BSMember;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
+import javax.swing.table.TableCellRenderer;
 
-public class BSAuctionLogic {
-	BSAuction bsa;
+import com.kitri4.RBS.Common.CalendarView;
+import com.kitri4.RBS.Dao.DBClose;
+import com.kitri4.RBS.Dao.DBConnection;
+
+public class BSAuctionLogic implements ActionListener {
+	BSAuction bsauction;
+	public static BSBidRegister bbr = new BSBidRegister();
 	String str[] = new String[3];
+	BSAuctionDto bsAutionDto = new BSAuctionDto();
 
-	public BSAuctionLogic(BSAuction bsa) {
-		this.bsa = bsa;
+	public BSAuctionLogic(BSAuction bsauction) {
+		this.bsauction = bsauction;
 		
-		Connection c=null;
+		bsauction.button.addActionListener(this);
+		bsauction.bidListBtn.addActionListener(this);
+		bsauction.ingStartDateBtn.addActionListener(this);
+		bsauction.ingEndDateBtn.addActionListener(this);
+		
+		/*Connection c=null;
 		Statement s=null;
 		ResultSet rs=null;
 
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("µå¶óÀÌ¹ö ·Îµù ¼º°ø!");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		try {
-			c = DriverManager.getConnection("jdbc:oracle:thin:@192.168.12.114:1521:orcl","kitri","kitri");
-			String sql = "select user_id,user_name,user_phone\nfrom rbsuser";
+			c = DBConnection.makeConnection();
+			String sql = "select r.user_id, auction_date, bid_price\nfrom rbsuser r,auction,bid";
+			sql+="where r.user_id=auction.user_id\n";
+			sql+="and auction.auction_seq=bid.auction_seq";
 			s = c.createStatement();
 			rs = s.executeQuery(sql);
 			while (rs.next()) {
 				str[0] = rs.getString("user_id");
-				str[1] = rs.getString("user_name");
-				str[2] = rs.getString("user_phone");
-				bsa.model.addRow(str);
+				str[1] = rs.getString("auction_date");
+				str[2] = rs.getString("bid_price");
+				bsauction.model.addRow(str);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}  finally {
-			try {
-				if (rs!=null) {
-					rs.close();
-				}
-				if (s!=null) {
-					s.close();
-				}
-				if (c!=null) {
-					c.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			DBClose.close(c, s, rs);
+		}*/
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object ob = e.getSource();
+		if (ob == bsauction.ingStartDateBtn ){
+			bsauction.cv = new CalendarView("",bsauction.ingStartDateTf);
+			bsauction.cv.setVisible(true);
+		} else if (ob ==bsauction.ingEndDateBtn){
+			bsauction.cv = new CalendarView("",bsauction.ingEndDateTf);
+			bsauction.cv.setVisible(true);
 		}
 		
 	}
+	
+	public static class ButtonRenderer2 extends JButton implements TableCellRenderer{
+		   JButton button = new JButton();
+		   public String label;
+		   public boolean isPushed;
+		   public ButtonRenderer2() {
+			   setOpaque(true);
+		   }
+		   
+		   @Override
+		   public Component getTableCellRendererComponent(JTable ingAuctionTable, Object value, boolean isSelected, boolean hasFocus,
+		         int row, int column) {
+		      // TODO Auto-generated method stub
+			   setText((value == null) ? "ìž…ì°°" : value.toString());
+			      return this;
+		   }
+	}
+	
+	public static class ButtonEditor2 extends DefaultCellEditor{
+		   protected JButton button;
+		   private String label;
+		   private boolean isPushed;
+		   
+		   public ButtonEditor2(JComboBox comboBox) {
+		      super(comboBox);
+		      button =new JButton();
+		      button.setOpaque(true);
+		      button.addActionListener(new ActionListener() {
+		         @Override
+		         public void actionPerformed(ActionEvent e) {
+		            fireEditingStopped();
+		           // setVisible(false);
+		            bbr.setVisible(true);
+		         }
+		      });   
+		   }
+		   @Override
+		   public Component getTableCellEditorComponent(JTable table, Object value
+				   		, boolean isSelected, int row, int column) {
+		      button.setText("ìž…ì°°");
+		      return button;
+		   }
+		
+	}
+	
 }

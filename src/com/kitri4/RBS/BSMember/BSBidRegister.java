@@ -1,31 +1,41 @@
 package com.kitri4.RBS.BSMember;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.JRadioButton;
+import javax.swing.border.LineBorder;
 
 public class BSBidRegister extends JFrame {
 
-	JPanel contentPane;
-	JTextField storeNameFt;
-	JTextField peopleMax;
-	JComboBox categoryComb;
-	JTextField priceTf;
-	JRadioButton agree;
-	JRadioButton notAgree;
+	public JPanel contentPane;
+	public JTabbedPane tabbedPane;
+	
+	public JLabel lblNewLabel;
+	public JLabel rNameLabel;
+	public JLabel rTimeLabel;
+	public JLabel personLabel;
+	public JLabel rePriceLabel;
+	public JLabel busseNumLabel;
+	public JLabel priceLabel;
+	public JLabel storeNameLabel;
+	public JLabel RNameValue;
+	public JLabel RTimeValue;
+	public JLabel personValue;
+	public JLabel label;
+	
+	public JTextField busseNumTf;
+	public JTextField priceTf;
+	public JTextField storeNameTf;
+	
+	public JButton homebutton;
+	public JButton agree;
+	public JButton notAgree;
+//	
+	BSBidRegisterLogic bsbidregisterlogic;
+	BSAuction bsAuction;
+	BSAuctionLogic bsAuctionLogic;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -39,81 +49,107 @@ public class BSBidRegister extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public BSBidRegister() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(6, 1, 10, 10));
+		contentPane.setLayout(null);
+		getContentPane().add(contentPane);
+		
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(0, 26, 384, 662);
+		contentPane.add(tabbedPane);
 		
 		JPanel panel = new JPanel();
-		contentPane.add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
+		tabbedPane.addTab("입찰하기", null, panel, null);
+		panel.setLayout(null);
 		
-		JLabel label = new JLabel("상호명 :");
-		panel.add(label, BorderLayout.NORTH);
+		lblNewLabel = new JLabel(" 입찰 정보");
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setBackground(Color.DARK_GRAY);
+		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
+		lblNewLabel.setBounds(0, 0, 379, 41);
+		panel.add(lblNewLabel);
 		
-		storeNameFt = new JTextField();
-		panel.add(storeNameFt, BorderLayout.CENTER);
-		storeNameFt.setColumns(10);
+		rNameLabel = new JLabel("예약자명");
+		rNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		rNameLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		rNameLabel.setBounds(10, 51, 357, 25);
+		panel.add(rNameLabel);
 		
-		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		rTimeLabel = new JLabel("예약시간");
+		rTimeLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		rTimeLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		rTimeLabel.setBounds(10, 123, 357, 25);
+		panel.add(rTimeLabel);
 		
-		JLabel lblNewLabel = new JLabel("최대인원 ; ");
-		panel_1.add(lblNewLabel, BorderLayout.NORTH);
+		personLabel = new JLabel("인원");
+		personLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		personLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		personLabel.setBounds(10, 195, 357, 25);
+		panel.add(personLabel);
 		
-		peopleMax = new JTextField();
-		panel_1.add(peopleMax, BorderLayout.CENTER);
-		peopleMax.setColumns(10);
+		rePriceLabel = new JLabel("가격");
+		rePriceLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		rePriceLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		rePriceLabel.setBounds(12, 267, 355, 25);
+		panel.add(rePriceLabel);
 		
-		JPanel panel_2 = new JPanel();
-		contentPane.add(panel_2);
-		panel_2.setLayout(new BorderLayout(0, 0));
+		priceLabel = new JLabel("입찰 금액");
+		priceLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		priceLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		priceLabel.setBounds(12, 337, 355, 25);
+		panel.add(priceLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("카테고리 : ");
-		panel_2.add(lblNewLabel_1, BorderLayout.NORTH);
+		agree = new JButton("입찰");
+		agree.setBounds(12, 555, 161, 41);
+		panel.add(agree);
 		
-		categoryComb = new JComboBox();
-		panel_2.add(categoryComb, BorderLayout.CENTER);
-		
-		JPanel panel_3 = new JPanel();
-		contentPane.add(panel_3);
-		panel_3.setLayout(new BorderLayout(0, 0));
-		
-		JLabel lblNewLabel_2 = new JLabel("가격(1인) :");
-		panel_3.add(lblNewLabel_2, BorderLayout.NORTH);
+		notAgree = new JButton("취소");
+		notAgree.setBounds(206, 555, 161, 41);
+		panel.add(notAgree);
+
 		
 		priceTf = new JTextField();
-		panel_3.add(priceTf, BorderLayout.CENTER);
 		priceTf.setColumns(10);
+		priceTf.setBounds(10, 372, 357, 25);
+		panel.add(priceTf);
 		
-		JPanel panel_4 = new JPanel();
-		contentPane.add(panel_4);
-		panel_4.setLayout(new BorderLayout(0, 0));
+		RNameValue = new JLabel("");
+		RNameValue.setBorder(new LineBorder(new Color(0, 0, 0)));
+		RNameValue.setHorizontalAlignment(SwingConstants.LEFT);
+		RNameValue.setFont(new Font("굴림", Font.BOLD, 14));
+		RNameValue.setBounds(10, 86, 357, 25);
+		panel.add(RNameValue);
 		
-		JLabel lblNewLabel_3 = new JLabel("제3자 정보제공에 동의하십니까?");
-		panel_4.add(lblNewLabel_3, BorderLayout.NORTH);
+		RTimeValue = new JLabel("");
+		RTimeValue.setBorder(new LineBorder(new Color(0, 0, 0)));
+		RTimeValue.setHorizontalAlignment(SwingConstants.LEFT);
+		RTimeValue.setFont(new Font("굴림", Font.BOLD, 14));
+		RTimeValue.setBounds(10, 160, 357, 25);
+		panel.add(RTimeValue);
 		
-		JPanel panel_5 = new JPanel();
+		personValue = new JLabel("");
+		personValue.setHorizontalAlignment(SwingConstants.LEFT);
+		personValue.setFont(new Font("굴림", Font.BOLD, 14));
+		personValue.setBorder(new LineBorder(new Color(0, 0, 0)));
+		personValue.setBounds(10, 232, 357, 25);
+		panel.add(personValue);
 		
-		agree = new JRadioButton("네");
-		panel_5.add(agree);
+		label = new JLabel("");
+		label.setHorizontalAlignment(SwingConstants.LEFT);
+		label.setFont(new Font("굴림", Font.BOLD, 14));
+		label.setBorder(new LineBorder(new Color(0, 0, 0)));
+		label.setBounds(10, 302, 357, 25);
+		panel.add(label);
 		
-		notAgree = new JRadioButton("아니오");
-		panel_5.add(notAgree);
+		homebutton = new JButton("=");
+		homebutton.setBounds(0, 0, 97, 23);
+		contentPane.add(homebutton);
 		
-		panel_4.add(panel_5, BorderLayout.CENTER);
-
-		JButton bidRegistBtn = new JButton("등록");
-		contentPane.add(bidRegistBtn);
-		
-		
+		bsAuction = new BSAuction();
+		bsAuctionLogic = new BSAuctionLogic(bsAuction);
+		bsbidregisterlogic = new BSBidRegisterLogic(this);
 	}
 
 }

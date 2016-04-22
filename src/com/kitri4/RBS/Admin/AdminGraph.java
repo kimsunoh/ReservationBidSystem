@@ -43,10 +43,11 @@ public class AdminGraph extends JFrame {
 	public DefaultTableModel model;
 	public JTable BsRegisterTable;
 	public JScrollPane scroll;
-	public String columnName[] = { "상호명", "업주명", "사업자등록번호", "등록" };
-	public Object row [][]={{"한신포차","정민석","90c8815","등록"},{"삼거리포차","백종현","90e8815","등록"}};
+	public String columnName[] = { "�긽�샇紐�", "�뾽二쇰챸", "�궗�뾽�옄�벑濡앸쾲�샇", "�벑濡�" };
+	public Object row [][]={{"�븳�떊�룷李�","�젙誘쇱꽍","90c8815","�벑濡�"},{"�궪嫄곕━�룷李�","諛깆쥌�쁽","90e8815","�벑濡�"}};
 	public JButton adminManagerBtn;
 	public JButton adminStasticsBtn;
+	public JButton logoutBtn;
 	AdminGraphLogic agl;
 	CalendarView cv;
 
@@ -94,6 +95,10 @@ public class AdminGraph extends JFrame {
 		adminManagerBtn = new JButton("\uAD00\uB9AC\uC790 \uD68C\uC6D0\uAD00\uB9AC");
 		adminManagerBtn.setBounds(72, 298, 214, 41);
 		menuPn.add(adminManagerBtn);
+		
+		logoutBtn = new JButton("로그아웃");
+		logoutBtn.setBounds(72, 415, 214, 31);
+		menuPn.add(logoutBtn);
 		
 		adminStasticsPn = new JPanel();
 		tabbedPane.addTab("관리자 통계", null, adminStasticsPn, null);
@@ -250,6 +255,7 @@ public class AdminGraph extends JFrame {
 	    calBtn2.addActionListener(agl);
 	    adminManagerBtn.addActionListener(agl);
 	    adminStasticsBtn.addActionListener(agl);
+//	    logoutBtn.addActionListener(agl);
 	
 	}
 }

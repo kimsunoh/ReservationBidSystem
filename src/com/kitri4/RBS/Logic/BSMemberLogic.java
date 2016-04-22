@@ -18,6 +18,7 @@ public class BSMemberLogic implements ActionListener{
 	BSMenuList bsMenuList = null;
 	BSInfo bsInfo = null;
 	CalendarView calendarView = null;
+	BSBidRegister bsBidRegister = null;
 	
 	public BSMemberLogic(RBSMain rbsMain) {
 		this.login = rbsMain.login;
@@ -26,13 +27,15 @@ public class BSMemberLogic implements ActionListener{
 		this.bsMenuList = rbsMain.bsMenuList;
 		this.bsInfo = rbsMain.bsInfo;
 		this.calendarView = rbsMain.calendarView;
+		this.bsBidRegister = rbsMain.bsBidRegister;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
 		
-		if (ob == bsMain.bidListBtn) {//업주메인
+		//업주메인
+		if (ob == bsMain.bidListBtn) {
 			bsAuction.setVisible(true);
 			bsAuction.tabbedPane.setSelectedIndex(1);
 			bsMain.setVisible(false);
@@ -41,9 +44,12 @@ public class BSMemberLogic implements ActionListener{
 			bsMain.setVisible(false);
 		} else if (ob == bsMain.InfoBtn) {
 			bsInfo.setVisible(true);
-			bsInfo.tabbedPane.setSelectedIndex(1);
+//			bsInfo.tabbedPane.setSelectedIndex(1);
 			bsMain.setVisible(false);
-		} else if (ob == bsAuction.endStartDateBtn) {//업주내역
+		} 
+		
+		//업주내역
+		else if (ob == bsAuction.endStartDateBtn) {
 			calendarView = new CalendarView("Caledar", bsAuction.endStartDateTf);
 			calendarView.setVisible(true);
 		} else if (ob == bsAuction.endEndDateBtn) {
@@ -55,7 +61,10 @@ public class BSMemberLogic implements ActionListener{
 			calendarView.setDayTf(3, bsAuction.endStartDateTf, bsAuction.endEndDateTf);
 		} else if (ob == bsAuction.oneMonthBtn) {
 			calendarView.setDayTf(1, bsAuction.endStartDateTf, bsAuction.endEndDateTf);
-		} else if (ob == bsAuction.bidListBtn) {//업주내역탭메인
+		} 
+		
+		//업주내역탭메인
+		else if (ob == bsAuction.bidListBtn) {
 			bsAuction.setVisible(false);
 			bsAuction.setVisible(true);
 			bsAuction.tabbedPane.setSelectedIndex(1);
@@ -67,7 +76,9 @@ public class BSMemberLogic implements ActionListener{
 			bsInfo.setVisible(true);
 			bsInfo.tabbedPane.setSelectedIndex(1);
 			bsAuction.setVisible(false);
-		} else if (ob == bsMenuList.bidListBtn) {//업주메뉴탭메인
+		} 
+		//업주메뉴탭메인
+		else if (ob == bsMenuList.bidListBtn) {
 			bsAuction.setVisible(true);
 			bsAuction.tabbedPane.setSelectedIndex(1);
 			bsMenuList.setVisible(false);
@@ -77,20 +88,13 @@ public class BSMemberLogic implements ActionListener{
 			bsMenuList.tabbedPane.setSelectedIndex(1);
 		} else if (ob == bsMenuList.infoBtn) {
 			bsInfo.setVisible(true);
-			bsInfo.tabbedPane.setSelectedIndex(1);
 			bsMenuList.setVisible(false);
-		} else if (ob == bsInfo.bidListBtn) {//업주정보탭메인
-			bsAuction.setVisible(true);
-			bsAuction.tabbedPane.setSelectedIndex(1);
+		} 
+		
+		//업주정보탭메인
+		else if(ob == bsInfo.homebutton) {
 			bsInfo.setVisible(false);
-		} else if (ob == bsInfo.storeMenuBtn) {
-			bsMenuList.setVisible(true);
-			bsMenuList.tabbedPane.setSelectedIndex(1);
-			bsInfo.setVisible(false);
-		} else if (ob == bsInfo.infoBtn) {
-			bsInfo.setVisible(false);
-			bsInfo.setVisible(true);
-			bsInfo.tabbedPane.setSelectedIndex(1);
+			bsMain.setVisible(true);
 		} else if (ob == bsInfo.renameBtn) {
 			JOptionPane.showConfirmDialog(null, "수정되었습니다.", "수정 확인", JOptionPane.DEFAULT_OPTION);
 			bsMain.setVisible(true);
@@ -99,6 +103,20 @@ public class BSMemberLogic implements ActionListener{
 			bsInfo.setVisible(false);
 			login.setVisible(true);
 			login.idTf.setText("");
+		} 
+		
+		//업주 등록
+		else if(ob == bsBidRegister.homebutton) {
+			System.out.println("등록 리스너 작동중");
+			bsBidRegister.setVisible(false);
+			bsMain.setVisible(true);
+		} else if(ob == bsBidRegister.notAgree){
+			bsBidRegister.setVisible(false);
+		} else if(ob ==bsBidRegister.agree) {
+			JOptionPane.showMessageDialog(bsBidRegister.agree, "입찰되었습니다^^ 감사합니다", "입찰확인창",JOptionPane.OK_CANCEL_OPTION);
+			bsBidRegister.setVisible(false);
+		} else if(ob == bsBidRegister.homebutton) {
+			bsBidRegister.setVisible(false);
 		}
 	}
 
