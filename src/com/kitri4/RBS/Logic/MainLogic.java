@@ -14,8 +14,6 @@ import com.kitri4.RBS.Main.*;
 import com.kitri4.RBS.Member.MemberAuction;
 import com.kitri4.RBS.Member.MemberMain;
 
-import oracle.net.aso.r;
-
 
 public class MainLogic implements ActionListener{
 	public Login login;
@@ -55,6 +53,21 @@ public class MainLogic implements ActionListener{
 			}
 			login.setVisible(false);
 		} else if (ob == login.loginBtn) {//로그인
+			String loginId = login.idTf.getText();
+			String loginPw = login.pwTf.getText();
+			
+			RbsUserDao userDao = new RbsUserDao();
+			
+			UserDto selectUser = userDao.select(loginId);
+			
+			if (selectUser == null) {
+				JOptionPane.showConfirmDialog(null, "not found Id", "ID Error", JOptionPane.DEFAULT_OPTION);
+				return;
+			} 
+			
+			if (selectUser.getUserPassword().equals(loginPw)) {
+				
+			} 
 			if (login.idTf.getText().equals("회원")) {
 				memberMain.setVisible(true);
 				login.setVisible(false);
