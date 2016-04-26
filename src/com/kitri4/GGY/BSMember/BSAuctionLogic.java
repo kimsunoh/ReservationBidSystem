@@ -48,7 +48,7 @@ public class BSAuctionLogic{
 		public Component getTableCellRendererComponent(JTable ingAuctionTable, Object value, boolean isSelected,
 				boolean hasFocus, int row, int column) {
 			// TODO Auto-generated method stub
-			setText((value == null) ? "ìž…ì°°" : value.toString());
+			setText((value == null) ? "?ž…ì°?" : value.toString());
 			return this;
 		}
 	}
@@ -75,7 +75,7 @@ public class BSAuctionLogic{
 		@Override
 		public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row,
 				int column) {
-			button.setText("ìž…ì°°");
+			button.setText("?ž…ì°?");
 			return button;
 		}
 

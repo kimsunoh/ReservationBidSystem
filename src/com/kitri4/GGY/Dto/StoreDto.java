@@ -11,7 +11,7 @@ public class StoreDto {
 	private String people;
 	private String storeImg;
 	private int businessFlag;
-	
+
 	public String getUserId() {
 		return userId;
 	}

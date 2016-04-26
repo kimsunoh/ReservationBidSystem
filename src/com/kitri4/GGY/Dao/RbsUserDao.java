@@ -19,8 +19,8 @@ public class RbsUserDao {
          String sql = "insert into RBSUSER (user_id, user_password, user_name, user_phone, user_email, user_flag) \n";
          sql += "values ('"+userDto.getUserId()+"', '" +userDto.getUserPassword()+ "', '";
          sql +=  userDto.getUserName() +"', '" + userDto.getUserPassword() + "', ' " + userDto.getUserEmail() + "' , ";
-         sql += "'" + userDto.getUserFlag() +"' )";
-         System.out.println(sql);
+         sql += "'" + userDto.getUserFlag() +"') ";
+         
          stmt = conn.createStatement();
          cnt = stmt.executeUpdate(sql);
          

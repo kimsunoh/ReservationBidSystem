@@ -44,7 +44,7 @@ public class AdminGraph extends JFrame{
 	public DefaultTableModel model;
 	public JTable BsRegisterTable;
 	public JScrollPane scroll;
-	public String columnName[] = {"ìƒí˜¸ëª…","ì—…ì£¼ëª…","ì‚¬ì—…ìë“±ë¡ë²ˆí˜¸","ë“±ë¡"};
+	public String columnName[] = {"?ƒ?˜¸ëª?","?—…ì£¼ëª…","?‚¬?—…??“±ë¡ë²ˆ?˜¸","?“±ë¡?"};
 	public JButton homebutton;
 	AdminGraphLogic agl;
 	CalendarView cv;
@@ -83,7 +83,7 @@ public class AdminGraph extends JFrame{
 		contentPane.add(tabbedPane);
 		
 		adminStasticsPn = new JPanel();
-		tabbedPane.addTab("ê´€ë¦¬ì í†µê³„", null, adminStasticsPn, null);
+		tabbedPane.addTab("ê´?ë¦¬ì ?†µê³?", null, adminStasticsPn, null);
 		adminStasticsPn.setLayout(null);
 		
 		graphPn = new JPanel();
@@ -182,7 +182,7 @@ public class AdminGraph extends JFrame{
 		bidcountPn.add(bidTf);
 		
 		adminManagerPn = new JPanel();
-		tabbedPane.addTab("ê´€ë¦¬ìíšŒì›ê´€ë¦¬", null, adminManagerPn, null);
+		tabbedPane.addTab("ê´?ë¦¬ì?šŒ?›ê´?ë¦?", null, adminManagerPn, null);
 		adminManagerPn.setLayout(null);
 		
 		panel_1 = new JPanel();

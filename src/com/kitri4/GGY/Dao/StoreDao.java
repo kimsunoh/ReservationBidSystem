@@ -18,12 +18,12 @@ public class StoreDao {
 
 			String sql = "insert into Store (user_id, store_id, business_num, store_name, location_id, category, store_phonenum,";
 			sql += " store_peoplenum, business_flag, store_img) \n";
-			sql += "value '" + storeDto.getUserId() + "', '" + storeDto.getStoreId() + "', ";
+			sql += "value ('" + storeDto.getUserId() + "', '" + storeDto.getStoreId() + "', ";
 			sql += "'" + storeDto.getBusinessNum() + "', '" + storeDto.getStoreName() + "', ";
 			sql += "'" + storeDto.getLocation() + "', '" + storeDto.getCategory() + "', ";
 			sql += "'" + storeDto.getStorePhone() + "', '" + storeDto.getPeople()+ "', ";
-			sql += "'" + storeDto.getBusinessFlag() + "', '" + storeDto.getStoreImg()+ "' ";
-
+			sql += "'" + storeDto.getBusinessFlag() + "', '" + storeDto.getStoreImg()+ "') ";
+			System.out.println(sql);
 			stmt = conn.createStatement();
 			cnt = stmt.executeUpdate(sql);
 
@@ -98,7 +98,7 @@ public class StoreDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "select user_id, store_id, business_num, store_name, location_id, category, store_phonenum,";
+			String sql = "select user_id, store_id, business_num, store_name, location_id, category_id, store_phonenum,";
 			sql += " store_peoplenum, business_flag, store_img \n";
 			sql += "from Store";
 
@@ -116,6 +116,7 @@ public class StoreDao {
 				storeDto.setPeople(rs.getString("store_peoplenum"));
 				storeDto.setBusinessFlag(Integer.parseInt(rs.getString("business_flag")));
 				storeDto.setStoreImg(rs.getString("store_img"));
+				userList.add(storeDto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -136,7 +137,7 @@ public class StoreDao {
 			conn = DBConnection.makeConnection();
 
 			String sql = "select user_password, user_name, user_phone, user_email, business_num, store_name, "
-					+ "location_id, category_id, store_phonenum, store_peoplenum, store_img\n";
+					+ "location_id, goo_id, category_id, store_phonenum, store_peoplenum, store_img\n";
 			sql += "from rbsuser,store\n";
 			sql += "where rbsuser.user_id = store.user_id\n";
 			sql += "and rbsuser.user_id = '" + id + "'";

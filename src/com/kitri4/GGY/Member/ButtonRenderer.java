@@ -8,10 +8,10 @@ import javax.swing.table.*;
  */
 public class ButtonRenderer extends JButton implements TableCellRenderer {
 
-	ImageIcon[] i;
+	ImageIcon[] img;
   public ButtonRenderer(ImageIcon[] img) {
     setOpaque(true);
-    this.i= img;
+    this.img= img;
 //    System.out.println("s");
     //this.setIcon(img[1]);
   }
@@ -22,13 +22,12 @@ public class ButtonRenderer extends JButton implements TableCellRenderer {
     if (isSelected) {
 //      setForeground(table.getSelectionForeground());
 //      setBackground(table.getSelectionBackground());
-      setIcon(i[row]);
+//      setIcon(i[row]);
     } else{
 //      setForeground(table.getForeground());
 //      setBackground(UIManager.getColor("Button.background"));
-      setIcon(i[row]);
     }
-    setIcon(i[row]);
+    setIcon(img[row]);
     return this;
   }
 }

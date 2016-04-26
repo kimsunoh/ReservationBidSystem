@@ -1,5 +1,7 @@
 package com.kitri4.GGY.Dto;
 
+import java.io.File;
+
 import javax.swing.ImageIcon;
 
 public class MenuDto {
@@ -9,27 +11,43 @@ public class MenuDto {
 	private String menuName;
 	private String menuprice;
 	private String menucontents;
-	
+	private String menuPictureAdress;
+	private File file;
+
 	public MenuDto(ImageIcon menuPicturePath, int menuId, int storeId, String menuName, String menuprice,
 			String menucontents) {
 		super();
-		this.menuPicturePath = menuPicturePath;
+	    this.menuPicturePath=menuPicturePath;
 		this.menuId = menuId;
 		this.storeId = storeId;
 		this.menuName = menuName;
 		this.menuprice = menuprice;
 		this.menucontents = menucontents;
+	//	this.menuPictureAdress = menuPictureAdress;
 	}
-
-	
-
 	public ImageIcon getMenuPicturePath() {
 		return menuPicturePath;
 	}
-
 	public void setMenuPicturePath(ImageIcon menuPicturePath) {
 		this.menuPicturePath = menuPicturePath;
 	}
+	public String getMenuPictureAdress() {
+		return menuPictureAdress;
+	}
+	
+	public void setMenuPictureAdress(String menuPictureAdress) {
+		this.menuPictureAdress = menuPictureAdress;
+	}
+
+//	
+//
+//	public ImageIcon getMenuPicturePath() {
+//		return menuPicturePath;
+//	}
+//
+//	public void setMenuPicturePath(ImageIcon menuPicturePath) {
+//		this.menuPicturePath = menuPicturePath;
+//	}
 
 	public int getMenuId() {
 		return menuId;

@@ -1,15 +1,21 @@
 package com.kitri4.GGY.Logic;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.kitri4.GGY.BSMember.*;
 import com.kitri4.GGY.Common.CalendarView;
 import com.kitri4.GGY.Common.RBSMain;
+import com.kitri4.GGY.Dto.MenuDto;
 import com.kitri4.GGY.Main.Login;
+
+import com.kitri4.GGY.Dao.*;
 
 public class BSMemberLogic implements ActionListener{
 	Login login = null;
@@ -21,6 +27,11 @@ public class BSMemberLogic implements ActionListener{
 	BSInfo bsInfo = null;
 	CalendarView calendarView = null;
 	BSBidRegister bsBidRegister = null;
+	MenuDao menudao = new MenuDao();
+	MenuDto menudto = null;
+	ArrayList<MenuDto> list = null;
+	String filename;
+	String filepath;
 	
 	public BSMemberLogic(RBSMain rbsMain) {
 		this.login = rbsMain.login;
@@ -37,6 +48,7 @@ public class BSMemberLogic implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
+		
 		
 		//업주메인
 		if (ob == bsMain.bidListBtn) {
@@ -79,11 +91,83 @@ public class BSMemberLogic implements ActionListener{
 			calendarView.setDayTf(1, bsAuction.bsAuctionHistory.endStartDateTf, bsAuction.bsAuctionHistory.endEndDateTf);
 		} 
 		
-		//업주메뉴탭메인
+		//성훈업주메뉴탭메인
 		else if (ob == bsMenuList.homebutton) {
 			bsMenuList.setVisible(false);
-			bsMain.setVisible(true);
+			bsMain.setVisible(true);	
+//			menudao =new MenuDao();
+//	        list=menudao.list();
+			
 		}
+		else if (ob == bsMenuList.menuAddBtn) {
+			// 신규 메뉴 등록 버튼
+
+			bsMenuList.tabbedPane.setSelectedComponent(bsMenuList.panel_3);
+
+		} else if (ob == bsMenuList.openPicturBtn) {
+			// 사진 불러오기
+			// 열기
+
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("Images(BMP,JPEG,PNG, extensions)", "bmp",
+					"jpg", "png");
+			bsMenuList.fc.setDialogTitle("image 를 선택하세요");
+			bsMenuList.fc.setFileFilter(filter);
+			bsMenuList.fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+			if (bsMenuList.fc.showOpenDialog(bsMenuList.fileOpen) == JFileChooser.APPROVE_OPTION) {
+				bsMenuList.Seepicture.setText("");
+				File saveFile = bsMenuList.fc.getSelectedFile(); // 파일 저장됨 지금
+																	
+				filename = bsMenuList.fc.getSelectedFile().getName(); // 업로드 파일 이름
+				filepath = bsMenuList.fc.getSelectedFile().getAbsolutePath();				// 경로.getAbsolutePath();													// 저장
+				ImageIcon imageicon = new ImageIcon(filename); // 경로로 이미지아이콘생성
+				Image image = imageicon.getImage().getScaledInstance(200, 120, Image.SCALE_SMOOTH); // 사이즈지정
+				bsMenuList.Seepicture.setIcon(new ImageIcon(image));// Seepicture
+																	// 라벨에 이미지
+																	// 뿌리기
+			} else {
+				// 취소 버튼을 누르면
+				bsMenuList.Seepicture.setIcon(new ImageIcon());
+				bsMenuList.Seepicture.setText("파일을 열지 못했습니다");
+			}
+		} else if (ob == bsMenuList.addMenuBtn) {// 등록
+			System.out.println("경로 "+filename);
+			String menuName = bsMenuList.menuNameTf.getText();
+			String menuPrice = bsMenuList.priceTf.getText();
+			String menuInformation = bsMenuList.menuInfoTf.getText();
+			Icon imagicon= bsMenuList.Seepicture.getIcon();
+			System.out.println(imagicon);
+			bsMenuList.tabbedPane.setSelectedComponent(bsMenuList.panel_2);
+
+		} else if (ob == bsMenuList.renameMenuBtn) {// 수정
+
+			String menuName = bsMenuList.menuNameTf.getText();
+			String menuPrice = bsMenuList.priceTf.getText();
+			String menuInformation = bsMenuList.menuInfoTf.getText();
+			bsMenuList.tabbedPane.setSelectedComponent(bsMenuList.panel_2);
+
+		} else if (ob == bsMenuList.removeMenuBtn) {// 삭제버튼
+
+			bsMenuList.dialog.setTitle("삭제 하시겠습니까?");
+			bsMenuList.dialog.setSize(200, 80);
+			bsMenuList.dialog.setLocation(900, 500);
+			bsMenuList.dialog.setVisible(true);
+		} else if (e.getSource() == bsMenuList.okBtn) {
+			bsMenuList.dialog.dispose();
+			/*
+			 * 0422 삭제소스
+			 * 
+			 */
+			String menuName = bsMenuList.menuNameTf.getText();
+
+			//menudao.delete(menuName);
+
+			// 삭제 Source 필요
+			bsMenuList.tabbedPane.setSelectedComponent(bsMenuList.panel_2);
+		} else if (e.getSource() == bsMenuList.cancleBtn) {
+			bsMenuList.dialog.dispose();
+		}
+
+	
 		
 		//업주정보탭메인
 		else if(ob == bsInfo.homebutton) {

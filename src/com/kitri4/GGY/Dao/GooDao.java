@@ -19,7 +19,7 @@ public class GooDao {
 			conn = DBConnection.makeConnection();
 
 			String sql = "insert into goo (goo_id, goo_name) \n";
-			sql += "values '" + gooDto.getGooId() + "', '" + gooDto.getGooName() + "' ";
+			sql += "values ('" + gooDto.getGooId() + "', '" + gooDto.getGooName() + "') ";
 
 			stmt = conn.createStatement();
 			cnt = stmt.executeUpdate(sql);

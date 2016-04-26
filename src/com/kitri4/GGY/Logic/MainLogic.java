@@ -2,6 +2,7 @@ package com.kitri4.GGY.Logic;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -13,9 +14,7 @@ import com.kitri4.GGY.Dao.GooDao;
 import com.kitri4.GGY.Dao.LocationDao;
 import com.kitri4.GGY.Dao.RbsUserDao;
 import com.kitri4.GGY.Dao.StoreDao;
-import com.kitri4.GGY.Dto.LocationDto;
-import com.kitri4.GGY.Dto.StoreDto;
-import com.kitri4.GGY.Dto.UserDto;
+import com.kitri4.GGY.Dto.*;
 import com.kitri4.GGY.Main.*;
 import com.kitri4.GGY.Member.MemberAuction;
 import com.kitri4.GGY.Member.MemberMain;
@@ -37,6 +36,7 @@ public class MainLogic implements ActionListener {
 		this.memberMain = rbsMain.memberMain;
 		this.bsMain = rbsMain.bsMain;
 		this.adminMain = rbsMain.adminMain;
+		
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class MainLogic implements ActionListener {
 		} else if (ob == memberJoin.memJoinBtn) {
 			if (memberJoin.pwTf.getText().equals(memberJoin.pwCheckTf.getText())) {
 				boolean joinB = checkMemberJoin(memberJoin.idTf.getText(), memberJoin.pwTf.getText(),
-						memberJoin.nameTf.getText(), memberJoin.phoneNumTf.getText(), memberJoin.emailTf.getText(), 1);
+						memberJoin.nameTf.getText(), memberJoin.phoneNumTf.getText(), memberJoin.emailTf.getText(), 2);
 				if (joinB) {
 					JOptionPane.showConfirmDialog(null, "회원가입되었습니다.\n환영합니다~ ^^", "알림", JOptionPane.DEFAULT_OPTION);
 					login.setVisible(true);
@@ -77,6 +77,7 @@ public class MainLogic implements ActionListener {
 		} else if (ob == login.loginBtn) {
 			String loginId = login.idTf.getText();
 			String loginPw = login.pwTf.getText();
+
 			RbsUserDao userDao = new RbsUserDao();
 
 			UserDto selectUser = userDao.select(loginId);
@@ -89,13 +90,13 @@ public class MainLogic implements ActionListener {
 			if (selectUser.getUserPassword().equals(loginPw)) {
 				int flag = selectUser.getUserFlag();
 
-				if (flag == 1) {
+				if (flag == 2) {
 					memberMain.setVisible(true);
 					login.setVisible(false);
-				} else if (flag == 2) {
+				} else if (flag == 3) {
 					bsMain.setVisible(true);
 					login.setVisible(false);
-				} else if (flag == 0) {
+				} else if (flag == 1) {
 					adminMain.setVisible(true);
 					login.setVisible(false);
 				}
@@ -118,17 +119,16 @@ public class MainLogic implements ActionListener {
 	}
 
 	private boolean checkBsMemberJoin() {
-		boolean joinB = checkMemberJoin(bsMemberJoin.idTf.getText(), bsMemberJoin.pwTf.getText(),
-				bsMemberJoin.nameTf.getText(), bsMemberJoin.phoneTf.getText(), bsMemberJoin.emailTf.getText(), 2);
+		boolean joinB = checkMemberJoin(bsMemberJoin.idTf.getText().trim(), bsMemberJoin.pwTf.getText().trim(),
+				bsMemberJoin.nameTf.getText().trim(), bsMemberJoin.phoneTf.getText().trim(), bsMemberJoin.emailTf.getText().trim(), 3);
 		if (!joinB) {
 			joinError();
 			return false;
 		}
 
-		return checkStoreJoin(bsMemberJoin.idTf.getText(), bsMemberJoin.bsNumTf.getText(), bsMemberJoin.storeNameTf.getText(),
-										bsMemberJoin.storeLocalTf.getText(), bsMemberJoin.categoryTf.getText(),
-										bsMemberJoin.storePhoneTf.getText(), bsMemberJoin.storePeopleTf.getText(),
-										bsMemberJoin.storeImgTf.getText());
+		return checkStoreJoin(bsMemberJoin.idTf.getText().trim(), bsMemberJoin.bsNumTf.getText().trim(), bsMemberJoin.storeNameTf.getText().trim(),
+										bsMemberJoin.locationComb.getName().trim(), bsMemberJoin.categoryComb.getName().trim(),
+										bsMemberJoin.storePhoneTf.getText().trim(),bsMemberJoin.storePeopleTf.getText().trim(), bsMemberJoin.storeImgTf.getText().trim());
 	}
 
 	private boolean checkStoreJoin(String id, String bsNum, String storeName, String location, String category, String storePhoneNum,
@@ -145,7 +145,7 @@ public class MainLogic implements ActionListener {
 		storeDto.setUserId(id);
 		storeDto.setBusinessNum(bsNum);
 		storeDto.setStoreName(storeName);
-		storeDto.setLocation(locationId);			
+		storeDto.setLocation(locationId);
 		storeDto.setCategory(categoryId);			
 		storeDto.setStorePhone(storePhoneNum);
 		storeDto.setPeople(peopleNum);
@@ -164,7 +164,7 @@ public class MainLogic implements ActionListener {
 
 		UserDto selectUserDto = userDao.select(id);
 
-		if (selectUserDto != null)
+		if (!selectUserDto.getUserId().isEmpty())
 			return false;
 
 		UserDto userDto = new UserDto();

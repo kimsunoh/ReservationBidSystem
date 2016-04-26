@@ -3,16 +3,23 @@ package com.kitri4.GGY.Main;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
+
+import com.kitri4.GGY.Dao.*;
+import com.kitri4.GGY.Dto.*;
+
 import javax.swing.JButton;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
 
 public class BSMemberJoin extends JFrame {
 	public JPanel contentPane;
@@ -41,11 +48,12 @@ public class BSMemberJoin extends JFrame {
 	public JTextField storeNameTf;
 	public JTextField bsNumTf;
 	public JTextField storePhoneTf;
-	public JTextField storeLocalTf;
 	public JTextField storePeopleTf;
-	public JTextField categoryTf;
 	public JTextField storeImgTf;
 	public JButton checkIdBtn;
+	public JComboBox locationComb;
+	public JComboBox gooComb;
+	public JComboBox categoryComb;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -72,17 +80,17 @@ public class BSMemberJoin extends JFrame {
 		contentPane.add(tabbedPane);
 
 		JPanel panel = new JPanel();
-		tabbedPane.addTab("내 정보", null, panel, null);
+		tabbedPane.addTab("\uC5C5\uC8FC\uC815\uBCF4", null, panel, null);
 		panel.setLayout(null);
 
-		lblNewLabel = new JLabel(" 업주 회원 정보");
+		lblNewLabel = new JLabel("\uC5C5\uC8FC\uD68C\uC6D0\uAC00\uC785");
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setBackground(Color.DARK_GRAY);
 		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
 		lblNewLabel.setBounds(0, 0, 379, 41);
 		panel.add(lblNewLabel);
 
-		idLabel = new JLabel("아이디");
+		idLabel = new JLabel("ID");
 		idLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		idLabel.setFont(new Font("굴림", Font.BOLD, 14));
 		idLabel.setBounds(10, 51, 357, 25);
@@ -93,7 +101,7 @@ public class BSMemberJoin extends JFrame {
 		panel.add(idTf);
 		idTf.setColumns(10);
 
-		pwLabel = new JLabel("비밀번호");
+		pwLabel = new JLabel("Password");
 		pwLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		pwLabel.setFont(new Font("굴림", Font.BOLD, 14));
 		pwLabel.setBounds(10, 123, 357, 25);
@@ -104,7 +112,7 @@ public class BSMemberJoin extends JFrame {
 		pwTf.setBounds(12, 160, 355, 25);
 		panel.add(pwTf);
 
-		pwcLabel = new JLabel("비밀번호(확인)");
+		pwcLabel = new JLabel("Password(\uD655\uC778)");
 		pwcLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		pwcLabel.setFont(new Font("굴림", Font.BOLD, 14));
 		pwcLabel.setBounds(10, 195, 357, 25);
@@ -148,7 +156,7 @@ public class BSMemberJoin extends JFrame {
 		phoneTf.setBounds(10, 372, 357, 25);
 		panel.add(phoneTf);
 		
-		checkIdBtn = new JButton("ID확인");
+		checkIdBtn = new JButton("ID\uD655\uC778");
 		checkIdBtn.setBounds(271, 86, 86, 29);
 		panel.add(checkIdBtn);
 
@@ -156,11 +164,11 @@ public class BSMemberJoin extends JFrame {
 		tabbedPane.addTab("\uAC00\uAC8C \uC815\uBCF4", null, panel_1, null);
 		panel_1.setLayout(null);
 
-		cancleBtn = new JButton("취소");
+		cancleBtn = new JButton("\uCDE8\uC18C");
 		cancleBtn.setBounds(46, 555, 133, 23);
 		panel_1.add(cancleBtn);
 
-		joinBtn = new JButton("가입");
+		joinBtn = new JButton("\uD68C\uC6D0\uAC00\uC785");
 		joinBtn.setBounds(184, 555, 133, 23);
 		panel_1.add(joinBtn);
 
@@ -204,7 +212,7 @@ public class BSMemberJoin extends JFrame {
 		storePhoneTf.setBounds(10, 232, 357, 25);
 		panel_1.add(storePhoneTf);
 
-		JLabel storeLocalLabel = new JLabel("\uAC00\uAC8C \uC8FC\uC18C(00\uC2DC 00\uAD6C)");
+		JLabel storeLocalLabel = new JLabel("\uAC00\uAC8C \uC8FC\uC18C(00\uC2DC/00\uAD6C)");
 		storeLocalLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		storeLocalLabel.setFont(new Font("굴림", Font.BOLD, 14));
 		storeLocalLabel.setBounds(12, 267, 355, 25);
@@ -217,11 +225,6 @@ public class BSMemberJoin extends JFrame {
 		categoryLabel.setBounds(12, 337, 355, 25);
 		panel_1.add(categoryLabel);
 
-		storeLocalTf = new JTextField();
-		storeLocalTf.setColumns(10);
-		storeLocalTf.setBounds(10, 302, 357, 25);
-		panel_1.add(storeLocalTf);
-
 		JLabel storePeopleLabel = new JLabel("\uC218\uC6A9\uC778\uC6D0");
 		storePeopleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		storePeopleLabel.setFont(new Font("굴림", Font.BOLD, 14));
@@ -233,11 +236,6 @@ public class BSMemberJoin extends JFrame {
 		storePeopleTf.setBounds(10, 442, 357, 25);
 		panel_1.add(storePeopleTf);
 
-		categoryTf = new JTextField();
-		categoryTf.setColumns(10);
-		categoryTf.setBounds(10, 372, 357, 25);
-		panel_1.add(categoryTf);
-
 		JLabel storeImgLabel = new JLabel("\uAC00\uAC8C \uC0AC\uC9C4");
 		storeImgLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		storeImgLabel.setFont(new Font("굴림", Font.BOLD, 14));
@@ -248,6 +246,29 @@ public class BSMemberJoin extends JFrame {
 		storeImgTf.setColumns(10);
 		storeImgTf.setBounds(10, 512, 357, 25);
 		panel_1.add(storeImgTf);
+		
+		LocationDao locationDao = new LocationDao();
+		ArrayList<LocationDto> locationDtoList = locationDao.selectAll();
+		int size = locationDtoList.size();
+		String locationList[] = new String[size];
+		for (int i = 0; i < size; i++) {
+			locationList[i] = locationDtoList.get(i).getLocationName();
+		}
+		
+		locationComb = new JComboBox(locationList);
+		locationComb.setBounds(22, 294, 157, 33);
+		panel_1.add(locationComb);
+		
+		CategoryDao categoryDao = new CategoryDao();
+		ArrayList<CategoryDto> categoryDtoList = categoryDao.selectAll();
+		size = categoryDtoList.size();
+		String categoryList[] = new String[size];
+		for (int i = 0; i < size; i++) {
+			categoryList[i] = categoryDtoList.get(i).getCategoryName();
+		}
+		categoryComb = new JComboBox(categoryList);
+		categoryComb.setBounds(22, 364, 190, 33);
+		panel_1.add(categoryComb);
 
 		homebutton = new JButton("=");
 		homebutton.setBounds(0, 0, 97, 23);

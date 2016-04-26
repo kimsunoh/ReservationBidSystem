@@ -24,7 +24,7 @@ public class MemberMain extends JFrame {
 	public MemberAuctionDetail memberAuctionDetail = new MemberAuctionDetail();
 	public MemberAuctionRegister memberAuctionRegister = new MemberAuctionRegister();
 	public MemberInfo memberInfo = new MemberInfo();
-	public StoreTable storeTable = new StoreTable(this);
+//	public StoreTable storeTable = new StoreTable(this);
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

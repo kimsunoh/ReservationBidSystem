@@ -20,7 +20,13 @@ public class MemberAuctionList extends JPanel {
 	public MemberAuctionDetail memberAuctionDetail = new MemberAuctionDetail();
 	public StoreTable storetable;
 	public MemberMain memberMain;
-
+	public JCheckBox koCheckbox;
+	public JCheckBox jpCheckbox;
+	public JCheckBox chCheckbox;
+	public JCheckBox westCheckbox;
+	public JCheckBox etcCheckbox;
+	public JScrollPane scrollPane;
+	
 	public MemberAuctionList(MemberMain memberMain) {
 		this.memberMain = memberMain;
 		memberAuctionList = new JPanel();
@@ -30,7 +36,7 @@ public class MemberAuctionList extends JPanel {
 		setLayout(cd);
 		
 		add("memberAuctionList", memberAuctionList);
-		add("memberAuctionDetail", memberAuctionDetail.getContentPane());
+//		add("memberAuctionDetail", memberAuctionDetail.getContentPane());
 		
 		cd.show(this, "memberAuctionList");
 		
@@ -71,34 +77,30 @@ public class MemberAuctionList extends JPanel {
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		memberAuctionList.add(label_3);
 		
-		JLabel label_4 = new JLabel("종류");
-		label_4.setBounds(23, 188, 81, 30);
-		label_4.setHorizontalTextPosition(SwingConstants.LEADING);
-		label_4.setHorizontalAlignment(SwingConstants.CENTER);
-		memberAuctionList.add(label_4);
+		koCheckbox = new JCheckBox("한식");
+		koCheckbox.setBounds(23, 194, 61, 23);
+		memberAuctionList.add(koCheckbox);
 		
-		JCheckBox checkBox = new JCheckBox("한식");
-		checkBox.setBounds(111, 192, 61, 23);
-		memberAuctionList.add(checkBox);
+		jpCheckbox = new JCheckBox("일식");
+		jpCheckbox.setBounds(88, 194, 61, 23);
+		memberAuctionList.add(jpCheckbox);
 		
-		JCheckBox checkBox_1 = new JCheckBox("일식");
-		checkBox_1.setBounds(176, 192, 61, 23);
-		memberAuctionList.add(checkBox_1);
+		chCheckbox = new JCheckBox("중식");
+		chCheckbox.setBounds(153, 194, 61, 23);
+		memberAuctionList.add(chCheckbox);
 		
-		JCheckBox checkBox_2 = new JCheckBox("중식");
-		checkBox_2.setBounds(241, 192, 61, 23);
-		memberAuctionList.add(checkBox_2);
+		westCheckbox = new JCheckBox("양식");
+		westCheckbox.setBounds(218, 194, 61, 23);
+		memberAuctionList.add(westCheckbox);
 		
-		JCheckBox checkBox_3 = new JCheckBox("기타");
-		checkBox_3.setBounds(306, 192, 61, 23);
-		memberAuctionList.add(checkBox_3);
+		etcCheckbox = new JCheckBox("기타");
+		etcCheckbox.setBounds(283, 194, 61, 23);
+		memberAuctionList.add(etcCheckbox);
 
-		storetable = new StoreTable(memberMain);
-		JScrollPane scrollPane = new JScrollPane(storetable.storeTable);
-		scrollPane.setBounds(0, 223, 373, 409);
+		storetable = new StoreTable(this);
+		scrollPane = new JScrollPane(storetable.storeTable);
+		scrollPane.setBounds(0, 223, 373, 387);
 		memberAuctionList.add(scrollPane);
-		
-//		cd = new CardLayout();
-		
+
 	}
 }

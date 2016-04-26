@@ -19,8 +19,8 @@ public class LocationDao {
 			conn = DBConnection.makeConnection();
 
 			String sql = "insert into Location (location_id, location_name, goo_id) \n";
-			sql += "values '" + locationDto.getLocationId() + "', '" + locationDto.getLocationName() + "', '";
-			sql += "'" + locationDto.getGooId() + "' ";
+			sql += "values ('" + locationDto.getLocationId() + "', '" + locationDto.getLocationName() + "', '";
+			sql += "'" + locationDto.getGooId() + "') ";
 
 			stmt = conn.createStatement();
 			cnt = stmt.executeUpdate(sql);
@@ -98,8 +98,8 @@ public class LocationDao {
 			while (rs.next()) {
 				LocationDto locationDto = new LocationDto();
 				locationDto.setLocationId(Integer.parseInt(rs.getString("location_id")));
-				locationDto.setLocationName(rs.getString("User_Password"));
-				locationDto.setGooId(Integer.parseInt(rs.getString("User_Name")));
+				locationDto.setLocationName(rs.getString("location_name"));
+				locationDto.setGooId(Integer.parseInt(rs.getString("goo_id")));
 				locationList.add(locationDto);
 			}
 		} catch (SQLException e) {
@@ -130,7 +130,7 @@ public class LocationDao {
 			if (rs.next()) {
 				locationDto = new LocationDto();
 				locationDto.setLocationId(Integer.parseInt(rs.getString("location_id")));
-				locationDto.setLocationName(rs.getString("User_Password"));
+				locationDto.setLocationName(rs.getString("location_name"));
 				locationDto.setGooId(Integer.parseInt(rs.getString("goo_id")));
 			}
 		} catch (SQLException e) {

@@ -18,8 +18,8 @@ public class CategoryDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "insert into category (category_id, category_name) \n";
-			sql += "values '" + categoryDto.getCategoryId() + "', '" + categoryDto.getCategoryName() + "' ";
+			String sql = "insert into rbscategory (category_id, category_name) \n";
+			sql += "values ('" + categoryDto.getCategoryId() + "', '" + categoryDto.getCategoryName() + "') ";
 
 			stmt = conn.createStatement();
 			cnt = stmt.executeUpdate(sql);
@@ -41,7 +41,7 @@ public class CategoryDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "delete from category";
+			String sql = "delete from rbscategory";
 			sql += "where category_id = '" + category_id + "'";
 
 			stmt = conn.createStatement();
@@ -63,7 +63,7 @@ public class CategoryDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "Update category ";
+			String sql = "Update rbscategory ";
 			sql += "set goo_name = '" + categoryDto.getCategoryName() + "' ";
 			sql += "where goo_id = '" + categoryDto.getCategoryId() + "' ";
 			
@@ -88,7 +88,7 @@ public class CategoryDao {
 			conn = DBConnection.makeConnection();
 
 			String sql = "select category_id, category_name\n";
-			sql += "from category";
+			sql += "from rbscategory";
 
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
@@ -118,7 +118,7 @@ public class CategoryDao {
 			conn = DBConnection.makeConnection();
 
 			String sql = "select category_id, category_name\n";
-			sql += "from category";
+			sql += "from rbscategory";
 			sql += "where category_name = '" + category_name + "'";
 
 			stmt = conn.createStatement();

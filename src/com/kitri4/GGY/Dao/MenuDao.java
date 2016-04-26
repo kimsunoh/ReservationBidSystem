@@ -14,7 +14,7 @@ import com.kitri4.GGY.Dao.DBConnection;
 import com.kitri4.GGY.Dto.MenuDto;
 
 public class MenuDao {
-	
+   
    public int insert(MenuDto menuDto) {
       int cnt = 0;
       Connection conn = null;
@@ -26,11 +26,11 @@ public class MenuDao {
          
          String sql = "insert into Menu (menu_id, store_id, menu_name, menu_price,menu_contents,menu_picture_path) \n";
          sql += "values ('"+menuDto.getMenuId()+"'," +
-        		 		   menuDto.getStoreId()+ ",'"+
-        		 		   menuDto.getMenuName()+"','"+
-        		 		   "'"+menuDto.getMenuprice()+"','"+
-        		 		   "'"+menuDto.getMenucontents()+"','"+
-        		 		   "'"+menuDto.getMenuPicturePath()+"')";          
+                        menuDto.getStoreId()+ ",'"+
+                        menuDto.getMenuName()+"','"+
+                        "'"+menuDto.getMenuprice()+"','"+
+                        "'"+menuDto.getMenucontents()+"','"+
+                        "'"+menuDto.getMenuPictureAdress()+"')";          
          stmt = conn.createStatement();
          cnt = stmt.executeUpdate(sql);
          
@@ -43,7 +43,7 @@ public class MenuDao {
       return cnt;
    }
    
-   public int delete(String menuName) {
+   public int delete(String menuName) {// delete 삭제 되는거 확인.
       int cnt = 0;
       Connection conn = null;
       Statement stmt = null;
@@ -53,7 +53,7 @@ public class MenuDao {
          conn = DBConnection.makeConnection();
          
         String sql = "delete from menu \n";        
-		sql += "where menu_name = '" + menuName + "'";
+      sql += "where menu_name = '" + menuName + "'";
          
          stmt = conn.createStatement();
          cnt = stmt.executeUpdate(sql);
@@ -81,7 +81,7 @@ public class MenuDao {
          sql += "menu_name = '"+menuDto.getMenuName()+"'";    
          sql += "menu_price = '"+menuDto.getMenuprice()+"'";        
          sql += "menu_contents = '"+menuDto.getMenucontents()+"'";
-         sql += "menu_picture_path = '"+menuDto.getMenuPicturePath()+"'"; 
+         sql += "menu_picture_path = '"+menuDto.getMenuPictureAdress()+"'"; 
          
          stmt = conn.createStatement();
          cnt = stmt.executeUpdate(sql);
@@ -92,6 +92,38 @@ public class MenuDao {
       }
       
       return cnt;
+   }
+   
+   public ArrayList<MenuDto> list(){
+      ArrayList<MenuDto> list=new  ArrayList<MenuDto>();
+      MenuDto dto=null;
+      Connection conn=null;
+      Statement stmt =null;
+      ResultSet rs=null;
+      
+      try {
+         conn=DBConnection.makeConnection();
+         String sql="";
+         sql+="select menu_name,menu_price,menu_picture_path \n";
+         sql+="from menu  \n";
+         
+         System.out.println(sql);
+         stmt=conn.createStatement();
+         rs=stmt.executeQuery(sql);
+         while(rs.next()){
+            
+            dto.setMenuName(rs.getString("menu_name"));
+            dto.setMenuprice(rs.getString("menu_price"));
+            //dto.setMenuPicturePath(rs.getClass().getResource("menu_picture_path"));
+            list.add(dto);
+         }
+      } catch (SQLException e) {
+         e.printStackTrace();
+      }finally {      
+         DBClose.close(conn, stmt, rs);
+      }
+      
+      return list;
    }
    
    

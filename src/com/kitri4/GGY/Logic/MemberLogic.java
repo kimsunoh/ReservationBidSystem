@@ -6,22 +6,24 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 import com.kitri4.GGY.Common.CalendarView;
 import com.kitri4.GGY.Common.RBSMain;
 import com.kitri4.GGY.Dao.RbsUserDao;
 import com.kitri4.GGY.Dto.UserDto;
 import com.kitri4.GGY.Main.Login;
-import com.kitri4.GGY.Member.MemberInfo;
-import com.kitri4.GGY.Member.MemberMain;
+import com.kitri4.GGY.Member.*;
 
 public class MemberLogic implements ActionListener {
 	CalendarView calendarView;
 	MemberMain memberMain;
+	MemberAuctionList memberAuctionList;
 	MemberInfo memberInfo;
 	Login login;
 	public MemberLogic(RBSMain rbsMain) {
 		this.memberMain = rbsMain.memberMain;
+		this.memberAuctionList = rbsMain.memberAuctionList;
 		this.memberInfo = rbsMain.memberInfo;
 		this.calendarView = rbsMain.calendarView;
 		this.login =rbsMain.login;
@@ -55,6 +57,13 @@ public class MemberLogic implements ActionListener {
 		} else if (ob == memberMain.memberAuction.homebutton) {
 			System.out.println("홈버튼");
 			memberMain.cd.show(memberMain.getContentPane(), "home");
+		}
+		
+		//MemberAuctionList
+		else if (ob == memberMain.memberAuction.memberAuctionList.koCheckbox) {
+			System.out.println("한식버튼");
+			memberMain.memberAuction.memberAuctionList.storetable.category = 1;
+			memberMain.memberAuction.memberAuctionList.scrollPane = new JScrollPane(memberMain.memberAuction.memberAuctionList.storetable.storeTable);
 		} 
 		
 		//MemberAuctionHistory
@@ -86,7 +95,6 @@ public class MemberLogic implements ActionListener {
 			memberMain.cd.show(memberMain.getContentPane(), "home");
 		}
 		
-		//MemberInfo
 		//MemberInfo
 		else if (ob == memberMain.memberInfo.homebutton) {
 			System.out.println("버튼홈");

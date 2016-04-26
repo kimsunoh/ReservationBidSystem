@@ -57,47 +57,47 @@ public class BSBidRegister extends JFrame {
 		contentPane.add(tabbedPane);
 		
 		JPanel panel = new JPanel();
-		tabbedPane.addTab("ì…ì°°í•˜ê¸°", null, panel, null);
+		tabbedPane.addTab("?…ì°°í•˜ê¸?", null, panel, null);
 		panel.setLayout(null);
 		
-		lblNewLabel = new JLabel(" ì…ì°° ì •ë³´");
+		lblNewLabel = new JLabel(" ?…ì°? ? •ë³?");
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setBackground(Color.DARK_GRAY);
 		lblNewLabel.setFont(new Font("êµ´ë¦¼", Font.BOLD, 15));
 		lblNewLabel.setBounds(0, 0, 379, 41);
 		panel.add(lblNewLabel);
 		
-		rNameLabel = new JLabel("ì˜ˆì•½ìëª…");
+		rNameLabel = new JLabel("?˜ˆ?•½?ëª?");
 		rNameLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		rNameLabel.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		rNameLabel.setBounds(10, 51, 357, 25);
 		panel.add(rNameLabel);
 		
-		rTimeLabel = new JLabel("ì˜ˆì•½ì‹œê°„");
+		rTimeLabel = new JLabel("?˜ˆ?•½?‹œê°?");
 		rTimeLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		rTimeLabel.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		rTimeLabel.setBounds(10, 123, 357, 25);
 		panel.add(rTimeLabel);
 		
-		personLabel = new JLabel("ì¸ì›");
+		personLabel = new JLabel("?¸?›");
 		personLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		personLabel.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		personLabel.setBounds(10, 195, 357, 25);
 		panel.add(personLabel);
 		
-		rePriceLabel = new JLabel("ê°€ê²©");
+		rePriceLabel = new JLabel("ê°?ê²?");
 		rePriceLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		rePriceLabel.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		rePriceLabel.setBounds(12, 267, 355, 25);
 		panel.add(rePriceLabel);
 		
-		priceLabel = new JLabel("ì…ì°° ê¸ˆì•¡");
+		priceLabel = new JLabel("?…ì°? ê¸ˆì•¡");
 		priceLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		priceLabel.setFont(new Font("êµ´ë¦¼", Font.BOLD, 14));
 		priceLabel.setBounds(12, 337, 355, 25);
 		panel.add(priceLabel);
 		
-		agree = new JButton("ì…ì°°");
+		agree = new JButton("?…ì°?");
 		agree.setBounds(12, 555, 161, 41);
 		panel.add(agree);
 		
