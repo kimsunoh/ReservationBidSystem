@@ -20,12 +20,15 @@ public class MemberLogic implements ActionListener {
 	MemberMain memberMain;
 	MemberAuctionList memberAuctionList;
 	MemberInfo memberInfo;
+	MemberAuctionHistory memberAuctionHistory;
 	Login login;
+	
 	public MemberLogic(RBSMain rbsMain) {
 		this.memberMain = rbsMain.memberMain;
 		this.memberAuctionList = rbsMain.memberAuctionList;
 		this.memberInfo = rbsMain.memberInfo;
 		this.calendarView = rbsMain.calendarView;
+		this.memberAuctionHistory = memberMain.memberAuction.memberAuctionHistory;
 		this.login =rbsMain.login;
 	}
 
@@ -67,20 +70,19 @@ public class MemberLogic implements ActionListener {
 		} 
 		
 		//MemberAuctionHistory
-		else if (ob == memberMain.memberAuction.memberAuctionHistory.bidListViewBtn) {//회원내역
+		else if (ob == memberAuctionHistory.bidListViewBtn) {//회원내역
 			guessBidList();
-		} else if (ob == memberMain.memberAuction.memberAuctionHistory.startDateCalBtn) {
-			memberMain.memberAuction.memberAuctionHistory.startDateTf.setText("");
-			calendarView = new CalendarView("", memberMain.memberAuction.memberAuctionHistory.startDateTf);
+		} else if (ob == memberAuctionHistory.startDateCalBtn) {
+			calendarView = new CalendarView("", memberAuctionHistory.startDateTf);
 			calendarView.setVisible(true);
-		} else if (ob == memberMain.memberAuction.memberAuctionHistory.endDateCalBtn) {
-			calendarView = new CalendarView("", memberMain.memberAuction.memberAuctionHistory.endDateTf);
+		} else if (ob == memberAuctionHistory.endDateCalBtn) {
+			calendarView = new CalendarView("", memberAuctionHistory.endDateTf);
 			calendarView.setVisible(true);
-		} else if (ob == memberMain.memberAuction.memberAuctionHistory.sixMonthBtn) {
+		} else if (ob == memberAuctionHistory.sixMonthBtn) {
 			setDayTf(6);
-		} else if (ob == memberMain.memberAuction.memberAuctionHistory.threeMonthBtn) {
+		} else if (ob == memberAuctionHistory.threeMonthBtn) {
 			setDayTf(3);
-		} else if (ob == memberMain.memberAuction.memberAuctionHistory.oneMonthBtn) {
+		} else if (ob == memberAuctionHistory.oneMonthBtn) {
 			setDayTf(1);
 		}
 		
@@ -116,6 +118,33 @@ public class MemberLogic implements ActionListener {
 	
 	private void guessBidList() {
 		// startDateTf, endDateTf를 가져와 between에 있는 bid를 읽어옴
+		char c = '-';
+		String endDate = memberAuctionHistory.endDateTf.getText().trim().replace('/', '-');
+		String startDate = memberAuctionHistory.startDateTf.getText().trim().replace('/', '-');
+		int size = 10;
+		String tableData[][] = new String[size][3];
+		
+		/* ActionDao 를 통해서 where 조건 제시, 
+		 * date를 yyyy-mm-dd로 읽어와서 beatween strD,endDate일때 읽어와서
+		 * int size = date.size();
+		 * 
+		 * for (int i = 0 ; i < size ; i++) {
+		 * 	tableData[i][0] = data[i].getStoreName();
+		 * 	tableData[i][1] = data[i].getDate();
+		 * 	tableData[i][2] = data[i].getPrice();
+		 * } 
+		 * 
+		 * memberActionHistory.GraphPn 에 그래프를 그리고
+		 * 한식, 중식, 양식 별 예약 횟수
+		 * 
+		 * */
+		
+		String column[] = {"상호명", "예약시간", "가격"};
+		memberAuctionHistory.endBidTable = new JTable(tableData, column);
+		
+		//memberAuctionHistory.setVisible(false);
+		//refresh
+		//memberAuctionHistory.setVisible(true);
 	}
 
 	private void setDayTf(int gapMonth) {

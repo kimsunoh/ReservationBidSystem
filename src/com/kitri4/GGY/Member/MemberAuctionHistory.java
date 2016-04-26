@@ -102,11 +102,7 @@ public class MemberAuctionHistory extends JFrame {
 		contentPane.add(scrollPane);
 		
 		String colName[] = {"»óÈ£¸í", "¿¹¾à½Ã°£", "°¡°Ý"};
-		Object rowData[][] = {
-			{ "²¿²¿Ä¡Å²", "2016.4.15 7:00", 10000},
-			{ "Ä¡´ßÄ¡´ß", "2016.4.12 8:00", 20000},
-			{ "´Þ¾Æ´Þ¾Æ¹àÀº´ß¾Æ", "2016.4.15 6:00", 30000} };
-		
+		Object rowData[][] = new Object[3][4];
 		
 		endBidTable = new JTable(rowData, colName);
 		scrollPane.setViewportView(endBidTable);

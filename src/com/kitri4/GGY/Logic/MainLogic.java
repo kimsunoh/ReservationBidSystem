@@ -119,25 +119,35 @@ public class MainLogic implements ActionListener {
 	}
 
 	private boolean checkBsMemberJoin() {
-		boolean joinB = checkMemberJoin(bsMemberJoin.idTf.getText().trim(), bsMemberJoin.pwTf.getText().trim(),
+		boolean joinUser = checkMemberJoin(bsMemberJoin.idTf.getText().trim(), bsMemberJoin.pwTf.getText().trim(),
 				bsMemberJoin.nameTf.getText().trim(), bsMemberJoin.phoneTf.getText().trim(), bsMemberJoin.emailTf.getText().trim(), 3);
-		if (!joinB) {
+		if (!joinUser) {
 			joinError();
 			return false;
 		}
 
-		return checkStoreJoin(bsMemberJoin.idTf.getText().trim(), bsMemberJoin.bsNumTf.getText().trim(), bsMemberJoin.storeNameTf.getText().trim(),
-										bsMemberJoin.locationComb.getName().trim(), bsMemberJoin.categoryComb.getName().trim(),
+		boolean joinStore = checkStoreJoin(bsMemberJoin.idTf.getText().trim(), bsMemberJoin.bsNumTf.getText().trim(), bsMemberJoin.storeNameTf.getText().trim(),
+										bsMemberJoin.locationComb.getSelectedIndex(), bsMemberJoin.categoryComb.getSelectedIndex(),
 										bsMemberJoin.storePhoneTf.getText().trim(),bsMemberJoin.storePeopleTf.getText().trim(), bsMemberJoin.storeImgTf.getText().trim());
+		
+		if (!joinStore) {
+			new RbsUserDao().delete(bsMemberJoin.idTf.getText().trim());
+			return false;
+		}else {
+			return true;
+		}
+		
 	}
 
-	private boolean checkStoreJoin(String id, String bsNum, String storeName, String location, String category, String storePhoneNum,
+	private boolean checkStoreJoin(String id, String bsNum, String storeName, int locationIdx, int categoryIdx, String storePhoneNum,
 			String peopleNum, String imgPath) {
 		StoreDao storeDao = new StoreDao();
 
 		LocationDao locationDao = new LocationDao();
+		String location = bsMemberJoin.locationComb.getItemAt(locationIdx).toString();
 		int locationId = locationDao.select(location).getLocationId();
-		
+				
+		String category = bsMemberJoin.categoryComb.getItemAt(categoryIdx).toString();
 		CategoryDao categoryDao = new CategoryDao();
 		int categoryId = categoryDao.select(category).getCategoryId();
 		
