@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -27,8 +28,9 @@ public class MemberAuctionHistory extends JFrame {
 	public JButton startDateCalBtn;
 	public JButton endDateCalBtn;
 	public JButton bidListViewBtn;
-	public JPanel GraphPn;
+	public JPanel graphPn;
 
+	public DefaultTableModel model;
 	/**
 	 * Launch the application.
 	 */
@@ -97,18 +99,18 @@ public class MemberAuctionHistory extends JFrame {
 		contentPane.add(oneMonthBtn);
 
 		
-		JScrollPane scrollPane = new JScrollPane();
+		String header[] = {"상호명", "예약시간", "가격"};
+		String contents[][] = {};
+		model = new DefaultTableModel(contents, header);
+		
+		endBidTable = new JTable(model);
+		
+		JScrollPane scrollPane = new JScrollPane(endBidTable);
 		scrollPane.setBounds(4, 396, 362, 250);
 		contentPane.add(scrollPane);
 		
-		String colName[] = {"상호명", "예약시간", "가격"};
-		Object rowData[][] = new Object[3][4];
-		
-		endBidTable = new JTable(rowData, colName);
-		scrollPane.setViewportView(endBidTable);
-		
-		GraphPn = new JPanel();
-		GraphPn.setBounds(4, 10, 362, 308);
-		contentPane.add(GraphPn);
+		graphPn = new JPanel();
+		graphPn.setBounds(4, 10, 362, 308);
+		contentPane.add(graphPn);
 	}
 }

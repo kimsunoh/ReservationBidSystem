@@ -1,18 +1,33 @@
 package com.kitri4.GGY.Logic;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 
 import com.kitri4.GGY.Common.CalendarView;
 import com.kitri4.GGY.Common.RBSMain;
 import com.kitri4.GGY.Dao.MemberHistoryDao;
 import com.kitri4.GGY.Dao.RbsUserDao;
+import com.kitri4.GGY.Dao.rbsCategoryDao;
 import com.kitri4.GGY.Dto.MemberHistoryDto;
 import com.kitri4.GGY.Dto.UserDto;
+import com.kitri4.GGY.Dto.rbsCategoryDto;
 import com.kitri4.GGY.Main.Login;
 import com.kitri4.GGY.Member.*;
 
@@ -31,6 +46,7 @@ public class MemberLogic implements ActionListener {
 		this.calendarView = rbsMain.calendarView;
 		this.memberAuctionHistory = memberMain.memberAuction.memberAuctionHistory;
 		this.login = rbsMain.login;
+		setDayTf(6);
 	}
 
 	@Override
@@ -121,20 +137,54 @@ public class MemberLogic implements ActionListener {
 	}
 
 	private void guessBidList() {
+		String startDate = memberAuctionHistory.startDateTf.getText().trim();
+		String endDate = memberAuctionHistory.endDateTf.getText().trim();
 		MemberHistoryDao mHistoryDto = new MemberHistoryDao();
-		ArrayList<MemberHistoryDto> auctionSeqList = mHistoryDto.selectEndAuction(memberAuctionHistory.startDateTf.getText().trim(),
-																					memberAuctionHistory.endDateTf.getText().trim(),
-																					login.idTf.getText().trim());
-		int size = auctionSeqList.size();
-		String tableData[][] = new String[size][3];
+		ArrayList<MemberHistoryDto> auctionSeqList = mHistoryDto.selectEndAuction(startDate, endDate, login.idTf.getText().trim());
 
+		// Table
+		int size = memberAuctionHistory.endBidTable.getRowCount();
 		for (int i = 0; i < size; i++) {
-			tableData[i][0] = auctionSeqList.get(i).getStoreName();
-			tableData[i][1] = auctionSeqList.get(i).getAuctionLimitedTime();
-			tableData[i][2] = auctionSeqList.get(i).getAuctionPrice()+"";
+			memberAuctionHistory.model.removeRow(0);
+		}
+
+		String str[] = new String[3];
+		size = auctionSeqList.size();
+		for (int i = 0; i < size; i++) {
+			str[0] = auctionSeqList.get(i).getStoreName();
+			str[1] = auctionSeqList.get(i).getAuctionLimitedTime();
+			str[2] = auctionSeqList.get(i).getAuctionPrice() + "";
+			memberAuctionHistory.model.addRow(str);
+		}
+
+		// Chart
+		// categoty별 chart
+		int categoryCount[] = {0,0,0,0,0};
+		for (int i = 0; i < size; i++) {
+			//categoryId-1 을 인덱스로 갖음
+			categoryCount[auctionSeqList.get(i).getCategoryId()-1]++;
 		}
 		
+		String category[] = {"한식", "일식", "중식", "양식", "기타"};
+		
+		CategoryDataset dataset = createDataset(category,categoryCount);
+		JFreeChart chart = createChart(dataset);		
+		
+		memberAuctionHistory.graphPn = new ChartPanel(chart);
+		memberAuctionHistory.graphPn.setPreferredSize(new java.awt.Dimension(362, 308));
+		memberAuctionHistory.add(memberAuctionHistory.graphPn);
+		memberAuctionHistory.graphPn.setBounds(12, 6, 355, 227);
+
 		/*
+		 * int size = auctionSeqList.size(); String tableData[][] = new
+		 * String[size][3];
+		 * 
+		 * for (int i = 0; i < size; i++) { tableData[i][0] =
+		 * auctionSeqList.get(i).getStoreName(); tableData[i][1] =
+		 * auctionSeqList.get(i).getAuctionLimitedTime(); tableData[i][2] =
+		 * auctionSeqList.get(i).getAuctionPrice()+""; }
+		 * 
+		 * 
 		 * ActionDao 를 통해서 where 조건 제시, date를 yyyy-mm-dd로 읽어와서 beatween
 		 * strD,endDate일때 읽어와서 int size = date.size();
 		 * 
@@ -144,17 +194,31 @@ public class MemberLogic implements ActionListener {
 		 * 
 		 * memberActionHistory.GraphPn 에 그래프를 그리고 한식, 중식, 양식 별 예약 횟수
 		 * 
+		 * 
+		 * 
+		 * String column[] = { "상호명", "예약시간", "가격" };
+		 * memberAuctionHistory.endBidTable = new JTable(tableData, column);
+		 * System.out.println("set endBidTable");
+		 * 
+		 * refresh();
 		 */
-
-		String column[] = { "상호명", "예약시간", "가격" };
-		memberAuctionHistory.endBidTable = new JTable(tableData, column);
-		System.out.println("set endBidTable");
-		
-		refresh();
 	}
 
-	private void refresh() {
-		// TODO Auto-generated method stub
+	private JFreeChart createChart(CategoryDataset dataset) {
+		JFreeChart chart = ChartFactory.createBarChart(
+	            "카테고리별 집계", "Category", "Count", dataset, PlotOrientation.VERTICAL, true, false, false); 
+	            // chart title, domain axis label, range axis label
+	            // data, include legend, tooltips?, URLs?
+
+	   return chart;
+	}
+
+	private CategoryDataset createDataset(String[] category, int[] categoryCount) {
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        int length = 5;
+        for (int i = 0 ; i < length ; i++)
+        		dataset.addValue(categoryCount[i], category[i], "");
+        return dataset;
 		
 	}
 
@@ -172,5 +236,6 @@ public class MemberLogic implements ActionListener {
 			month -= gapMonth;
 		}
 		memberMain.memberAuction.memberAuctionHistory.startDateTf.setText(year + "/" + month + "/" + day);
+		guessBidList();
 	}
 }
