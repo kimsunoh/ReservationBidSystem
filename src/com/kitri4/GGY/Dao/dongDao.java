@@ -121,9 +121,9 @@ public class dongDao {
 			conn = DBConnection.makeConnection();
 
 			String sql = "select dong_id, dong_name, goo_id\n";
-			sql += "from dong";
+			sql += "from dong\n";
 			sql += "where dong_name = '" + dongName + "'";
-			
+			System.out.println(sql);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 
@@ -140,5 +140,10 @@ public class dongDao {
 		}
 
 		return dongDto;
+	}
+	
+	public static void main(String[] args) {
+		DongDto dong = new dongDao().select("°¡¸®ºÀ1µ¿");
+		System.out.println(dong.getDongName() + ", " + dong.getDongId());
 	}
 }

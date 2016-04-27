@@ -118,7 +118,7 @@ public class rbsCategoryDao {
 			conn = DBConnection.makeConnection();
 
 			String sql = "select category_id, category_name\n";
-			sql += "from rbscategory";
+			sql += "from rbscategory\n";
 			sql += "where category_name = '" + category_name + "'";
 
 			stmt = conn.createStatement();

@@ -113,6 +113,8 @@ public class MainLogic implements ActionListener {
 			else {
 				passwordError();
 			}
+			login.setVisible(true);
+			bsMemberJoin.setVisible(false);
 		}else if (ob == bsMemberJoin.checkIdBtn) {
 			checkId(bsMemberJoin.idTf.getText());
 		}
@@ -126,10 +128,11 @@ public class MainLogic implements ActionListener {
 			return false;
 		}
 
-		boolean joinStore = checkStoreJoin(bsMemberJoin.idTf.getText().trim(), bsMemberJoin.bsNumTf.getText().trim(), bsMemberJoin.storeNameTf.getText().trim(),
-										bsMemberJoin.locationComb.getSelectedIndex(), bsMemberJoin.categoryComb.getSelectedIndex(),
-										bsMemberJoin.storePhoneTf.getText().trim(),bsMemberJoin.storePeopleTf.getText().trim(), bsMemberJoin.storeImgTf.getText().trim());
-		
+		boolean joinStore = checkStoreJoin(bsMemberJoin.idTf.getText().trim(), bsMemberJoin.bsNumTf.getText().trim(),
+										bsMemberJoin.storeNameTf.getText().trim(), bsMemberJoin.dongComb.getSelectedIndex(),
+										bsMemberJoin.categoryComb.getSelectedIndex(), bsMemberJoin.storePhoneTf.getText().trim(),
+										bsMemberJoin.storePeopleTf.getText().trim(), bsMemberJoin.storeImgTf.getText().trim());
+										/*String id, String bsNum, String storeName, int dongIdx, int categoryIdx, String storePhoneNum, String peopleNum, String imgPath*/
 		if (!joinStore) {
 			new RbsUserDao().delete(bsMemberJoin.idTf.getText().trim());
 			return false;
@@ -144,9 +147,9 @@ public class MainLogic implements ActionListener {
 		StoreDao storeDao = new StoreDao();
 
 		dongDao dongDao = new dongDao();
-		String dongName = bsMemberJoin.locationComb.getItemAt(dongIdx).toString();
+		String dongName = bsMemberJoin.dongComb.getItemAt(dongIdx).toString();
 		System.out.println("µø¿Ã∏ß : " + dongName);
-		int locationId = dongDao.select(dongName).getDongId();
+		int dongId = dongDao.select(dongName).getDongId();
 				
 		String category = bsMemberJoin.categoryComb.getItemAt(categoryIdx).toString();
 		rbsCategoryDao categoryDao = new rbsCategoryDao();
@@ -156,7 +159,7 @@ public class MainLogic implements ActionListener {
 		storeDto.setUserId(id);
 		storeDto.setBusinessNum(bsNum);
 		storeDto.setStoreName(storeName);
-		storeDto.setDongId(locationId);
+		storeDto.setDongId(dongId);
 		storeDto.setCategoryId(categoryId);			
 		storeDto.setStorePhone(storePhoneNum);
 		storeDto.setPeopleNum(peopleNum);

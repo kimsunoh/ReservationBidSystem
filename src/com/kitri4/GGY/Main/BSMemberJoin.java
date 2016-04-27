@@ -51,7 +51,7 @@ public class BSMemberJoin extends JFrame {
 	public JTextField storePeopleTf;
 	public JTextField storeImgTf;
 	public JButton checkIdBtn;
-	public JComboBox locationComb;
+	public JComboBox dongComb;
 	public JComboBox gooComb;
 	public JComboBox categoryComb;
 
@@ -255,9 +255,9 @@ public class BSMemberJoin extends JFrame {
 			locationList[i] = locationDtoList.get(i).getDongName();
 		}
 		
-		locationComb = new JComboBox(locationList);
-		locationComb.setBounds(22, 294, 157, 33);
-		panel_1.add(locationComb);
+		dongComb = new JComboBox(locationList);
+		dongComb.setBounds(22, 294, 157, 33);
+		panel_1.add(dongComb);
 		
 		rbsCategoryDao categoryDao = new rbsCategoryDao();
 		ArrayList<rbsCategoryDto> categoryDtoList = categoryDao.selectAll();

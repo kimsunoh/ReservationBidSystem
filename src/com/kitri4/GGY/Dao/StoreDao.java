@@ -16,9 +16,12 @@ public class StoreDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "insert into Store (user_id, store_id, business_num, store_name, dong_id, category_id, store_phonenum,";
-			sql += " store_peoplenum, business_flag, store_img) \n";
-			sql += "value ('" + storeDto.getUserId() + "', '" + storeDto.getStoreId() + "', ";
+			String sql = "insert into Store (user_id, store_id, ";
+			sql += "business_num, store_name,";
+			sql += "dong_id, category_id, ";
+			sql += "store_phonenum, store_peoplenum, ";
+			sql += "business_flag, store_img) \n";
+			sql += "values ('" + storeDto.getUserId() + "', storeSeq.nextval, ";
 			sql += "'" + storeDto.getBusinessNum() + "', '" + storeDto.getStoreName() + "', ";
 			sql += "'" + storeDto.getDongId() + "', '" + storeDto.getCategoryId() + "', ";
 			sql += "'" + storeDto.getStorePhoneNum() + "', '" + storeDto.getPeopleNum()+ "', ";

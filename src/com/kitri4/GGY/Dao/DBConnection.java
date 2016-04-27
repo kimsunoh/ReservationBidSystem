@@ -15,9 +15,9 @@ public class DBConnection {
 		Connection conn = null;
 		try {
 			/*동현오빠*/
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.12.114:1521:orcl","kitri","kitri");
+			//conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.12.114:1521:orcl","kitri","kitri");
 			/*진우오빠*/
-			//conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.12.121:1521:orcl","kitri","kitri");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@192.168.12.121:1521:orcl","kitri","kitri");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
