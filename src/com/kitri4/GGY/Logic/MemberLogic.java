@@ -5,8 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import com.kitri4.GGY.Common.CalendarView;
 import com.kitri4.GGY.Common.RBSMain;
@@ -143,7 +142,7 @@ public class MemberLogic implements ActionListener {
 		memberAuctionHistory.endBidTable = new JTable(tableData, column);
 		
 		//memberAuctionHistory.setVisible(false);
-		//refresh
+		//refresh();
 		//memberAuctionHistory.setVisible(true);
 	}
 

@@ -104,7 +104,7 @@ public class RbsUserDao {
             userDto.setUserName(rs.getString("User_Name"));            
             userDto.setUserPhoneNumber(rs.getString("User_Phone"));            
             userDto.setUserEmail(rs.getString("User_Email"));                        
-            userDto.setUserFlag(Integer.parseInt(rs.getString("User_Flag")));                        
+            userDto.setUserFlag(rs.getString("User_Flag"));                        
             userList.add(userDto);
          }
       } catch (SQLException e) {
@@ -139,7 +139,7 @@ public class RbsUserDao {
             userDto.setUserName(rs.getString("User_Name"));            
             userDto.setUserPhoneNumber(rs.getString("User_Phone"));            
             userDto.setUserEmail(rs.getString("User_Email"));                        
-            userDto.setUserFlag(Integer.parseInt(rs.getString("User_Flag")));                        
+            userDto.setUserFlag(rs.getString("User_Flag"));                        
          }
       } catch (SQLException e) {
          e.printStackTrace();

@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.kitri4.GGY.Dto.CategoryDto;
+import com.kitri4.GGY.Dto.rbsCategoryDto;
 
-public class CategoryDao {
+public class rbsCategoryDao {
 
-	public int insert(CategoryDto categoryDto) {
+	public int insert(rbsCategoryDto categoryDto) {
 		int cnt = 0;
 		Connection conn = null;
 		Statement stmt = null;
@@ -55,7 +55,7 @@ public class CategoryDao {
 		return cnt;
 	}
 
-	public int update(CategoryDto categoryDto) {
+	public int update(rbsCategoryDto categoryDto) {
 		int cnt = 0;
 		Connection conn = null;
 		Statement stmt = null;
@@ -78,8 +78,8 @@ public class CategoryDao {
 		return cnt;
 	}
 
-	public ArrayList<CategoryDto> selectAll() {
-		ArrayList<CategoryDto> categoryList = new ArrayList<CategoryDto>();
+	public ArrayList<rbsCategoryDto> selectAll() {
+		ArrayList<rbsCategoryDto> categoryList = new ArrayList<rbsCategoryDto>();
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -94,7 +94,7 @@ public class CategoryDao {
 			rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
-				CategoryDto categoryDto = new CategoryDto();
+				rbsCategoryDto categoryDto = new rbsCategoryDto();
 				categoryDto.setCategoryId(Integer.parseInt(rs.getString("category_id")));
 				categoryDto.setCategoryName(rs.getString("category_name"));
 				categoryList.add(categoryDto);
@@ -108,8 +108,8 @@ public class CategoryDao {
 		return categoryList;
 	}
 
-	public CategoryDto select(String category_name) {
-		CategoryDto categoryDto = null;
+	public rbsCategoryDto select(String category_name) {
+		rbsCategoryDto categoryDto = null;
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -125,7 +125,7 @@ public class CategoryDao {
 			rs = stmt.executeQuery(sql);
 
 			if (rs.next()) {
-				categoryDto = new CategoryDto();
+				categoryDto = new rbsCategoryDto();
 				categoryDto.setCategoryId(Integer.parseInt(rs.getString("category_id")));
 				categoryDto.setCategoryName(rs.getString("category_name"));
 			}

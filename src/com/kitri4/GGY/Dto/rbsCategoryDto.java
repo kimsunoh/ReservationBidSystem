@@ -1,6 +1,6 @@
 package com.kitri4.GGY.Dto;
 
-public class CategoryDto {
+public class rbsCategoryDto {
 	private int categoryId;
 	private String categoryName;
 	

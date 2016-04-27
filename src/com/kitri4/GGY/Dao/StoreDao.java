@@ -16,12 +16,12 @@ public class StoreDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "insert into Store (user_id, store_id, business_num, store_name, location_id, category, store_phonenum,";
+			String sql = "insert into Store (user_id, store_id, business_num, store_name, dong_id, category_id, store_phonenum,";
 			sql += " store_peoplenum, business_flag, store_img) \n";
 			sql += "value ('" + storeDto.getUserId() + "', '" + storeDto.getStoreId() + "', ";
 			sql += "'" + storeDto.getBusinessNum() + "', '" + storeDto.getStoreName() + "', ";
-			sql += "'" + storeDto.getLocation() + "', '" + storeDto.getCategory() + "', ";
-			sql += "'" + storeDto.getStorePhone() + "', '" + storeDto.getPeople()+ "', ";
+			sql += "'" + storeDto.getDongId() + "', '" + storeDto.getCategoryId() + "', ";
+			sql += "'" + storeDto.getStorePhoneNum() + "', '" + storeDto.getPeopleNum()+ "', ";
 			sql += "'" + storeDto.getBusinessFlag() + "', '" + storeDto.getStoreImg()+ "') ";
 			System.out.println(sql);
 			stmt = conn.createStatement();
@@ -70,10 +70,10 @@ public class StoreDao {
 			sql += "set store_id = '" + storeDto.getStoreId() + "', ";
 			sql += "business_num = '" + storeDto.getBusinessNum() + "', ";
 			sql += "store_name = '" + storeDto.getStoreName() + "', ";
-			sql += "location_id = '" + storeDto.getLocation() + "', ";
-			sql += "category_id = '" + storeDto.getCategory() + "', ";
-			sql += "store_phoneNum = '" + storeDto.getStorePhone() + "', ";
-			sql += "store_peopleNum = '" + storeDto.getPeople() + "', ";
+			sql += "dong_id = '" + storeDto.getDongId() + "', ";
+			sql += "category_id = '" + storeDto.getCategoryId() + "', ";
+			sql += "store_phoneNum = '" + storeDto.getStorePhoneNum() + "', ";
+			sql += "store_peopleNum = '" + storeDto.getPeopleNum() + "', ";
 			sql += "store_img = '" + storeDto.getStoreImg() + "', ";
 			sql += "business_flag = '" + storeDto.getBusinessFlag() + "', ";
 			sql += "where id = '" + storeDto.getUserId() + "'";
@@ -98,7 +98,7 @@ public class StoreDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "select user_id, store_id, business_num, store_name, location_id, category_id, store_phonenum,";
+			String sql = "select user_id, store_id, business_num, store_name, dong_id, category_id, store_phonenum,";
 			sql += " store_peoplenum, business_flag, store_img \n";
 			sql += "from Store";
 
@@ -110,10 +110,10 @@ public class StoreDao {
 				storeDto.setUserId(rs.getNString("user_id"));
 				storeDto.setBusinessNum(rs.getString("business_num"));
 				storeDto.setStoreName(rs.getString("store_name"));
-				storeDto.setLocation(Integer.parseInt(rs.getString("location_id")));
-				storeDto.setCategory(Integer.parseInt(rs.getString("category_id")));
+				storeDto.setDongId(Integer.parseInt(rs.getString("dong_id")));
+				storeDto.setCategoryId(Integer.parseInt(rs.getString("category_id")));
 				storeDto.setStorePhone(rs.getString("store_phonenum"));
-				storeDto.setPeople(rs.getString("store_peoplenum"));
+				storeDto.setPeopleNum(rs.getString("store_peoplenum"));
 				storeDto.setBusinessFlag(Integer.parseInt(rs.getString("business_flag")));
 				storeDto.setStoreImg(rs.getString("store_img"));
 				userList.add(storeDto);
@@ -136,8 +136,8 @@ public class StoreDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "select user_password, user_name, user_phone, user_email, business_num, store_name, "
-					+ "location_id, goo_id, category_id, store_phonenum, store_peoplenum, store_img\n";
+			String sql = "select store_id, business_num, store_name, "
+					+ "dong_id, category_id, store_phonenum, store_peoplenum, user_id, business_flag, store_img\n";
 			sql += "from rbsuser,store\n";
 			sql += "where rbsuser.user_id = store.user_id\n";
 			sql += "and rbsuser.user_id = '" + id + "'";
@@ -148,12 +148,14 @@ public class StoreDao {
 			if (rs.next()) {
 				storeDto = new StoreDto();
 				storeDto.setUserId(id);
+				storeDto.setStoreId(Integer.parseInt(rs.getString("store_id")));
 				storeDto.setBusinessNum(rs.getString("business_num"));
 				storeDto.setStoreName(rs.getString("store_name"));
-				storeDto.setLocation(Integer.parseInt(rs.getString("location_id")));
-				storeDto.setCategory(Integer.parseInt(rs.getString("category_id")));
+				storeDto.setDongId(Integer.parseInt(rs.getString("dong_id")));
+				storeDto.setCategoryId(Integer.parseInt(rs.getString("category_id")));
 				storeDto.setStorePhone(rs.getString("store_phonenum"));
-				storeDto.setPeople(rs.getString("store_peoplenum"));
+				storeDto.setPeopleNum(rs.getString("store_peoplenum"));
+				storeDto.setUserId(rs.getString("user_id"));
 				storeDto.setBusinessFlag(Integer.parseInt(rs.getString("business_flag")));
 				storeDto.setStoreImg(rs.getString("store_img"));
 

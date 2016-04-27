@@ -6,7 +6,7 @@ public class UserDto {
 	private String userName;
 	private String userPhoneNumber;
 	private String userEmail;
-	private int userFlag;
+	private String userFlag;
 	
 	public String getUserId() {
 		return userId;
@@ -48,11 +48,11 @@ public class UserDto {
 		this.userEmail = userEmail;
 	}
 
-	public int getUserFlag() {
+	public String getUserFlag() {
 		return userFlag;
 	}
 
-	public void setUserFlag(int userFlag) {
+	public void setUserFlag(String userFlag) {
 		this.userFlag = userFlag;
 	}	
 }

@@ -247,20 +247,20 @@ public class BSMemberJoin extends JFrame {
 		storeImgTf.setBounds(10, 512, 357, 25);
 		panel_1.add(storeImgTf);
 		
-		LocationDao locationDao = new LocationDao();
-		ArrayList<LocationDto> locationDtoList = locationDao.selectAll();
+		dongDao locationDao = new dongDao();
+		ArrayList<DongDto> locationDtoList = locationDao.selectAll();
 		int size = locationDtoList.size();
 		String locationList[] = new String[size];
 		for (int i = 0; i < size; i++) {
-			locationList[i] = locationDtoList.get(i).getLocationName();
+			locationList[i] = locationDtoList.get(i).getDongName();
 		}
 		
 		locationComb = new JComboBox(locationList);
 		locationComb.setBounds(22, 294, 157, 33);
 		panel_1.add(locationComb);
 		
-		CategoryDao categoryDao = new CategoryDao();
-		ArrayList<CategoryDto> categoryDtoList = categoryDao.selectAll();
+		rbsCategoryDao categoryDao = new rbsCategoryDao();
+		ArrayList<rbsCategoryDto> categoryDtoList = categoryDao.selectAll();
 		size = categoryDtoList.size();
 		String categoryList[] = new String[size];
 		for (int i = 0; i < size; i++) {

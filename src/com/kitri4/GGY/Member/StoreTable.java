@@ -46,9 +46,9 @@ public class StoreTable {
 		int storesize = store.size();
 		for (int i = 0; i < storesize; i++) {
 			storeData = new Vector<Object>();
-			System.out.println("카테고리 : " + store.get(i).getCategory());
-			if (category == store.get(i).getCategory() || category == 0) {
-				insertStore(importImage(store.get(i).getStoreImg()), store.get(i).getStoreName(), "20000", store.get(i).getLocation());
+			System.out.println("카테고리 : " + store.get(i).getCategoryId());
+			if (category == store.get(i).getCategoryId() || category == 0) {
+				insertStore(importImage(store.get(i).getStoreImg()), store.get(i).getStoreName(), "20000", store.get(i).getDongId());
 				storemodel.addRow(storeData);
 			}
 		}

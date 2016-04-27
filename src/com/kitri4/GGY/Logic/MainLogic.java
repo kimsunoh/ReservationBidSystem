@@ -9,9 +9,9 @@ import javax.swing.JOptionPane;
 import com.kitri4.GGY.Admin.AdminMain;
 import com.kitri4.GGY.BSMember.BSMain;
 import com.kitri4.GGY.Common.RBSMain;
-import com.kitri4.GGY.Dao.CategoryDao;
+import com.kitri4.GGY.Dao.rbsCategoryDao;
 import com.kitri4.GGY.Dao.GooDao;
-import com.kitri4.GGY.Dao.LocationDao;
+import com.kitri4.GGY.Dao.dongDao;
 import com.kitri4.GGY.Dao.RbsUserDao;
 import com.kitri4.GGY.Dao.StoreDao;
 import com.kitri4.GGY.Dto.*;
@@ -88,7 +88,7 @@ public class MainLogic implements ActionListener {
 			}
 
 			if (selectUser.getUserPassword().equals(loginPw)) {
-				int flag = selectUser.getUserFlag();
+				int flag = Integer.parseInt(selectUser.getUserFlag());
 
 				if (flag == 2) {
 					memberMain.setVisible(true);
@@ -139,26 +139,27 @@ public class MainLogic implements ActionListener {
 		
 	}
 
-	private boolean checkStoreJoin(String id, String bsNum, String storeName, int locationIdx, int categoryIdx, String storePhoneNum,
+	private boolean checkStoreJoin(String id, String bsNum, String storeName, int dongIdx, int categoryIdx, String storePhoneNum,
 			String peopleNum, String imgPath) {
 		StoreDao storeDao = new StoreDao();
 
-		LocationDao locationDao = new LocationDao();
-		String location = bsMemberJoin.locationComb.getItemAt(locationIdx).toString();
-		int locationId = locationDao.select(location).getLocationId();
+		dongDao dongDao = new dongDao();
+		String dongName = bsMemberJoin.locationComb.getItemAt(dongIdx).toString();
+		System.out.println("µø¿Ã∏ß : " + dongName);
+		int locationId = dongDao.select(dongName).getDongId();
 				
 		String category = bsMemberJoin.categoryComb.getItemAt(categoryIdx).toString();
-		CategoryDao categoryDao = new CategoryDao();
+		rbsCategoryDao categoryDao = new rbsCategoryDao();
 		int categoryId = categoryDao.select(category).getCategoryId();
 		
 		StoreDto storeDto = new StoreDto();
 		storeDto.setUserId(id);
 		storeDto.setBusinessNum(bsNum);
 		storeDto.setStoreName(storeName);
-		storeDto.setLocation(locationId);
-		storeDto.setCategory(categoryId);			
+		storeDto.setDongId(locationId);
+		storeDto.setCategoryId(categoryId);			
 		storeDto.setStorePhone(storePhoneNum);
-		storeDto.setPeople(peopleNum);
+		storeDto.setPeopleNum(peopleNum);
 		storeDto.setStoreImg(imgPath);
 		storeDto.setBusinessFlag(0);
 
@@ -174,7 +175,7 @@ public class MainLogic implements ActionListener {
 
 		UserDto selectUserDto = userDao.select(id);
 
-		if (!selectUserDto.getUserId().isEmpty())
+		if (selectUserDto != null)
 			return false;
 
 		UserDto userDto = new UserDto();
@@ -183,7 +184,7 @@ public class MainLogic implements ActionListener {
 		userDto.setUserName(name);
 		userDto.setUserPhoneNumber(phoneNum);
 		userDto.setUserEmail(email);
-		userDto.setUserFlag(flag);
+		userDto.setUserFlag(flag+"");
 
 		if (userDao.insert(userDto) == 1) {
 			return true;

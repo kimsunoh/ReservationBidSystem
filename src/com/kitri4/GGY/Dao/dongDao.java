@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.kitri4.GGY.Dto.LocationDto;
+import com.kitri4.GGY.Dto.DongDto;
 
-public class LocationDao {
+public class dongDao {
 
-	public int insert(LocationDto locationDto) {
+	public int insert(DongDto dongDto) {
 		int cnt = 0;
 		Connection conn = null;
 		Statement stmt = null;
@@ -18,9 +18,9 @@ public class LocationDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "insert into Location (location_id, location_name, goo_id) \n";
-			sql += "values ('" + locationDto.getLocationId() + "', '" + locationDto.getLocationName() + "', '";
-			sql += "'" + locationDto.getGooId() + "') ";
+			String sql = "insert into Location (dong_id, dong_name, goo_id) \n";
+			sql += "values ('" + dongDto.getDongId() + "', '" + dongDto.getDongName() + "', '";
+			sql += "'" + dongDto.getGooId() + "') ";
 
 			stmt = conn.createStatement();
 			cnt = stmt.executeUpdate(sql);
@@ -34,7 +34,7 @@ public class LocationDao {
 		return cnt;
 	}
 
-	public int delete(String location_id) {
+	public int delete(String dongId) {
 		int cnt = 0;
 		Connection conn = null;
 		Statement stmt = null;
@@ -42,8 +42,8 @@ public class LocationDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "delete from location";
-			sql += "where location_id = '" + location_id + "'";
+			String sql = "delete from dong";
+			sql += "where dong_id = '" + dongId + "'";
 
 			stmt = conn.createStatement();
 			cnt = stmt.executeUpdate(sql);
@@ -56,7 +56,7 @@ public class LocationDao {
 		return cnt;
 	}
 
-	public int update(LocationDto locationDto) {
+	public int update(DongDto dongDto) {
 		int cnt = 0;
 		Connection conn = null;
 		Statement stmt = null;
@@ -64,10 +64,10 @@ public class LocationDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "Update location ";
-			sql += "set location_name = '" + locationDto.getLocationName() + "', ";
-			sql += "goo_id = '" + locationDto.getGooId() + "' ";
-			sql += "where location_id = '" + locationDto.getLocationId() + "'";
+			String sql = "Update dong ";
+			sql += "set dong_name = '" + dongDto.getDongName() + "', ";
+			sql += "goo_id = '" + dongDto.getGooId() + "' ";
+			sql += "where dong_id = '" + dongDto.getDongId() + "'";
 
 			stmt = conn.createStatement();
 			cnt = stmt.executeUpdate(sql);
@@ -80,8 +80,8 @@ public class LocationDao {
 		return cnt;
 	}
 
-	public ArrayList<LocationDto> selectAll() {
-		ArrayList<LocationDto> locationList = new ArrayList<LocationDto>();
+	public ArrayList<DongDto> selectAll() {
+		ArrayList<DongDto> dongList = new ArrayList<DongDto>();
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -89,18 +89,18 @@ public class LocationDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "select location_id, location_name, goo_id\n";
-			sql += "from location";
+			String sql = "select dong_id, dong_name, goo_id\n";
+			sql += "from dong";
 
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 
 			while (rs.next()) {
-				LocationDto locationDto = new LocationDto();
-				locationDto.setLocationId(Integer.parseInt(rs.getString("location_id")));
-				locationDto.setLocationName(rs.getString("location_name"));
+				DongDto locationDto = new DongDto();
+				locationDto.setDongId(Integer.parseInt(rs.getString("dong_id")));
+				locationDto.setDongName(rs.getString("dong_name"));
 				locationDto.setGooId(Integer.parseInt(rs.getString("goo_id")));
-				locationList.add(locationDto);
+				dongList.add(locationDto);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -108,11 +108,11 @@ public class LocationDao {
 			DBClose.close(conn, stmt, rs);
 		}
 
-		return locationList;
+		return dongList;
 	}
 
-	public LocationDto select(String location_name) {
-		LocationDto locationDto = null;
+	public DongDto select(String dongName) {
+		DongDto dongDto = null;
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -120,18 +120,18 @@ public class LocationDao {
 		try {
 			conn = DBConnection.makeConnection();
 
-			String sql = "select location_id, location_name, goo_id\n";
-			sql += "from location";
-			sql += "where location_name = '" + location_name + "'";
-
+			String sql = "select dong_id, dong_name, goo_id\n";
+			sql += "from dong";
+			sql += "where dong_name = '" + dongName + "'";
+			
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 
 			if (rs.next()) {
-				locationDto = new LocationDto();
-				locationDto.setLocationId(Integer.parseInt(rs.getString("location_id")));
-				locationDto.setLocationName(rs.getString("location_name"));
-				locationDto.setGooId(Integer.parseInt(rs.getString("goo_id")));
+				dongDto = new DongDto();
+				dongDto.setDongId(Integer.parseInt(rs.getString("dong_id")));
+				dongDto.setDongName(rs.getString("dong_name"));
+				dongDto.setGooId(Integer.parseInt(rs.getString("goo_id")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -139,6 +139,6 @@ public class LocationDao {
 			DBClose.close(conn, stmt, rs);
 		}
 
-		return locationDto;
+		return dongDto;
 	}
 }

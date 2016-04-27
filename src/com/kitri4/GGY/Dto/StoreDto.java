@@ -1,14 +1,14 @@
 package com.kitri4.GGY.Dto;
 
 public class StoreDto {
-	private String userId;
-	private String StoreId;
+	private int StoreId;
 	private String businessNum;
 	private String storeName;
-	private int location;
-	private int category;
-	private String storePhone;
-	private String people;
+	private int dongId;
+	private int categoryId;
+	private String storePhoneNum;
+	private String peopleNum;
+	private String userId;
 	private String storeImg;
 	private int businessFlag;
 
@@ -36,36 +36,36 @@ public class StoreDto {
 		this.storeName = storeName;
 	}
 
-	public int getLocation() {
-		return location;
+	public int getDongId() {
+		return dongId;
 	}
 
-	public void setLocation(int location) {
-		this.location = location;
+	public void setDongId(int dongId) {
+		this.dongId = dongId;
 	}
 
-	public int getCategory() {
-		return category;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCategory(int category) {
-		this.category = category;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
-	public String getStorePhone() {
-		return storePhone;
+	public String getStorePhoneNum() {
+		return storePhoneNum;
 	}
 
-	public void setStorePhone(String storePhone) {
-		this.storePhone = storePhone;
+	public void setStorePhone(String storePhoneNum) {
+		this.storePhoneNum = storePhoneNum;
 	}
 
-	public String getPeople() {
-		return people;
+	public String getPeopleNum() {
+		return peopleNum;
 	}
 
-	public void setPeople(String people) {
-		this.people = people;
+	public void setPeopleNum(String peopleNum) {
+		this.peopleNum = peopleNum;
 	}
 
 	public String getStoreImg() {
@@ -76,11 +76,11 @@ public class StoreDto {
 		this.storeImg = storeImg;
 	}
 
-	public String getStoreId() {
+	public int getStoreId() {
 		return StoreId;
 	}
 
-	public void setStoreId(String storeId) {
+	public void setStoreId(int storeId) {
 		StoreId = storeId;
 	}
 
