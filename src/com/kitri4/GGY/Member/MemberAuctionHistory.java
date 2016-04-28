@@ -15,6 +15,7 @@ import javax.swing.JScrollPane;
 import java.awt.Insets;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import java.awt.Color;
 
 public class MemberAuctionHistory extends JFrame {
 
@@ -54,6 +55,7 @@ public class MemberAuctionHistory extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -110,6 +112,7 @@ public class MemberAuctionHistory extends JFrame {
 		contentPane.add(scrollPane);
 		
 		graphPn = new JPanel();
+		graphPn.setBackground(Color.DARK_GRAY);
 		graphPn.setBounds(10, 9, 362, 214);
 		contentPane.add(graphPn);
 	}

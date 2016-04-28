@@ -14,6 +14,7 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
+import java.awt.Color;
 
 public class MemberJoin extends JFrame{
 
@@ -57,6 +58,7 @@ public class MemberJoin extends JFrame{
       contentPane.setLayout(new BorderLayout(10, 10));
       
       JPanel panel = new JPanel();
+      panel.setBackground(Color.WHITE);
       contentPane.add(panel, BorderLayout.CENTER);
       panel.setLayout(null);
       
@@ -71,12 +73,12 @@ public class MemberJoin extends JFrame{
       panel.add(lblNewLabel);
       
       idTf = new JTextField();
-      idTf.setBounds(20, 128, 280, 24);
+      idTf.setBounds(20, 128, 266, 24);
       panel.add(idTf);
       idTf.setColumns(10);
       
       checkIdBtn = new JButton("\uD655\uC778");
-      checkIdBtn.setBounds(305, 125, 57, 29);
+      checkIdBtn.setBounds(298, 125, 64, 29);
       panel.add(checkIdBtn);
       
       JLabel lblNewLabel_3 = new JLabel("\uC774\uB984 :");

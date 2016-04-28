@@ -67,15 +67,18 @@ public class BSMemberJoin extends JFrame {
 	public BSMemberJoin() {
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(null);
 		getContentPane().add(contentPane);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(Color.WHITE);
 		tabbedPane.setBounds(0, 26, 384, 662);
 		contentPane.add(tabbedPane);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		tabbedPane.addTab("\uC5C5\uC8FC\uC815\uBCF4", null, panel, null);
 		panel.setLayout(null);
 
@@ -162,6 +165,7 @@ public class BSMemberJoin extends JFrame {
 		panel.add(lblNewLabel_1);
 
 		panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
 		tabbedPane.addTab("\uAC00\uAC8C \uC815\uBCF4", null, panel_1, null);
 		panel_1.setLayout(null);
 

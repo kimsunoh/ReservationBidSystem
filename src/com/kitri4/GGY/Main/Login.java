@@ -56,6 +56,12 @@ public class Login extends JFrame {
 		panel_2.setBounds(5, 43, 374, 294);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
+
+		JLabel loginImg = new JLabel("");
+		loginImg.setBounds(0, 0, 374, 294);
+		loginImg.setHorizontalAlignment(SwingConstants.CENTER);
+		loginImg.setIcon(new ImageIcon(Login.class.getResource("/com/kitri4/GGY/Img/ggyo4.jpg")));
+		panel_2.add(loginImg);
 		
 		JLabel lblId = new JLabel("ID");
 		lblId.setBounds(5, 379, 30, 40);
@@ -88,7 +94,7 @@ public class Login extends JFrame {
 		contentPane.add(joinBtn);
 		
 		JLabel lblNewLabel_1 = new JLabel("\uD68C\uC2DD\uC7A5\uC18C \uC815\uD558\uAE30 \uD504\uB85C\uADF8\uB7A8");
-		lblNewLabel_1.setBounds(12, 0, 350, 35);
+		lblNewLabel_1.setBounds(12, 533, 350, 35);
 		contentPane.add(lblNewLabel_1);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		
@@ -96,10 +102,5 @@ public class Login extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(5, 614, 374, 38);
 		contentPane.add(lblNewLabel);
-		
-		JLabel loginImg = new JLabel("");
-		loginImg.setBounds(5, 26, 374, 294);
-		contentPane.add(loginImg);
-		loginImg.setHorizontalAlignment(SwingConstants.CENTER);
 	}
 }
