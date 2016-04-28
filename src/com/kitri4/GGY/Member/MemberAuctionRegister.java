@@ -18,14 +18,15 @@ public class MemberAuctionRegister extends JPanel {
 
 	public JPanel contentPane;
 	public JTextField priceTf;
-	public JComboBox locationComb;
 	public JComboBox dongComb;
-	public JComboBox foodCategoComd;
-	public JComboBox peopleNumComb;
-	public JButton okb;
-	public JButton cancelb;
+	public JButton okBtn;
+	public JButton cancelBtn;
 	public JTextArea needsomeTa;
 	public JButton homebutton;
+	public JLabel titleLabel;
+	public JTextField titleTf;
+	public JTextField peopleNumTf;
+	private JLabel label;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -56,57 +57,22 @@ public class MemberAuctionRegister extends JPanel {
 		
 		JLabel locaationLabel = new JLabel("지역");
 		locaationLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		locaationLabel.setBounds(12, 168, 72, 31);
+		locaationLabel.setBounds(12, 170, 72, 31);
 		panel.add(locaationLabel);
 		
-		locationComb = new JComboBox();
-		locationComb.setBounds(96, 168, 126, 31);
-		panel.add(locationComb);
-		locationComb.addItem("서울시");
-		locationComb.addItem("인천시");
-		locationComb.addItem("안양시");
-		locationComb.addItem("수원시");
-		
 		priceTf = new JTextField();
-		priceTf.setBounds(96, 240, 271, 45);
+		priceTf.setBounds(96, 223, 271, 35);
 		panel.add(priceTf);
 		priceTf.setColumns(10);
 		
 		dongComb = new JComboBox();
-		dongComb.setBounds(241, 168, 126, 31);
+		dongComb.setBounds(96, 170, 271, 31);
 		panel.add(dongComb);
-		dongComb.addItem("구로구");
-		dongComb.addItem("강남구");
-		dongComb.addItem("중구");
-		dongComb.addItem("서구");
-		dongComb.addItem("동안구");
-		dongComb.addItem("권선구");
+		dongComb.addItem("");
 		
-		foodCategoComd = new JComboBox();
-		foodCategoComd.setBounds(96, 117, 271, 31);
-		panel.add(foodCategoComd);
-		foodCategoComd.addItem("한식");
-		foodCategoComd.addItem("일식");
-		foodCategoComd.addItem("중식");
-		foodCategoComd.addItem("기타");
-		
-		JLabel categoryLabel = new JLabel("종류");
-		categoryLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		categoryLabel.setBounds(12, 117, 72, 31);
-		panel.add(categoryLabel);
-		
-		peopleNumComb = new JComboBox();
-		peopleNumComb.setBounds(96, 66, 271, 31);
-		panel.add(peopleNumComb);
-		peopleNumComb.addItem("1~4인");
-		peopleNumComb.addItem("4~8인");
-		peopleNumComb.addItem("8~12인");
-		peopleNumComb.addItem("12~16인");
-		peopleNumComb.addItem("17인 이상");
-		
-		JLabel peopleNumLabel = new JLabel("인원");
+		JLabel peopleNumLabel = new JLabel("\uC778\uC6D0");
 		peopleNumLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		peopleNumLabel.setBounds(12, 66, 72, 31);
+		peopleNumLabel.setBounds(12, 117, 72, 35);
 		panel.add(peopleNumLabel);
 		
 		
@@ -117,25 +83,45 @@ public class MemberAuctionRegister extends JPanel {
 		
 		JLabel priceLabel = new JLabel("희망가격");
 		priceLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		priceLabel.setBounds(12, 240, 72, 45);
+		priceLabel.setBounds(12, 223, 72, 37);
 		panel.add(priceLabel);
 		
-		JLabel needsomeLabel = new JLabel("비고");
+		JLabel needsomeLabel = new JLabel("\uBE44\uACE0");
 		needsomeLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		needsomeLabel.setBounds(12, 304, 72, 45);
+		needsomeLabel.setBounds(12, 292, 72, 46);
 		panel.add(needsomeLabel);
 		
-		okb = new JButton("등록");
-		okb.setBounds(12, 552, 168, 45);
-		panel.add(okb);
+		okBtn = new JButton("등록");
+		okBtn.setBounds(12, 539, 168, 45);
+		panel.add(okBtn);
 		
-		cancelb = new JButton("취소");
-		cancelb.setBounds(199, 552, 168, 45);
-		panel.add(cancelb);
+		cancelBtn = new JButton("취소");
+		cancelBtn.setBounds(199, 539, 168, 45);
+		panel.add(cancelBtn);
 		
 		needsomeTa = new JTextArea();
-		needsomeTa.setBounds(96, 316, 271, 199);
+		needsomeTa.setBounds(96, 293, 271, 199);
 		panel.add(needsomeTa);
+		
+		titleLabel = new JLabel("\uACBD\uB9E4 \uC81C\uBAA9");
+		titleLabel.setFont(new Font("굴림", Font.BOLD, 14));
+		titleLabel.setBounds(12, 66, 72, 35);
+		panel.add(titleLabel);
+		
+		titleTf = new JTextField();
+		titleTf.setColumns(10);
+		titleTf.setBounds(96, 66, 271, 35);
+		panel.add(titleTf);
+		
+		peopleNumTf = new JTextField();
+		peopleNumTf.setColumns(10);
+		peopleNumTf.setBounds(96, 117, 271, 35);
+		panel.add(peopleNumTf);
+		
+		label = new JLabel("(\uC0C1\uC138\uC124\uBA85)");
+		label.setFont(new Font("굴림", Font.BOLD, 14));
+		label.setBounds(12, 325, 83, 46);
+		panel.add(label);
 		
 		homebutton = new JButton("=");
 		homebutton.setBounds(0, 0, 97, 23);

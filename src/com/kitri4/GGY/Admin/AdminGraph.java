@@ -1,13 +1,12 @@
 package com.kitri4.GGY.Admin;
 import java.awt.*;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import com.kitri4.GGY.Common.CalendarView;
 
-public class AdminGraph extends JFrame{
+public class AdminGraph extends JFrame {
 
 	public JPanel contentPane;
 	public JTabbedPane tabbedPane;
@@ -44,7 +43,8 @@ public class AdminGraph extends JFrame{
 	public DefaultTableModel model;
 	public JTable BsRegisterTable;
 	public JScrollPane scroll;
-	public String columnName[] = {"?ƒ?˜¸ëª?","?—…ì£¼ëª…","?‚¬?—…??“±ë¡ë²ˆ?˜¸","?“±ë¡?"};
+	public String columnName[] = { "ï¿½ê¸½ï¿½ìƒ‡ï§ï¿½", "ï¿½ë¾½äºŒì‡°ì±?", "ï¿½ê¶—ï¿½ë¾½ï¿½ì˜„ï¿½ë²‘æ¿¡ì•¸ì¾²ï¿½?ƒ‡", "ï¿½ë²‘æ¿¡ï¿½" };
+	public Object row [][]={{"ï¿½ë¸³ï¿½ë–Šï¿½ë£·ï§¡ï¿½","ï¿½ì ™èª˜ì‡±ê½?","90c8815","ï¿½ë²‘æ¿¡ï¿½"},{"ï¿½ê¶ªå«„ê³•?”ï¿½ë£·ï§¡ï¿½","è«›ê¹†ì¥Œï¿½?½","90e8815","ï¿½ë²‘æ¿¡ï¿½"}};
 	public JButton homebutton;
 	AdminGraphLogic agl;
 	CalendarView cv;
@@ -213,24 +213,33 @@ public class AdminGraph extends JFrame{
 		adminManagerPn.add(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
 
-		model =new DefaultTableModel(columnName,0);
+//		model = new DefaultTableModel(columnName, 10);
+		model =new DefaultTableModel(row, columnName);
 		BsRegisterTable = new JTable(model);
 
-//		BsRegisterTable.getColumnModel().getColumn(1).setPreferredWidth(20);
-//		BsRegisterTable.getColumnModel().getColumn(3).setPreferredWidth(10);
+		BsRegisterTable.getColumnModel().getColumn(1).setPreferredWidth(20);
+		BsRegisterTable.getColumnModel().getColumn(3).setPreferredWidth(10);
 		BsRegisterTable.getColumnModel().getColumn(3).setCellRenderer(new ButtonRenderer());
 		BsRegisterTable.getColumnModel().getColumn(3).setCellEditor(new ButtonEditor(new JComboBox(),this));
 		scroll = new JScrollPane(BsRegisterTable);
-//		for (int j = 0; j < BsRegisterTable.getRowCount(); j++) {
-//			BsRegisterTable.setRowHeight(j, 23);
-//		}
+		for (int j = 0; j < BsRegisterTable.getRowCount(); j++) {
+			BsRegisterTable.setRowHeight(j, 23);
+		}
 		panel_2.add(scroll);
 		
 		agl=new AdminGraphLogic(this);
+		
+	    findBtn.addActionListener(agl);
+	    onemonthBtn.addActionListener(agl);
+	    threemonthBtn.addActionListener(agl);
+	    sixmonthBtn.addActionListener(agl);
+	    calBtn1.addActionListener(agl);
+	    calBtn2.addActionListener(agl);
 //	    logoutBtn.addActionListener(agl);
 	    
 		homebutton = new JButton("=");
 		homebutton.setBounds(0, 0, 97, 23);
 		contentPane.add(homebutton);
+	
 	}
 }

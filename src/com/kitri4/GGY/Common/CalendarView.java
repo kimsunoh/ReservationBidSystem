@@ -3,6 +3,9 @@ package com.kitri4.GGY.Common;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.math.MathContext;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -11,7 +14,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 public class CalendarView extends JFrame implements ActionListener {
-	String[] days = { "?¼","?›”", "?™”", "?ˆ˜", "ëª?", "ê¸?", "?† "};
+	String[] days = { "ÀÏ","¿ù", "È­", "¼ö", "¸ñ", "±İ", "Åä"};
 	int year, month, day, todays, memoday = 0;
 	Font f;
 	Color bc, fc;
@@ -35,17 +38,16 @@ public class CalendarView extends JFrame implements ActionListener {
 		this.setTf = setTf;
 		panNorth = new JPanel(new GridLayout(2, 1, 10, 10));
 
-		today = Calendar.getInstance(); //ï¿½ì‚¤ï¿½ë’› ï¿½ê¶‡ï§ï¿½ åª›ï¿½ï¿½ì¡‡ï¿½ì‚¤
-										
-		/*ï¿½ê¸½ï¿½ë–’ ï¿½ì†•ï§ï¿½*/ 
+		today = Calendar.getInstance();
+
 		cal = new GregorianCalendar();
 		year = today.get(Calendar.YEAR);
-		month = today.get(Calendar.MONTH) + 1;// ï¿½ë––ï¿½ì“£ 0-11æºëš¯ï¿½æ¿¡ï¿? ï¿½ë¦ºï¿½ë¼±ï¿½ì—³ï¿½ë¼±ï¿½ê½Œ +1
+		month = today.get(Calendar.MONTH) + 1;
 		
 		JPanel yearMonth = new JPanel();
 		yearMonth.add(btnBefore = new JButton("Before"));
-		yearMonth.add(txtYear = new JTextField(year + "?…„"));
-		yearMonth.add(txtMonth = new JTextField(month + "?‹¬", 3));
+		yearMonth.add(txtYear = new JTextField("2016\uB144"));
+		yearMonth.add(txtMonth = new JTextField("4\uC6D4", 3));
 		yearMonth.add(btnAfter = new JButton("After"));
 		
 		txtYear.setEnabled(false); 
@@ -70,16 +72,15 @@ public class CalendarView extends JFrame implements ActionListener {
 		
 		panNorth.add(week);
 		
-		add(panNorth, "North");
+		getContentPane().add(panNorth, "North");
 
-		/*ï¿½ë¸¯ï¿½ë–’ ï¿½ì†•*/
-		panWest = new JPanel(new GridLayout(6,7)); //ï¿½ë––ï¿½ì“½ ï¿½ì”ª è¸°ê¾ª?“‰ï¿½ì”  ï¿½ë±¾ï¿½ë¼±åª›ï¿½ Pn
+		panWest = new JPanel(new GridLayout(6,7));
 
 		f = new Font("Sherif", Font.BOLD, 12);
 		gridInit();
 		calSet();
 		hideInit();
-		add(panWest, "Center");
+		getContentPane().add(panWest, "Center");
 
 		btnBefore.addActionListener(this);
 		btnAfter.addActionListener(this);
@@ -92,21 +93,11 @@ public class CalendarView extends JFrame implements ActionListener {
 
 	public void calSet() {
 		int btnNum;
-		cal.set(Calendar.YEAR, year); //ï¿½ë––ï¿½ì °ï¿½ë¿‰ ?‚‰?š®?”« Calendar åª›ì•¹ê»œï¿½?“½ ï¿½ë?ˆï¿½ë£? ï¿½ê½•ï¿½ì ™
-		cal.set(Calendar.MONTH, (month - 1)); //ï¿½ë––ï¿½ì °ï¿½ë¿‰ ?‚‰?š®?”« Calendar åª›ì•¹ê»œï¿½?“½ ï¿½ì¡ ï¿½ê½•ï¿½ì ™, ï¿½ë¿°ï¿½ê¶›ï¿½ë¿‰ ï¿½ê¶—ï¿½ìŠœï¿½ë¹ï¿½ë¹ ï¿½ë¸¯èª˜ï¿½æ¿¡ï¿½ ï¿½ë–ï¿½ë–† -1
-		cal.set(Calendar.DATE, 1);	//ï¿½ë––ï¿½ì °ï¿½ë¿‰ ?‚‰?š®?”æ¹²ï¿½ ï¿½ë–†ï¿½ì˜‰ï¿½ë¸· å¯ƒê»‹ï¿? 1ï¿½ì”ª ï¿½ì” ï¿½ë¿¬ï¿½ë¹ ï¿½ë¸¯èª˜ï¿½æ¿¡ï¿½ 1ï¿½ì”ª
-		/*
-		 * SUNDAY,MONDAY,TUESDAY,WEDNESDAY ,THURSDAY,FRIDAY, SATURDAY
-		 */
+		cal.set(Calendar.YEAR, year); 
+		cal.set(Calendar.MONTH, (month - 1));
+		cal.set(Calendar.DATE, 1);
 		
-		int firstDayOfWeekForMonth = cal.get(Calendar.DAY_OF_WEEK) - 1; //SUNDAYåª›ï¿½ 1, ï¿½ë––ï¿½ì“½ ï§£ãƒ«ê¶? ï¿½ìŠ‚ï¿½ì”ªï¿½ì“£ ï¿½êµ¹ï¿½ï¿½ï¿½ê¶¡ï¿½ë’— è¹‚ï¿½ 
-		
-		/*
-		 * 1.ï¿½ë––ï¿½ì“½ ï§£ãƒ¬ï¼? ï§£ãƒ«ê¶? ï¿½ìŸ¾æºëš¯ï¿½ï¿½?“½ ï¿½ê¶‡ ï¿½ë¾¾ï¿½ë’— ï¿½ê¶‡æ¿¡ï¿½ ï¿½ë?‘ï¿½?˜¿ï¿½ë¸¯æ¹²ï¿½
-		 * 2.ï¿½ë?ˆï¿½?¡ï¿½ì“½ ï§£ãƒ«ê¶‡æ?¨ï¿½ ï¿½ê±¹ï¿½ê¶‡ï¿½ë¸£æ¹²ï¿½
-		 * 3.1ï¿½ì”ª?ºï¿½ï¿½ê½? ï§ë‰ï¿½ï§ï¿? ï¿½ê¶‡æºëš¯ï¿? ï¿½ë?‘ï¿½?˜¿
-		 */
-		
+		int firstDayOfWeekForMonth = cal.get(Calendar.DAY_OF_WEEK) - 1;
 		for (int i = 0; i < firstDayOfWeekForMonth; i++)
 			calBtn[i].setText("");
 		
@@ -123,18 +114,15 @@ public class CalendarView extends JFrame implements ActionListener {
 				maxDay = 30;			
 		}
 		
-		
-		//i : btnNum, day
 		int day = 1;
 		
 		while(day <= maxDay){
-			//ï¿½ë––ï¿½ì“½ ï§£ãƒ«ê¶? ï¿½ìŠ‚ï¿½ì”ª + cal.1ï¿½ì”ª = ï¿½ë––ï¿½ì“½ ï§£ãƒ«ê¶‡ï¿½?Š‚ï¿½ì”ªï¿½ì”  ï¿½ë¦ºï¿½ë¹ï¿½ë¸¿
 			btnNum = day-1 + firstDayOfWeekForMonth;
 			calBtn[btnNum].setForeground(new Color(0, 0, 0));
 			
-			if ((btnNum) % 7 == 0) {//ï¿½ì”ªï¿½ìŠ‚ï¿½ì”ªï¿½ì”ªï¿½ë¸£ ï§£ì„?”
+			if ((btnNum) % 7 == 0) {
 				calBtn[btnNum].setForeground(new Color(255, 0, 0));
-			}else if ((btnNum) % 7 == 6) {//ï¿½ë„—ï¿½ìŠ‚ï¿½ì”ªï¿½ì”ªï¿½ë¸£ ï¿½ê¹‹ ï§£ì„?”
+			}else if ((btnNum) % 7 == 6) {
 				calBtn[btnNum].setForeground(new Color(0, 0, 255));
 			}
 			
@@ -152,8 +140,8 @@ public class CalendarView extends JFrame implements ActionListener {
 			panWest.setLayout(new GridLayout(6,7));
 			calSet();
 			hideInit();
-			this.txtYear.setText(year + "?…„");
-			this.txtMonth.setText(month + "?›”");
+			this.txtYear.setText(year + "³â");
+			this.txtMonth.setText(month + "¿ù");
 		} else if (ae.getSource() == btnAfter) {
 			this.panWest.removeAll();
 			calInput(1);
@@ -161,17 +149,15 @@ public class CalendarView extends JFrame implements ActionListener {
 			panWest.setLayout(new GridLayout(6,7));
 			calSet();
 			hideInit();
-			this.txtYear.setText(year + "?…„");
-			this.txtMonth.setText(month + "?›”");
+			this.txtYear.setText(year + "³â");
+			this.txtMonth.setText(month + "¿ù");
 		} else if (Integer.parseInt(ae.getActionCommand()) >= 1 && Integer.parseInt(ae.getActionCommand()) <= 31) {
 			day = Integer.parseInt(ae.getActionCommand());
-			//ï¿½ê¶‡ï§ï¿½ è¸°ê¾ª?“‰ï¿½ì”  ï¿½ë‹ƒ?”±ê³Œêµ…ï§ï¿½ system.out ï§£ì„?”
 			setTf.setText(year + "/" + month + "/" + day);
 			setVisible(false);
 		}
 	}
 
-	/*btnï¿½ï¿½ ï§ëš®ë±¾ï¿½ë¼? è­°ëš¯ï¿½ï§ï¿?, ï¿½ê¶‡ï§ì’“ï¿? ï¿½ë¾¾ï¿½ë’— è¸°ê¾ª?“‰ ï¿½ë‹ƒ?”±?Šï¿½ ï¿½ë¸¡å¯ƒï¿½ ï¿½ê½•ï¿½ì ™ï¿½ë¸¯ï¿½ë’— ï§ë¶¿?ƒ¼ï¿½ë±¶*/
 	public void hideInit() { 
 		for (int i = 0; i < calBtn.length; i++) {
 			if ((calBtn[i].getText()).equals(""))
@@ -179,7 +165,6 @@ public class CalendarView extends JFrame implements ActionListener {
 		}
 	}
 
-	/*GridLayoutï¿½ë¿‰ è¸°ê¾ª?“‰ ï¿½ê½”æ¹²ï¿½*/
 	public void gridInit() { 
 		for (int i = 0; i < 42; i++) {
 			panWest.add(calBtn[i] = new JButton(""));
@@ -187,7 +172,6 @@ public class CalendarView extends JFrame implements ActionListener {
 		}
 	}
 
-	/*ï¿½ì” ï¿½ìŸ¾,ï¿½ì” ï¿½ì‘ è¸°ê¾ª?“‰ï¿½ì”  ï¿½ë‹ƒï¿½ì¡‡ï¿½ì“£ï¿½ë¸£ ï¿½ì¡, ï¿½ë?ˆï¿½ë£? ï¿½ê½•ï¿½ì ™ï¿½ë¹äºŒì‡¨ë¦?*/
 	public void calInput(int gap) {
 		month += (gap);
 		if (month <= 0) {
@@ -204,6 +188,7 @@ public class CalendarView extends JFrame implements ActionListener {
 		int day = today.get(Calendar.DAY_OF_MONTH);
 		int year = today.get(Calendar.YEAR);
 		int month = today.get(Calendar.MONTH) + 1;
+		endDateTf.setText(year + "/" + month + "/" + day);
 
 		if (month <= gapMonth) {
 			month = 12 - (gapMonth - month);
@@ -212,6 +197,5 @@ public class CalendarView extends JFrame implements ActionListener {
 			month -= gapMonth;
 		}
 		startDateTf.setText(year + "/" + month + "/" + day);
-		endDateTf.setText(year + "/" + month + "/" + day);
 	}
 }

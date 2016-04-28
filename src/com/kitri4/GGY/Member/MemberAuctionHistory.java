@@ -59,43 +59,43 @@ public class MemberAuctionHistory extends JFrame {
 		contentPane.setLayout(null);
 		
 		startDateCalBtn = new JButton("cal");
-		startDateCalBtn.setBounds(91, 328, 56, 23);
+		startDateCalBtn.setBounds(93, 233, 56, 23);
 		contentPane.add(startDateCalBtn);
 		
 		startDateTf = new JTextField();
-		startDateTf.setBounds(4, 329, 85, 21);
+		startDateTf.setBounds(4, 234, 85, 21);
 		contentPane.add(startDateTf);
 		startDateTf.setColumns(10);
 		
 		bidListViewBtn = new JButton("보기");
+		bidListViewBtn.setBounds(316, 233, 56, 23);
 		bidListViewBtn.setMargin(new Insets(2, 5, 2, 5));
-		bidListViewBtn.setBounds(308, 328, 56, 23);
 		contentPane.add(bidListViewBtn);
 		
 		endDateTf = new JTextField();
+		endDateTf.setBounds(169, 234, 85, 21);
 		endDateTf.setColumns(10);
-		endDateTf.setBounds(162, 329, 85, 21);
 		contentPane.add(endDateTf);
 		
 		endDateCalBtn = new JButton("cal");
-		endDateCalBtn.setBounds(249, 328, 56, 23);
+		endDateCalBtn.setBounds(257, 233, 56, 23);
 		contentPane.add(endDateCalBtn);
 		
 		JLabel empty = new JLabel("~");
+		empty.setBounds(144, 237, 25, 15);
 		empty.setHorizontalAlignment(SwingConstants.CENTER);
-		empty.setBounds(142, 332, 25, 15);
 		contentPane.add(empty);
 		
 		sixMonthBtn = new JButton("6개월");
-		sixMonthBtn.setBounds(4, 361, 114, 31);
+		sixMonthBtn.setBounds(4, 266, 114, 31);
 		contentPane.add(sixMonthBtn);
 		
 		threeMonthBtn = new JButton("3개월");
-		threeMonthBtn.setBounds(126, 361, 114, 31);
+		threeMonthBtn.setBounds(132, 266, 114, 31);
 		contentPane.add(threeMonthBtn);
 		
 		oneMonthBtn = new JButton("1개월");
-		oneMonthBtn.setBounds(250, 361, 114, 31);
+		oneMonthBtn.setBounds(258, 266, 114, 31);
 		contentPane.add(oneMonthBtn);
 
 		
@@ -106,11 +106,11 @@ public class MemberAuctionHistory extends JFrame {
 		endBidTable = new JTable(model);
 		
 		JScrollPane scrollPane = new JScrollPane(endBidTable);
-		scrollPane.setBounds(4, 396, 362, 250);
+		scrollPane.setBounds(4, 307, 368, 339);
 		contentPane.add(scrollPane);
 		
 		graphPn = new JPanel();
-		graphPn.setBounds(4, 10, 362, 308);
+		graphPn.setBounds(10, 9, 362, 214);
 		contentPane.add(graphPn);
 	}
 }

@@ -16,6 +16,7 @@ public class MemberMain extends JFrame {
 	public JButton bidListBtn;
 	public JButton addBidBtn;
 	public JButton memInfoBtn;
+	public JButton logoutBtn;
 	public JPanel home = new JPanel();
 
 	public CardLayout cd;
@@ -24,7 +25,7 @@ public class MemberMain extends JFrame {
 	public MemberAuctionDetail memberAuctionDetail = new MemberAuctionDetail();
 	public MemberAuctionRegister memberAuctionRegister = new MemberAuctionRegister();
 	public MemberInfo memberInfo = new MemberInfo();
-//	public StoreTable storeTable = new StoreTable(this);
+	public StoreTable storeTable = new StoreTable(this);
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -74,5 +75,9 @@ public class MemberMain extends JFrame {
 		memInfoBtn = new JButton("내 정보");
 		memInfoBtn.setBounds(60, 365, 256, 65);
 		home.add(memInfoBtn);
+		
+		logoutBtn = new JButton("로그아웃");
+		logoutBtn.setBounds(60, 465, 256, 65);
+		home.add(logoutBtn);
 	}
 }

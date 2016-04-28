@@ -11,6 +11,8 @@ import javax.swing.border.EmptyBorder;
 
 import com.kitri4.GGY.Dao.*;
 import com.kitri4.GGY.Dto.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BSMemberJoin extends JFrame {
 	public JPanel contentPane;
@@ -47,6 +49,7 @@ public class BSMemberJoin extends JFrame {
 	public JComboBox categoryComb;
 	public JButton getStoreImgBtn;
 	public JFileChooser fc = new JFileChooser();
+	private JLabel lblNewLabel_1;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -77,16 +80,16 @@ public class BSMemberJoin extends JFrame {
 		panel.setLayout(null);
 
 		lblNewLabel = new JLabel("\uC5C5\uC8FC\uD68C\uC6D0\uAC00\uC785");
+		lblNewLabel.setBounds(114, 10, 130, 38);
 		lblNewLabel.setForeground(Color.BLACK);
 		lblNewLabel.setBackground(Color.DARK_GRAY);
 		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 15));
-		lblNewLabel.setBounds(0, 0, 379, 41);
 		panel.add(lblNewLabel);
 
 		idLabel = new JLabel("ID");
+		idLabel.setBounds(10, 51, 357, 25);
 		idLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		idLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		idLabel.setBounds(10, 51, 357, 25);
 		panel.add(idLabel);
 
 		idTf = new JTextField();
@@ -95,74 +98,83 @@ public class BSMemberJoin extends JFrame {
 		idTf.setColumns(10);
 
 		pwLabel = new JLabel("Password");
+		pwLabel.setBounds(10, 123, 357, 25);
 		pwLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		pwLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		pwLabel.setBounds(10, 123, 357, 25);
 		panel.add(pwLabel);
 
 		pwTf = new JTextField();
-		pwTf.setColumns(10);
 		pwTf.setBounds(12, 160, 355, 25);
+		pwTf.setColumns(10);
 		panel.add(pwTf);
 
 		pwcLabel = new JLabel("Password(\uD655\uC778)");
+		pwcLabel.setBounds(10, 209, 357, 25);
 		pwcLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		pwcLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		pwcLabel.setBounds(10, 195, 357, 25);
 		panel.add(pwcLabel);
 
 		pwCheckTf = new JTextField();
+		pwCheckTf.setBounds(10, 246, 357, 25);
 		pwCheckTf.setColumns(10);
-		pwCheckTf.setBounds(10, 232, 357, 25);
 		panel.add(pwCheckTf);
 
 		nameLabel = new JLabel("\uC774\uB984");
+		nameLabel.setBounds(12, 290, 355, 25);
 		nameLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		nameLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		nameLabel.setBounds(12, 267, 355, 25);
 		panel.add(nameLabel);
 
-		phoneLabel = new JLabel("\uC5F0\uB77D\uCC98(000-0000-000)");
+		phoneLabel = new JLabel("\uC5F0\uB77D\uCC98");
+		phoneLabel.setBounds(12, 372, 53, 25);
 		phoneLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		phoneLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		phoneLabel.setBounds(12, 337, 355, 25);
 		panel.add(phoneLabel);
 
 		nameTf = new JTextField();
+		nameTf.setBounds(10, 325, 357, 25);
 		nameTf.setColumns(10);
-		nameTf.setBounds(10, 302, 357, 25);
 		panel.add(nameTf);
 
 		emailLabel = new JLabel("\uC774\uBA54\uC77C");
+		emailLabel.setBounds(12, 466, 355, 25);
 		emailLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		emailLabel.setFont(new Font("굴림", Font.BOLD, 14));
-		emailLabel.setBounds(12, 407, 355, 25);
 		panel.add(emailLabel);
 
 		emailTf = new JTextField();
+		emailTf.setBounds(10, 501, 357, 25);
 		emailTf.setColumns(10);
-		emailTf.setBounds(10, 442, 357, 25);
 		panel.add(emailTf);
 
 		phoneTf = new JTextField();
+		phoneTf.setBounds(10, 407, 357, 25);
 		phoneTf.setColumns(10);
-		phoneTf.setBounds(10, 372, 357, 25);
 		panel.add(phoneTf);
 		
 		checkIdBtn = new JButton("ID\uD655\uC778");
-		checkIdBtn.setBounds(271, 86, 86, 29);
+		checkIdBtn.setBounds(281, 84, 86, 29);
 		panel.add(checkIdBtn);
+		
+		lblNewLabel_1 = new JLabel("(-\uBE7C\uACE0 \uC785\uB825)");
+		lblNewLabel_1.setFont(new Font("����", Font.PLAIN, 10));
+		lblNewLabel_1.setBounds(63, 377, 65, 13);
+		panel.add(lblNewLabel_1);
 
 		panel_1 = new JPanel();
 		tabbedPane.addTab("\uAC00\uAC8C \uC815\uBCF4", null, panel_1, null);
 		panel_1.setLayout(null);
 
 		cancleBtn = new JButton("\uCDE8\uC18C");
-		cancleBtn.setBounds(46, 555, 133, 23);
+		cancleBtn.setBounds(186, 555, 133, 33);
 		panel_1.add(cancleBtn);
 
 		joinBtn = new JButton("\uD68C\uC6D0\uAC00\uC785");
-		joinBtn.setBounds(184, 555, 133, 23);
+		joinBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		joinBtn.setBounds(44, 555, 133, 33);
 		panel_1.add(joinBtn);
 
 		JLabel label = new JLabel(" \uC5C5\uC8FC \uAC00\uAC8C \uC815\uBCF4");

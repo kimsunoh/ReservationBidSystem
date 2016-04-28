@@ -20,6 +20,7 @@ public class MemberAuction extends JPanel {
 		memberAuctionDetail = new MemberAuctionDetail();
 		memberAuctionList = new MemberAuctionList(memberMain);
 		
+		System.out.println("memberauction row : " + row);
 		setBounds(0, 0, 373, 620);
 		setBorder(new EmptyBorder(0, 0, 0, 0));
 		setLayout(null);
@@ -33,6 +34,7 @@ public class MemberAuction extends JPanel {
 		add(homebutton);
 
 		tabbedPane.addTab("현재 경매", null, memberAuctionList, null);
+
 		tabbedPane.addTab("경매 내역", null, memberAuctionHistory.contentPane, null);	
 	}
 }

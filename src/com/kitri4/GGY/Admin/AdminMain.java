@@ -16,7 +16,6 @@ public class AdminMain extends JFrame {
 	public JButton userManagBtn;
 	public JButton auctionManagBtn;
 	public JButton logoutBtn;
-	public AdminGraph ag;
 
 	/**
 	 * Launch the application.

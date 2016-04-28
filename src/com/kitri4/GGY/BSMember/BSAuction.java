@@ -29,10 +29,11 @@ public class BSAuction extends JFrame {
 	public JButton ingViewBtn;
 	public CalendarView cv;
 	
-	public BSAuctionHistory bsAuctionHistory = new BSAuctionHistory();
+//	public BSAuctionHistory bsAuctionHistory = new BSAuctionHistory();
+	public BSAuctionHistory bsAuctionHistory;
 	
 	public String ColName[] = {"예약자명", "예약시간", "인원", "가격","입찰"};
-
+	public DefaultTableModel model2;
 
 	/**
 	 * Launch the application.
@@ -102,7 +103,7 @@ public class BSAuction extends JFrame {
 		
 		ingAuctionTable = new JTable();
 		
-		DefaultTableModel model2 = new DefaultTableModel(ColName, 23);
+		model2 = new DefaultTableModel(ColName, 0);
 		ingAuctionTable = new JTable(model2);
 		ingAuctionTable.setRowHeight(40);
 		ingAuctionTable.getColumnModel().getColumn(4).setCellRenderer(new ButtonRenderer2());
@@ -119,6 +120,7 @@ public class BSAuction extends JFrame {
 		ingEndDateBtn.setBounds(257, 49, 42, 29);
 		bsAuction.add(ingEndDateBtn);
 		
+		bsAuctionHistory = new BSAuctionHistory();//
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("낙찰 내역", null, bsAuctionHistory, null);
 		

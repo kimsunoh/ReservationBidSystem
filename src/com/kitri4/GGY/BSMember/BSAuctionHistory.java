@@ -6,12 +6,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import org.jfree.chart.ChartPanel;
+
 
 public class BSAuctionHistory extends JPanel {
 
-	public JPanel graphPn;
+	public ChartPanel graphPn;//
 	public JTextField endStartDateTf;
 	public JTextField endEndDateTf;
 	public JTable endBidTable;
@@ -22,7 +22,8 @@ public class BSAuctionHistory extends JPanel {
 	public JButton endEndDateBtn;
 	public JButton bidListViewBtn;
 
-	public DefaultTableModel model;
+	public static DefaultTableModel model;
+	String str[] = new String[3];
 
 	/**
 	 * Launch the application.
@@ -46,10 +47,6 @@ public class BSAuctionHistory extends JPanel {
 	public BSAuctionHistory() {
 		setBounds(100, 100, 400, 700);
 		setLayout(null);
-
-		graphPn = new JPanel();
-		graphPn.setBounds(12, 6, 355, 227);
-		add(graphPn);
 
 		endStartDateTf = new JTextField();
 		endStartDateTf.setBounds(12, 243, 94, 33);
@@ -97,12 +94,13 @@ public class BSAuctionHistory extends JPanel {
 		scrollPane.setBounds(12, 329, 355, 275);
 		add(scrollPane);
 
-		String header[] = { "예약자명", "예약날짜", "가격" };
+		String header[] = { "예약자명", "예약날짜", "가격" };//
 		String contents[][] = {};
 		model = new DefaultTableModel(contents, header);
 
-		endBidTable = new JTable(contents, header);
+		endBidTable = new JTable(model);
 		scrollPane.setViewportView(endBidTable);
+		
 	}
 
 }

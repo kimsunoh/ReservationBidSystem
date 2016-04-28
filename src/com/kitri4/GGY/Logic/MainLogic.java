@@ -63,7 +63,7 @@ public class MainLogic implements ActionListener {
 					joinError();
 				}
 			} else {
-				passwordError();
+				passwordError(memberJoin);
 			}
 		} else if (ob == memberJoin.cancleBtn || ob == bsMemberJoin.cancleBtn) {
 			JOptionPane.showConfirmDialog(null, "취소할까요?", "취소", JOptionPane.DEFAULT_OPTION);
@@ -72,8 +72,11 @@ public class MainLogic implements ActionListener {
 		}
 		/* login */
 		else if (ob.equals(login.joinBtn)) {
-			if (JOptionPane.showConfirmDialog(null, "일반회원입니까? \n업주회원은 No를 눌러주세요.", "회원유형선택",
-					JOptionPane.YES_NO_OPTION) == 0) {
+			Object[] options = {"일반회원", "업주회원"};
+            int selectedNum = JOptionPane.showOptionDialog(login, "회원유형을 선택해주세요.", "회원유형선택", 
+                    JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            
+			if (selectedNum == 0) {
 				memberJoin.setVisible(true);
 			} else {
 				bsMemberJoin.setVisible(true);
@@ -107,6 +110,7 @@ public class MainLogic implements ActionListener {
 				}
 			}
 		}
+		//
 		/* bsMemberJoin */
 		else if (ob == bsMemberJoin.joinBtn) {
 			if (bsMemberJoin.pwTf.getText().equals(bsMemberJoin.pwCheckTf.getText()))
@@ -115,12 +119,11 @@ public class MainLogic implements ActionListener {
 					JOptionPane.showConfirmDialog(null, "회원가입되었습니다.\n환영합니다~ ^^", "알림", JOptionPane.DEFAULT_OPTION);
 				} else {
 					joinError();
-				}
-			else {
-				passwordError();
+					login.setVisible(true);
+					bsMemberJoin.setVisible(false);
+			} else {
+				passwordError(bsMemberJoin);
 			}
-			login.setVisible(true);
-			bsMemberJoin.setVisible(false);
 		} else if (ob == bsMemberJoin.checkIdBtn) {
 			checkId(bsMemberJoin.idTf.getText());
 		} else if (ob == bsMemberJoin.getStoreImgBtn) {
@@ -136,11 +139,16 @@ public class MainLogic implements ActionListener {
 				bsMemberJoin.storeImgTf.setText(filepath);
 
 			}
+		} else if (ob == bsMemberJoin.homebutton) {
+			login.setVisible(true);
+			bsMemberJoin.setVisible(false);
 		}
+		//
 	}
 
 	private void addStoreImg() {
-		String storeImgPath = "C:\\Users\\KITRI\\Documents\\GitHub\\ReservationBidSystem\\src\\com\\kitri4\\GGY\\img\\store\\" ;
+		//String storeImgPath = "C:\\Users\\KITRI\\Desktop\\ggyo0428\\ggyobeta\\src\\com\\kitri4\\GGY\\img\\store\\" ;
+		String storeImgPath = "C:\\Users\\KITRI\\Documents\\GitHub\\ReservationBidSystem\\src\\com\\kitri4\\GGY\\img\\store\\" ; //선오
 		FileCopy s = new FileCopy();// FileCopy 클래스 생성.
 		String outputFile = storeImgPath + filename;// 선택된 파일네임으로 경로 지정
 		try {
@@ -162,7 +170,7 @@ public class MainLogic implements ActionListener {
 		boolean joinStore = checkStoreJoin(bsMemberJoin.idTf.getText().trim(), bsMemberJoin.bsNumTf.getText().trim(),
 				bsMemberJoin.storeNameTf.getText().trim(), bsMemberJoin.dongComb.getSelectedIndex(),
 				bsMemberJoin.categoryComb.getSelectedIndex(), bsMemberJoin.storePhoneTf.getText().trim(),
-				bsMemberJoin.storePeopleTf.getText().trim(), bsMemberJoin.storeImgTf.getText().trim());
+				bsMemberJoin.storePeopleTf.getText().trim(), filename);
 		/*
 		 * String id, String bsNum, String storeName, int dongIdx, int
 		 * categoryIdx, String storePhoneNum, String peopleNum, String imgPath
@@ -235,10 +243,15 @@ public class MainLogic implements ActionListener {
 		memberJoin.idTf.setText("");
 	}
 
-	private void passwordError() {
+	private void passwordError(Object ob) {
 		JOptionPane.showConfirmDialog(null, "비밀번호를 다시 확인해 주세요.", "알림", JOptionPane.ERROR_MESSAGE);
-		memberJoin.pwCheckTf.setText("");
-		memberJoin.pwTf.setText("");
+		if (ob == memberJoin) {
+			memberJoin.pwCheckTf.setText("");
+			memberJoin.pwTf.setText("");
+		} else {
+			bsMemberJoin.pwCheckTf.setText("");
+			bsMemberJoin.pwTf.setText("");
+		}
 	}
 
 	private void checkId(String setId) {

@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Font;
 
 public class MemberJoin extends JFrame{
 
@@ -57,89 +58,94 @@ public class MemberJoin extends JFrame{
       
       JPanel panel = new JPanel();
       contentPane.add(panel, BorderLayout.CENTER);
-      panel.setLayout(new GridLayout(7, 1, 10, 30));
+      panel.setLayout(null);
       
       JLabel label_1 = new JLabel("\uC77C\uBC18 \uD68C\uC6D0\uAC00\uC785");
+      label_1.setFont(new Font("±¼¸²", Font.BOLD, 12));
+      label_1.setBounds(143, 38, 94, 40);
       panel.add(label_1);
       
-      JPanel panel_1 = new JPanel();
-      panel.add(panel_1);
-      panel_1.setLayout(new BorderLayout(0, 0));
-      
       JLabel lblNewLabel = new JLabel("ID :");
-      lblNewLabel.setBounds(new Rectangle(0, 0, 100, 0));
-      panel_1.add(lblNewLabel, BorderLayout.NORTH);
+      lblNewLabel.setFont(new Font("±¼¸²", Font.BOLD, 12));
+      lblNewLabel.setBounds(20, 95, 47, 24);
+      panel.add(lblNewLabel);
       
       idTf = new JTextField();
-      panel_1.add(idTf, BorderLayout.CENTER);
+      idTf.setBounds(20, 128, 280, 24);
+      panel.add(idTf);
       idTf.setColumns(10);
       
       checkIdBtn = new JButton("\uD655\uC778");
-      panel_1.add(checkIdBtn, BorderLayout.EAST);
-      
-      JPanel panel_7 = new JPanel();
-      panel.add(panel_7);
-      panel_7.setLayout(new BorderLayout(0, 0));
+      checkIdBtn.setBounds(305, 125, 57, 29);
+      panel.add(checkIdBtn);
       
       JLabel lblNewLabel_3 = new JLabel("\uC774\uB984 :");
-      panel_7.add(lblNewLabel_3, BorderLayout.NORTH);
+      lblNewLabel_3.setFont(new Font("±¼¸²", Font.BOLD, 12));
+      lblNewLabel_3.setBounds(20, 173, 41, 15);
+      panel.add(lblNewLabel_3);
       
       nameTf = new JTextField();
-      panel_7.add(nameTf, BorderLayout.CENTER);
+      nameTf.setBounds(20, 197, 319, 24);
+      panel.add(nameTf);
       nameTf.setColumns(10);
       
-      JPanel panel_2 = new JPanel();
-      panel.add(panel_2);
-      panel_2.setLayout(new BorderLayout(0, 0));
-      
-      JLabel lblNewLabel_1 = new JLabel("PASSWORD :");
-      panel_2.add(lblNewLabel_1, BorderLayout.NORTH);
+      JLabel lblNewLabel_1 = new JLabel("PASS :");
+      lblNewLabel_1.setFont(new Font("±¼¸²", Font.BOLD, 12));
+      lblNewLabel_1.setBounds(20, 236, 47, 15);
+      panel.add(lblNewLabel_1);
       
       pwTf = new JTextField();
-      panel_2.add(pwTf, BorderLayout.CENTER);
+      pwTf.setBounds(20, 261, 319, 24);
+      panel.add(pwTf);
       pwTf.setColumns(10);
       
-      JPanel panel_3 = new JPanel();
-      panel.add(panel_3);
-      panel_3.setLayout(new BorderLayout(0, 0));
-      
-      JLabel lblNewLabel_2 = new JLabel("PASSWORD (check) : ");
-      panel_3.add(lblNewLabel_2, BorderLayout.NORTH);
+      JLabel lblNewLabel_2 = new JLabel("PASS : ");
+      lblNewLabel_2.setFont(new Font("±¼¸²", Font.BOLD, 12));
+      lblNewLabel_2.setBounds(20, 303, 56, 20);
+      panel.add(lblNewLabel_2);
       
       pwCheckTf = new JTextField();
-      panel_3.add(pwCheckTf, BorderLayout.CENTER);
+      pwCheckTf.setBounds(20, 323, 319, 24);
+      panel.add(pwCheckTf);
       pwCheckTf.setColumns(10);
       
-      JPanel panel_4 = new JPanel();
-      panel.add(panel_4);
-      panel_4.setLayout(new BorderLayout(0, 0));
-      
-      JLabel lblPhone = new JLabel("PHONE ( - \uC5C6\uC774\uC785\uB825 )");
-      panel_4.add(lblPhone, BorderLayout.NORTH);
+      JLabel lblPhone = new JLabel("PHONE:");
+      lblPhone.setFont(new Font("±¼¸²", Font.BOLD, 12));
+      lblPhone.setBounds(20, 365, 62, 15);
+      panel.add(lblPhone);
       
       phoneNumTf = new JTextField();
+      phoneNumTf.setBounds(20, 385, 319, 26);
+      panel.add(phoneNumTf);
       phoneNumTf.setColumns(10);
-      panel_4.add(phoneNumTf, BorderLayout.CENTER);
-      
-      JPanel panel_5 = new JPanel();
-      panel.add(panel_5);
-      panel_5.setLayout(new BorderLayout(0, 0));
       
       JLabel lblNewLabel_4 = new JLabel("EMAIL : ");
-      panel_5.add(lblNewLabel_4, BorderLayout.NORTH);
+      lblNewLabel_4.setFont(new Font("±¼¸²", Font.BOLD, 12));
+      lblNewLabel_4.setBounds(22, 433, 60, 15);
+      panel.add(lblNewLabel_4);
       
       emailTf = new JTextField();
-      panel_5.add(emailTf, BorderLayout.CENTER);
+      emailTf.setBounds(20, 458, 319, 29);
+      panel.add(emailTf);
       emailTf.setColumns(10);
       
-      JPanel panel_6 = new JPanel();
-      contentPane.add(panel_6, BorderLayout.SOUTH);
+      JLabel lblNewLabel_5 = new JLabel(" ( - \uC5C6\uC774\uC785\uB825 )");
+      lblNewLabel_5.setFont(new Font("±¼¸²", Font.PLAIN, 10));
+      lblNewLabel_5.setBounds(76, 368, 68, 11);
+      panel.add(lblNewLabel_5);
       
       memJoinBtn = new JButton("\uAC00\uC785\uD558\uAE30");
-      panel_6.add(memJoinBtn);
+      memJoinBtn.setBounds(68, 536, 94, 31);
+      panel.add(memJoinBtn);
       
       cancleBtn = new JButton("\uCDE8\uC18C");
-      panel_6.add(cancleBtn);
+      cancleBtn.setBounds(178, 537, 101, 29);
+      panel.add(cancleBtn);
+      
+      JLabel lblNewLabel_6 = new JLabel("(check)");
+      lblNewLabel_6.setFont(new Font("±¼¸²", Font.PLAIN, 10));
+      lblNewLabel_6.setBounds(68, 307, 41, 15);
+      panel.add(lblNewLabel_6);
       
    }
 }

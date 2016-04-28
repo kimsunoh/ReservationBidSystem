@@ -1,10 +1,8 @@
 package com.kitri4.GGY.Main;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,15 +10,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
+import java.awt.Toolkit;
+import java.awt.Color;
 
 public class Login extends JFrame {
 
 	public JPanel contentPane;
-	public JButton loginBtn;
-	public JButton joinBtn;
-	public JPanel loginImgPn;
 	public JTextField idTf;
 	public JTextField pwTf;
+	public JButton loginBtn;
+	public JButton joinBtn;
 
 	/**
 	 * Launch the application.
@@ -43,65 +42,64 @@ public class Login extends JFrame {
 	 */
 	public Login(String string) {
 		super(string);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/com/kitri4/GGY/Img/ggyo4.jpg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 700);
+		
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(10, 10));
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setOpaque(false);
 		setContentPane(contentPane);
-		
-		JPanel panel = new JPanel();
-		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
-		flowLayout.setVgap(10);
-		flowLayout.setHgap(10);
-		contentPane.add(panel, BorderLayout.SOUTH);
-		
-		loginBtn = new JButton("로그인");
-		panel.add(loginBtn);
-		
-		joinBtn = new JButton("회원가입");
-		panel.add(joinBtn);
-		
-		JPanel panel_1 = new JPanel();
-		contentPane.add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(new GridLayout(0, 1, 10, 10));
+		contentPane.setLayout(null);
 		
 		JPanel panel_2 = new JPanel();
-		panel_1.add(panel_2);
-		panel_2.setLayout(new BorderLayout(10, 10));
+		panel_2.setBounds(5, 43, 374, 294);
+		contentPane.add(panel_2);
+		panel_2.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("오늘뭐먹지?");
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_2.add(lblNewLabel_2, BorderLayout.NORTH);
-		
-		loginImgPn = new JPanel();
-		panel_2.add(loginImgPn, BorderLayout.CENTER);
-		
-		JPanel panel_3 = new JPanel();
-		panel_1.add(panel_3);
-		panel_3.setLayout(new GridLayout(2, 1, 10, 10));
-		
-		JPanel panel_4 = new JPanel();
-		panel_3.add(panel_4);
-		panel_4.setLayout(new BorderLayout(10, 10));
-		
-		JLabel lblNewLabel = new JLabel("ID :");
-		panel_4.add(lblNewLabel, BorderLayout.NORTH);
+		JLabel lblId = new JLabel("ID");
+		lblId.setBounds(5, 379, 30, 40);
+		contentPane.add(lblId);
+		lblId.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		idTf = new JTextField();
-		panel_4.add(idTf, BorderLayout.CENTER);
+		idTf.setBounds(47, 380, 200, 40);
+		contentPane.add(idTf);
+		idTf.setHorizontalAlignment(SwingConstants.CENTER);
 		idTf.setColumns(10);
 		
-		JPanel panel_5 = new JPanel();
-		panel_3.add(panel_5);
-		panel_5.setLayout(new BorderLayout(10, 10));
-		
 		pwTf = new JTextField();
-		panel_5.add(pwTf, BorderLayout.CENTER);
+		pwTf.setBounds(48, 432, 200, 40);
+		contentPane.add(pwTf);
+		pwTf.setHorizontalAlignment(SwingConstants.CENTER);
 		pwTf.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("PW :");
-		panel_5.add(lblNewLabel_1, BorderLayout.NORTH);
+		JLabel lblPw = new JLabel("PW");
+		lblPw.setBounds(5, 432, 30, 40);
+		contentPane.add(lblPw);
+		lblPw.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		loginBtn = new JButton("로그인");
+		loginBtn.setBounds(257, 374, 108, 70);
+		contentPane.add(loginBtn);
+		
+		joinBtn = new JButton("회원가입");
+		joinBtn.setBounds(257, 450, 108, 20);
+		contentPane.add(joinBtn);
+		
+		JLabel lblNewLabel_1 = new JLabel("\uD68C\uC2DD\uC7A5\uC18C \uC815\uD558\uAE30 \uD504\uB85C\uADF8\uB7A8");
+		lblNewLabel_1.setBounds(12, 0, 350, 35);
+		contentPane.add(lblNewLabel_1);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel lblNewLabel = new JLabel("by sokim, wrkim, jwkim, dhback, shyou, msjung");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(5, 614, 374, 38);
+		contentPane.add(lblNewLabel);
+		
+		JLabel loginImg = new JLabel("");
+		loginImg.setBounds(5, 26, 374, 294);
+		contentPane.add(loginImg);
+		loginImg.setHorizontalAlignment(SwingConstants.CENTER);
 	}
-
 }

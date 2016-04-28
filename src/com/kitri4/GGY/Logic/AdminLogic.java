@@ -2,26 +2,17 @@ package com.kitri4.GGY.Logic;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import javax.swing.table.DefaultTableModel;
 
 import com.kitri4.GGY.Admin.AdminGraph;
 import com.kitri4.GGY.Admin.AdminMain;
 import com.kitri4.GGY.Common.CalendarView;
 import com.kitri4.GGY.Common.RBSMain;
-import com.kitri4.GGY.Dao.AdminDao;
-import com.kitri4.GGY.Dto.AdminDto;
 import com.kitri4.GGY.Main.Login;
 
 public class AdminLogic implements ActionListener {
 	Login login = null;
 	AdminMain adminMain = null;
 	AdminGraph adminGraph = null;
-	ArrayList<AdminDto> list;
-	AdminDto dto;
 	CalendarView calendarView = null;
 
 	public AdminLogic(RBSMain rbsMain) {
@@ -34,7 +25,6 @@ public class AdminLogic implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
-		AdminDao dao = null;
 		//관리자메인
 		if (ob == adminMain.auctionManagBtn) {
 			adminGraph.setVisible(true);
@@ -43,7 +33,15 @@ public class AdminLogic implements ActionListener {
 		} else if (ob == adminMain.userManagBtn) {
 			adminGraph.setVisible(true);
 			adminGraph.tabbedPane.setSelectedIndex(0);
-			adminMain.setVisible(false);		
+			adminMain.setVisible(false);
+		
+		
+		} else if (ob == adminMain.logoutBtn) {
+			adminMain.setVisible(false);
+			login.setVisible(true);
+			login.idTf.setText("");
+			login.pwTf.setText("");
+		
 		//업주내역
 		} else if (ob == adminGraph.calBtn1) {
 			calendarView = new CalendarView("Caledar", adminGraph.calendarTf1);
@@ -51,9 +49,16 @@ public class AdminLogic implements ActionListener {
 		} else if (ob == adminGraph.calBtn2) {
 			calendarView = new CalendarView("Caledar", adminGraph.calendarTf2);
 			calendarView.setVisible(true);
+		} else if (ob == adminGraph.sixmonthBtn) {
+			calendarView.setDayTf(6,  adminGraph.calendarTf1, adminGraph.calendarTf2);
+		} else if (ob == adminGraph.threemonthBtn) {
+			calendarView.setDayTf(3, adminGraph.calendarTf1, adminGraph.calendarTf2);
+		} else if (ob == adminGraph.onemonthBtn) {
+			calendarView.setDayTf(1, adminGraph.calendarTf1, adminGraph.calendarTf2);
 		} else if (ob == adminGraph.homebutton) {
 			adminMain.setVisible(true);
-			adminGraph.setVisible(false);	
-		} 
+			adminGraph.setVisible(false);
+		}
 	}
+
 }

@@ -15,12 +15,25 @@ public class ButtonEditor extends DefaultCellEditor {
 	MemberMain memberMain;
 	int row;
 
-	public ButtonEditor(JCheckBox checkBox) {
+	public ButtonEditor(JCheckBox checkBox, MemberMain memberMain) {
 		super(checkBox);
+		this.memberMain = memberMain;
 		button = new JButton();
 		button.setOpaque(true);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(row);
+
+//				memberAuction.memberAuctionList.storetable.storemodel.fireTableDataChanged();
+//				MemberAuctionDetail memberAuctionDetail = new MemberAuctionDetail();
+//				memberMain.memberAuction.memberAuctionList.add("memberAuctionDetail", memberAuctionDetail);
+//				memberMain.memberAuction.memberAuctionList.memberAuctionDetail.revalidate();
+//				memberMain.memberAuction.memberAuctionList.memberAuctionDetail.repaint();
+				
+//				memberAuctionDetail.menutable.row = row;
+				memberMain.memberAuctionDetail.menutable.row = row;
+				memberMain.memberAuction.memberAuctionList.memberAuctionDetail.revalidate();
+				memberMain.memberAuction.memberAuctionList.memberAuctionDetail.repaint();
 				memberMain.memberAuction.memberAuctionList.cd.show(memberMain.memberAuction.memberAuctionList, "memberAuctionDetail");
 			}
 		});

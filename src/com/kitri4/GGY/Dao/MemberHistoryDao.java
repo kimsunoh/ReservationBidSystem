@@ -23,7 +23,7 @@ public class MemberHistoryDao {
 			sql += "and b.store_id = s.store_id \n";
 			sql += "and a.user_id = '" + userId + "' \n";
 			sql += "and auction_limitedtime between to_date('" + startDate + "', 'yyyy/mm/dd') and to_date('" + endDate + "', 'yyyy/mm/dd') \n";
-			//sql += "and b.bid_flag = 1 ";
+			sql += "and b.bid_flag = 1 ";
 			
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);

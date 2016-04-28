@@ -4,10 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.kitri4.GGY.Main.Login;
+
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Toolkit;
 
 public class BSMain extends JFrame {
 
@@ -16,6 +23,7 @@ public class BSMain extends JFrame {
 	public JButton storeMenuBtn;
 	public JButton InfoBtn;
 	public JButton logoutBtn;
+	private JLabel lblNewLabel;
 
 	/**
 	 * Launch the application.
@@ -41,25 +49,36 @@ public class BSMain extends JFrame {
 		setBounds(100, 100, 400, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		
-		getContentPane().setLayout(new GridLayout(6, 1, 0, 0));
+		contentPane.setLayout(null);
+		contentPane.setLayout(null);
 		
 		JPanel panel_6 = new JPanel();
+		panel_6.setBounds(5, 10, 374, 108);
 		getContentPane().add(panel_6);
+		panel_6.setLayout(null);
+		
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/com/kitri4/GGY/Img/a.png")));
+		lblNewLabel.setBounds(107, 10, 170, 88);
+		panel_6.add(lblNewLabel);
 		
 		bidListBtn = new JButton("내역");
+		bidListBtn.setBounds(55, 155, 270, 70);
 		getContentPane().add(bidListBtn);
 		
 		storeMenuBtn = new JButton("메뉴");
+		storeMenuBtn.setBounds(55, 255, 270, 70);
 		getContentPane().add(storeMenuBtn);
 		
 		InfoBtn = new JButton("내 정보");
+		InfoBtn.setBounds(55, 355, 270, 70);
 		getContentPane().add(InfoBtn);
 		
 		logoutBtn = new JButton("로그아웃");
-		contentPane.add(logoutBtn, BorderLayout.NORTH);
+		logoutBtn.setBounds(55, 455, 270, 70);
+		contentPane.add(logoutBtn);
 		
 	}
 
