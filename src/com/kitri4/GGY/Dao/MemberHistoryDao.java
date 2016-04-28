@@ -22,7 +22,7 @@ public class MemberHistoryDao {
 			sql += "where a.auction_seq = b.auction_seq \n";
 			sql += "and b.store_id = s.store_id \n";
 			sql += "and a.user_id = '" + userId + "' \n";
-			sql += "and to_char(auction_limitedtime, 'yyyy/mm/dd') between '" + startDate + "' and '" + endDate + "' \n";
+			sql += "and auction_limitedtime between to_date('" + startDate + "', 'yyyy/mm/dd') and to_date('" + endDate + "', 'yyyy/mm/dd') \n";
 			//sql += "and b.bid_flag = 1 ";
 			
 			stmt = conn.createStatement();

@@ -16,6 +16,7 @@ import javax.swing.JTable;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -140,7 +141,8 @@ public class MemberLogic implements ActionListener {
 		String startDate = memberAuctionHistory.startDateTf.getText().trim();
 		String endDate = memberAuctionHistory.endDateTf.getText().trim();
 		MemberHistoryDao mHistoryDto = new MemberHistoryDao();
-		ArrayList<MemberHistoryDto> auctionSeqList = mHistoryDto.selectEndAuction(startDate, endDate, login.idTf.getText().trim());
+		ArrayList<MemberHistoryDto> auctionSeqList = mHistoryDto.selectEndAuction(startDate, endDate,
+				login.idTf.getText().trim());
 
 		// Table
 		int size = memberAuctionHistory.endBidTable.getRowCount();
@@ -159,67 +161,53 @@ public class MemberLogic implements ActionListener {
 
 		// Chart
 		// categoty별 chart
-		int categoryCount[] = {0,0,0,0,0};
+		int categoryCount[] = { 0, 0, 0, 0, 0 };
 		for (int i = 0; i < size; i++) {
-			//categoryId-1 을 인덱스로 갖음
-			categoryCount[auctionSeqList.get(i).getCategoryId()-1]++;
+			// categoryId-1 을 인덱스로 갖음
+			categoryCount[auctionSeqList.get(i).getCategoryId() - 1]++;
 		}
-		
-		String category[] = {"한식", "일식", "중식", "양식", "기타"};
-		
-		CategoryDataset dataset = createDataset(category,categoryCount);
-		JFreeChart chart = createChart(dataset);		
-		
+
+		String category[] = { "한식", "일식", "중식", "양식", "기타" };
+
+		CategoryDataset dataset = createDataset(category, categoryCount);
+		JFreeChart chart = createChart(dataset);
+
 		memberAuctionHistory.graphPn = new ChartPanel(chart);
+		
 		memberAuctionHistory.graphPn.setPreferredSize(new java.awt.Dimension(362, 308));
 		memberAuctionHistory.add(memberAuctionHistory.graphPn);
 		memberAuctionHistory.graphPn.setBounds(12, 6, 355, 227);
 
-		/*
-		 * int size = auctionSeqList.size(); String tableData[][] = new
-		 * String[size][3];
-		 * 
-		 * for (int i = 0; i < size; i++) { tableData[i][0] =
-		 * auctionSeqList.get(i).getStoreName(); tableData[i][1] =
-		 * auctionSeqList.get(i).getAuctionLimitedTime(); tableData[i][2] =
-		 * auctionSeqList.get(i).getAuctionPrice()+""; }
-		 * 
-		 * 
-		 * ActionDao 를 통해서 where 조건 제시, date를 yyyy-mm-dd로 읽어와서 beatween
-		 * strD,endDate일때 읽어와서 int size = date.size();
-		 * 
-		 * for (int i = 0 ; i < size ; i++) { tableData[i][0] =
-		 * data[i].getStoreName(); tableData[i][1] = data[i].getDate();
-		 * tableData[i][2] = data[i].getPrice(); }
-		 * 
-		 * memberActionHistory.GraphPn 에 그래프를 그리고 한식, 중식, 양식 별 예약 횟수
-		 * 
-		 * 
-		 * 
-		 * String column[] = { "상호명", "예약시간", "가격" };
-		 * memberAuctionHistory.endBidTable = new JTable(tableData, column);
-		 * System.out.println("set endBidTable");
-		 * 
-		 * refresh();
-		 */
 	}
 
 	private JFreeChart createChart(CategoryDataset dataset) {
-		JFreeChart chart = ChartFactory.createBarChart(
-	            "카테고리별 집계", "Category", "Count", dataset, PlotOrientation.VERTICAL, true, false, false); 
-	            // chart title, domain axis label, range axis label
-	            // data, include legend, tooltips?, URLs?
-
-	   return chart;
+		JFreeChart chart = ChartFactory.createBarChart("", "Category", "Count", dataset);
+		// chart title, domain axis label, range axis label
+		// data, include legend, tooltips?, URLs?
+		
+		chart.getLegend().setItemFont(new Font("나눔바른고딕",Font.BOLD, 13));
+		
+		CategoryPlot plot = chart.getCategoryPlot();
+		// X 축의 라벨 설정입니다. (보조 타이틀)
+		plot.getDomainAxis().setLabelFont(new Font("나눔바른고딕", Font.BOLD, 13));
+		// X 축의 도메인 설정입니다.
+		plot.getDomainAxis().setTickLabelFont(new Font("나눔바른고딕", Font.BOLD, 8));
+		// Y 축의 라벨 설정입니다. (보조 타이틀)
+		plot.getRangeAxis().setLabelFont(new Font("나눔바른고딕", Font.BOLD, 13));
+		// Y 축의 도메인 설정입니다.
+		plot.getRangeAxis().setTickLabelFont(new Font("나눔바른고딕", Font.BOLD, 8));
+		
+		
+		return chart;
 	}
 
 	private CategoryDataset createDataset(String[] category, int[] categoryCount) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        int length = 5;
-        for (int i = 0 ; i < length ; i++)
-        		dataset.addValue(categoryCount[i], category[i], "");
-        return dataset;
-		
+		int length = 5;
+		for (int i = 0; i < length; i++)
+			dataset.addValue(categoryCount[i], category[i], "");
+		return dataset;
+
 	}
 
 	private void setDayTf(int gapMonth) {
