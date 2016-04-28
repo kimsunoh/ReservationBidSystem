@@ -75,7 +75,8 @@ public class RBSMain {
 		bsMemberJoin.joinBtn.addActionListener(jr);
 		bsMemberJoin.checkIdBtn.addActionListener(jr);
 		bsMemberJoin.cancleBtn.addActionListener(jr);
-
+		bsMemberJoin.getStoreImgBtn.addActionListener(jr);
+		
 		/* MemberLogic event */
 		MemberLogic ml = new MemberLogic(this);
 

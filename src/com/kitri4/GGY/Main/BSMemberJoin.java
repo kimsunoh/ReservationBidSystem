@@ -6,20 +6,11 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.kitri4.GGY.Dao.*;
 import com.kitri4.GGY.Dto.*;
-
-import javax.swing.JButton;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JComboBox;
 
 public class BSMemberJoin extends JFrame {
 	public JPanel contentPane;
@@ -54,7 +45,9 @@ public class BSMemberJoin extends JFrame {
 	public JComboBox dongComb;
 	public JComboBox gooComb;
 	public JComboBox categoryComb;
-
+	public JButton getStoreImgBtn;
+	public JFileChooser fc = new JFileChooser();
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -244,7 +237,7 @@ public class BSMemberJoin extends JFrame {
 
 		storeImgTf = new JTextField();
 		storeImgTf.setColumns(10);
-		storeImgTf.setBounds(10, 512, 357, 25);
+		storeImgTf.setBounds(10, 512, 242, 25);
 		panel_1.add(storeImgTf);
 		
 		dongDao locationDao = new dongDao();
@@ -269,6 +262,10 @@ public class BSMemberJoin extends JFrame {
 		categoryComb = new JComboBox(categoryList);
 		categoryComb.setBounds(22, 364, 190, 33);
 		panel_1.add(categoryComb);
+		
+		getStoreImgBtn = new JButton("\uC774\uBBF8\uC9C0\uD30C\uC77C");
+		getStoreImgBtn.setBounds(252, 512, 103, 23);
+		panel_1.add(getStoreImgBtn);
 
 		homebutton = new JButton("=");
 		homebutton.setBounds(0, 0, 97, 23);

@@ -1,13 +1,18 @@
 package com.kitri4.GGY.Logic;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import com.kitri4.GGY.Admin.AdminMain;
 import com.kitri4.GGY.BSMember.BSMain;
+import com.kitri4.GGY.Common.FileCopy;
 import com.kitri4.GGY.Common.RBSMain;
 import com.kitri4.GGY.Dao.rbsCategoryDao;
 import com.kitri4.GGY.Dao.GooDao;
@@ -19,8 +24,6 @@ import com.kitri4.GGY.Main.*;
 import com.kitri4.GGY.Member.MemberAuction;
 import com.kitri4.GGY.Member.MemberMain;
 
-//import oracle.net.aso.r;
-
 public class MainLogic implements ActionListener {
 	public Login login;
 	public MemberJoin memberJoin;
@@ -28,7 +31,9 @@ public class MainLogic implements ActionListener {
 	public MemberMain memberMain;
 	public BSMain bsMain;
 	public AdminMain adminMain;
-
+	public String filepath = null;
+	public String filename = null;
+	
 	public MainLogic(RBSMain rbsMain) {
 		this.login = rbsMain.login;
 		this.memberJoin = rbsMain.memberJoin;
@@ -36,14 +41,14 @@ public class MainLogic implements ActionListener {
 		this.memberMain = rbsMain.memberMain;
 		this.bsMain = rbsMain.bsMain;
 		this.adminMain = rbsMain.adminMain;
-		
+
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
 
-		/*memberJoin*/
+		/* memberJoin */
 		if (ob == memberJoin.checkIdBtn) {
 			checkId(memberJoin.idTf.getText());
 		} else if (ob == memberJoin.memJoinBtn) {
@@ -64,8 +69,8 @@ public class MainLogic implements ActionListener {
 			JOptionPane.showConfirmDialog(null, "취소할까요?", "취소", JOptionPane.DEFAULT_OPTION);
 			login.setVisible(true);
 			memberJoin.setVisible(false);
-		} 
-		/*login*/
+		}
+		/* login */
 		else if (ob.equals(login.joinBtn)) {
 			if (JOptionPane.showConfirmDialog(null, "일반회원입니까? \n업주회원은 No를 눌러주세요.", "회원유형선택",
 					JOptionPane.YES_NO_OPTION) == 0) {
@@ -102,12 +107,13 @@ public class MainLogic implements ActionListener {
 				}
 			}
 		}
-		/*bsMemberJoin*/
+		/* bsMemberJoin */
 		else if (ob == bsMemberJoin.joinBtn) {
 			if (bsMemberJoin.pwTf.getText().equals(bsMemberJoin.pwCheckTf.getText()))
-				if(checkBsMemberJoin()){
+				if (checkBsMemberJoin()) {
+					addStoreImg();
 					JOptionPane.showConfirmDialog(null, "회원가입되었습니다.\n환영합니다~ ^^", "알림", JOptionPane.DEFAULT_OPTION);
-				}else {
+				} else {
 					joinError();
 				}
 			else {
@@ -115,52 +121,80 @@ public class MainLogic implements ActionListener {
 			}
 			login.setVisible(true);
 			bsMemberJoin.setVisible(false);
-		}else if (ob == bsMemberJoin.checkIdBtn) {
+		} else if (ob == bsMemberJoin.checkIdBtn) {
 			checkId(bsMemberJoin.idTf.getText());
+		} else if (ob == bsMemberJoin.getStoreImgBtn) {
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("Images(BMP,JPEG,PNG, extensions)", "bmp",
+					"jpg", "png");
+			bsMemberJoin.fc.setDialogTitle("image 를 선택하세요");
+			bsMemberJoin.fc.setFileFilter(filter);
+			bsMemberJoin.fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+			if (bsMemberJoin.fc.showOpenDialog(bsMemberJoin.getStoreImgBtn) == JFileChooser.APPROVE_OPTION) {
+				filename = bsMemberJoin.fc.getSelectedFile().getName();
+				filepath = bsMemberJoin.fc.getSelectedFile().getAbsolutePath();
+				
+				bsMemberJoin.storeImgTf.setText(filepath);
+
+			}
+		}
+	}
+
+	private void addStoreImg() {
+		String storeImgPath = "C:\\Users\\KITRI\\Documents\\GitHub\\ReservationBidSystem\\src\\com\\kitri4\\GGY\\img\\store\\" ;
+		FileCopy s = new FileCopy();// FileCopy 클래스 생성.
+		String outputFile = storeImgPath + filename;// 선택된 파일네임으로 경로 지정
+		try {
+			s.copy(filepath, outputFile); // inputFile 로 , outFile 메소드
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
 		}
 	}
 
 	private boolean checkBsMemberJoin() {
 		boolean joinUser = checkMemberJoin(bsMemberJoin.idTf.getText().trim(), bsMemberJoin.pwTf.getText().trim(),
-				bsMemberJoin.nameTf.getText().trim(), bsMemberJoin.phoneTf.getText().trim(), bsMemberJoin.emailTf.getText().trim(), 3);
+				bsMemberJoin.nameTf.getText().trim(), bsMemberJoin.phoneTf.getText().trim(),
+				bsMemberJoin.emailTf.getText().trim(), 3);
 		if (!joinUser) {
 			joinError();
 			return false;
 		}
 
 		boolean joinStore = checkStoreJoin(bsMemberJoin.idTf.getText().trim(), bsMemberJoin.bsNumTf.getText().trim(),
-										bsMemberJoin.storeNameTf.getText().trim(), bsMemberJoin.dongComb.getSelectedIndex(),
-										bsMemberJoin.categoryComb.getSelectedIndex(), bsMemberJoin.storePhoneTf.getText().trim(),
-										bsMemberJoin.storePeopleTf.getText().trim(), bsMemberJoin.storeImgTf.getText().trim());
-										/*String id, String bsNum, String storeName, int dongIdx, int categoryIdx, String storePhoneNum, String peopleNum, String imgPath*/
+				bsMemberJoin.storeNameTf.getText().trim(), bsMemberJoin.dongComb.getSelectedIndex(),
+				bsMemberJoin.categoryComb.getSelectedIndex(), bsMemberJoin.storePhoneTf.getText().trim(),
+				bsMemberJoin.storePeopleTf.getText().trim(), bsMemberJoin.storeImgTf.getText().trim());
+		/*
+		 * String id, String bsNum, String storeName, int dongIdx, int
+		 * categoryIdx, String storePhoneNum, String peopleNum, String imgPath
+		 */
 		if (!joinStore) {
 			new RbsUserDao().delete(bsMemberJoin.idTf.getText().trim());
 			return false;
-		}else {
+		} else {
 			return true;
 		}
-		
+
 	}
 
-	private boolean checkStoreJoin(String id, String bsNum, String storeName, int dongIdx, int categoryIdx, String storePhoneNum,
-			String peopleNum, String imgPath) {
+	private boolean checkStoreJoin(String id, String bsNum, String storeName, int dongIdx, int categoryIdx,
+			String storePhoneNum, String peopleNum, String imgPath) {
 		StoreDao storeDao = new StoreDao();
 
 		dongDao dongDao = new dongDao();
 		String dongName = bsMemberJoin.dongComb.getItemAt(dongIdx).toString();
 		System.out.println("동이름 : " + dongName);
 		int dongId = dongDao.select(dongName).getDongId();
-				
+
 		String category = bsMemberJoin.categoryComb.getItemAt(categoryIdx).toString();
 		rbsCategoryDao categoryDao = new rbsCategoryDao();
 		int categoryId = categoryDao.select(category).getCategoryId();
-		
+
 		StoreDto storeDto = new StoreDto();
 		storeDto.setUserId(id);
 		storeDto.setBusinessNum(bsNum);
 		storeDto.setStoreName(storeName);
 		storeDto.setDongId(dongId);
-		storeDto.setCategoryId(categoryId);			
+		storeDto.setCategoryId(categoryId);
 		storeDto.setStorePhone(storePhoneNum);
 		storeDto.setPeopleNum(peopleNum);
 		storeDto.setStoreImg(imgPath);
@@ -187,7 +221,7 @@ public class MainLogic implements ActionListener {
 		userDto.setUserName(name);
 		userDto.setUserPhoneNumber(phoneNum);
 		userDto.setUserEmail(email);
-		userDto.setUserFlag(flag+"");
+		userDto.setUserFlag(flag + "");
 
 		if (userDao.insert(userDto) == 1) {
 			return true;
@@ -208,7 +242,10 @@ public class MainLogic implements ActionListener {
 	}
 
 	private void checkId(String setId) {
-		if (setId.isEmpty()) {
+		UserDto userDto = new RbsUserDao().select(setId);
+		if (userDto != null) {
+			JOptionPane.showConfirmDialog(null, "사용중인 아이디입니다.", "아이디 오류", JOptionPane.ERROR_MESSAGE);
+		} else if (setId.isEmpty()) {
 			JOptionPane.showConfirmDialog(null, "아이디는 공백일수 없습니다.", "아이디 오류", JOptionPane.ERROR_MESSAGE);
 		} else {
 			JOptionPane.showConfirmDialog(null, "사용할 수 있는 아이디입니다.", "아이디 확인", JOptionPane.DEFAULT_OPTION);
